@@ -19,6 +19,7 @@
     @livewireScripts
     <script>
         Livewire.on('alert', function (){
+            document.getElementById('Closemodal').click();
             Swal.fire({
                 title: "Bien hecho!",
                 text: "Has creado un nuevo usuario",
