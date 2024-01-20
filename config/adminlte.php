@@ -303,7 +303,7 @@ return [
         ],
         [
             'text' => 'Dashboard',
-            'route' => 'home',
+            'route' => 'dashboard',
             'icon' => 'fas fa-fw fa-home',
         ],
         [
