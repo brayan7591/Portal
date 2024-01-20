@@ -57,7 +57,7 @@
                         <th scope="row">{{$user->id}}</th>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user->id}})">Actualizar</button></td>
+                        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user}})">Actualizar</button></td>
                         <td><button class="btn btn-danger">Eliminar</button></td>
                     </tr>
                 @endforeach
@@ -74,29 +74,29 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <h2 wire:loading class="text-center">Cargando ...</h2>
-                    <div class="mb-3" wire:loading.remove>
+                    <h2 wire:loading wire:target="update" class="text-center">Cargando ...</h2>
+                    <div class="mb-3" wire:loading.remove wire:target="update">
                         <label for="Nombre_Usuario_Update" class="form-label h4 font-weight-normal">Actualiza el nombre del usuario:</label>
-                        <input type="text" class="form-control" id="Nombre_Usuario_Update" wire:model.defer='ActName'>
-                        @error('ActName')
+                        <input type="text" class="form-control" id="Nombre_Usuario_Update" wire:model.defer='name'>
+                        @error('name')
                             <span>
                                 {{$message}}
                             </span>
                         @enderror
                     </div>
-                    <div class="mb-3" wire:loading.remove>
+                    <div class="mb-3" wire:loading.remove wire:target="update">
                         <label for="Email_Usuario_Update" class="form-label h4 font-weight-normal">Actualiza el correo del usuario:</label>
-                        <input type="email" class="form-control" id="Email_Usuario_Update" wire:model.defer='ActEmail'>
-                        @error('ActEmail')
+                        <input type="email" class="form-control" id="Email_Usuario_Update" wire:model.defer='email'>
+                        @error('email')
                         <span>
                             {{$message}}
                         </span>
                     @enderror
                     </div>
-                    <div class="mb-3" wire:loading.remove>
+                    <div class="mb-3" wire:loading.remove wire:target="update">
                         <label for="Contraseña_Usuario_Update" class="form-label h4 font-weight-normal">Actualiza la contraseña:</label>
-                        <input type="password" class="form-control" id="Contraseña_Usuario_Update" wire:model.defer='ActPassword'>
-                        @error('ActPassword')
+                        <input type="password" class="form-control" id="Contraseña_Usuario_Update" wire:model.defer='password'>
+                        @error('password')
                             <span>
                                 {{$message}}
                             </span>
@@ -104,9 +104,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="Closemodal" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="save" wire:click="save">Actualizar usuario</button>
-                <span wire:loading wire:target="save">Cargando Mi estimado :)</span>
+                <button type="button" class="btn btn-secondary" id="ClosemodalUpdate" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="Actualizar" wire:click="Actualizar({{$ActRegister}})">Actualizar usuario</button>
+                <span wire:loading wire:target="Actualizar">Cargando la actualizacion mi estimado :)</span>
                 </div>
             </div>
             </div>

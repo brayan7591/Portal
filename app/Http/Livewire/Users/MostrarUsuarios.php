@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Users;
 
 use App\Models\User;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class MostrarUsuarios extends Component
@@ -12,10 +13,10 @@ class MostrarUsuarios extends Component
     public $sort = "id";
     public $direction = "asc";
 
-    public $ActName, $ActEmail, $ActPassword;
+    public $name, $email, $password, $ActRegister;
 
     protected $listeners = ['render' => 'render'];
-
+    
     public function render()
     {
         $users = User::where($this->for, 'LIKE', '%' . $this->search . '%')
@@ -23,7 +24,7 @@ class MostrarUsuarios extends Component
 
         return view('livewire.users.mostrar-usuarios', compact('users'));
     }
-    
+
     public function order($sort){
         if ($this->sort == $sort) {
             if ($this->direction == "desc") {
@@ -37,11 +38,27 @@ class MostrarUsuarios extends Component
         }
     }
 
-    public function update($id){
-        $Usuario = User::find($id);
+    public function update(User $user){
 
-        $this->ActName = $Usuario->name;
-        $this->ActEmail = $Usuario->email;
+        $this->ActRegister = $user;
+        $this->name = $user->name;
+        $this->email = $user->email;
 
+    }
+
+    public function Actualizar(User $user){
+        $this->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+        ]);
+
+        $user->name = $this->name;
+        $user->email = $this->email;
+        if ($this->password) {
+            $user->password = $this->password;
+        }
+        $user->save();
+        $this->reset(['name', 'email', 'password']);
+        $this->emit('Actualizado');
     }
 }

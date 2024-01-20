@@ -44,7 +44,6 @@
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" id="Closemodal" data-dismiss="modal">Cerrar</button>
             <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="save" wire:click="save">Crear usuario</button>
-            <button type="button" wire:loading.remove wire:target="save">Lol</button>
             <span wire:loading wire:target="save">Cargando Mi estimado :)</span>
             </div>
         </div>

@@ -26,5 +26,13 @@
                 type: "success"
             })
         })
+        Livewire.on('Actualizado', function(){
+            document.getElementById('ClosemodalUpdate').click();
+            Swal.fire({
+                title: "Bien hecho!",
+                text: "Has Actualizado el usuario",
+                type: "success"
+            })
+        })
     </script>
 @stop
