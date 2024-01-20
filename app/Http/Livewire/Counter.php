@@ -12,6 +12,8 @@ class Counter extends Component
     public $sort = "id";
     public $direction = "asc";
 
+    public $ActName, $ActEmail, $ActPassword;
+
     protected $listeners = ['render' => 'render'];
 
     public function render()
@@ -33,5 +35,13 @@ class Counter extends Component
             $this->sort = $sort;
             $this->direction = "asc";
         }
+    }
+
+    public function update($id){
+        $Usuario = User::find($id);
+
+        $this->ActName = $Usuario->name;
+        $this->ActEmail = $Usuario->email;
+
     }
 }
