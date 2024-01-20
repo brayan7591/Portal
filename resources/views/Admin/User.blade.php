@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    @livewire('counter')
+    @livewire('users.mostrar-usuarios')
 @stop
 
 @section('css')

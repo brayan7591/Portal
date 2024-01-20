@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Users;
 
 use App\Models\User;
 use Livewire\Component;
 
-class Counter extends Component
+class MostrarUsuarios extends Component
 {
     public $for = "name";
     public $search;
@@ -21,9 +21,9 @@ class Counter extends Component
         $users = User::where($this->for, 'LIKE', '%' . $this->search . '%')
         ->orderBy($this->sort, $this->direction)->get();
 
-        return view('livewire.counter', compact('users'));
+        return view('livewire.users.mostrar-usuarios', compact('users'));
     }
-
+    
     public function order($sort){
         if ($this->sort == $sort) {
             if ($this->direction == "desc") {
