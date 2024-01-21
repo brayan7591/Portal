@@ -34,5 +34,28 @@
                 type: "success"
             })
         })
+        Livewire.on('deleteUser', userId => {
+            Swal.fire({
+                title: "¿Estas seguro de eliminar este registro?",
+                text: "Esta accion no se puede revertir! ",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Eliminar!",
+                cancelButtonText: "Cancelar"
+                }).then((result) => {
+                    if (result.value == true) {
+
+                        Livewire.emitTo('users.mostrar-usuarios', 'delete', userId)
+
+                        Swal.fire({
+                            title: "Eliminado!",
+                            text: "Este usuario ha sido eliminado.",
+                            type: "success"
+                        });
+                    }
+                });
+        })
     </script>
 @stop

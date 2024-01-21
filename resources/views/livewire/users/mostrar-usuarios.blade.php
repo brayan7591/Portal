@@ -7,8 +7,21 @@
     <label class="w-100">
         <input class="form-control me-2" type="search" placeholder="Escribe Aqui" aria-label="Search" wire:model="search">
     </label>
+    
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <span>Mostrar </span>
+            <select wire:model="registers">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+            <span>registros</span>
+        </div>
 
-    @livewire('users.crear-usuario')
+        @livewire('users.crear-usuario')
+
+    </div>
 
     @if ($users->count())
         <div class="table-responsive mt-2">
@@ -58,12 +71,17 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user}})">Actualizar</button></td>
-                        <td><button class="btn btn-danger">Eliminar</button></td>
+                        <td><button class="btn btn-danger" wire:click="$emit('deleteUser', {{$user->id}})">Eliminar</button></td>
                     </tr>
                 @endforeach
             </tbody>
             </table>
         </div>
+        @if ($users->hasPages())
+            <div>
+                {{$users->links()}}
+            </div>
+        @endif
         <div class="modal fade" id="ModificarUsuario" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document" >
             <div class="modal-content">

@@ -5,22 +5,33 @@ namespace App\Http\Livewire\Users;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class MostrarUsuarios extends Component
 {
+    use WithPagination;
+
     public $for = "name";
     public $search;
+    public $registers = '10';
     public $sort = "id";
     public $direction = "asc";
 
     public $name, $email, $password, $ActRegister;
 
-    protected $listeners = ['render' => 'render'];
+    protected $paginationTheme = "Bootstrap";
+    protected $listeners = ['render', 'delete'];
+    
+    public function updatingSearch(){
+        $this->resetPage();
+    }
+
+    protected $queryString = ['registers' => ['except' => '10']];
     
     public function render()
     {
         $users = User::where($this->for, 'LIKE', '%' . $this->search . '%')
-        ->orderBy($this->sort, $this->direction)->get();
+        ->orderBy($this->sort, $this->direction)->paginate($this->registers);
 
         return view('livewire.users.mostrar-usuarios', compact('users'));
     }
@@ -60,5 +71,9 @@ class MostrarUsuarios extends Component
         $user->save();
         $this->reset(['name', 'email', 'password']);
         $this->emit('Actualizado');
+    }
+
+    public function delete(User $user){
+        $user->delete();
     }
 }
