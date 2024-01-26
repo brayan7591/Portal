@@ -40,6 +40,21 @@
                         </span>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <p class="form-label h4 font-weight-normal">Agregar rol:</p>
+                    @foreach ($roles as $role)
+                    <div class="form-check">
+                        <label class="form-check-label h5">
+                            <input class="form-check-input" wire:model.defer="rol" type="radio" name="rol" value="{{$role->id}}">{{$role->name}}
+                        </label>
+                      </div>
+                    @endforeach
+                    @error('rol')
+                        <span>
+                            {{$message}}
+                        </span>
+                    @enderror
+                </div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-secondary" id="Closemodal" data-dismiss="modal">Cerrar</button>

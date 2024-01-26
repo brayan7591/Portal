@@ -6,13 +6,14 @@ use App\Models\User;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Spatie\Permission\Models\Role;
 
 class MostrarUsuarios extends Component
 {
     use WithPagination;
 
     public $for = "name";
-    public $search;
+    public $search, $roles;
     public $registers = '10';
     public $sort = "id";
     public $direction = "asc";
@@ -51,10 +52,10 @@ class MostrarUsuarios extends Component
 
     public function update(User $user){
 
+        $this->roles = Role::all();
         $this->ActRegister = $user;
         $this->name = $user->name;
         $this->email = $user->email;
-
     }
 
     public function Actualizar(User $user){

@@ -21,13 +21,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
+    public function index(){
         return view('Admin.Dashboard');
     }
 
-    public function users()
-    {
+    public function users(){
         return view('Admin.User');
+    }
+
+    public function roles(){
+        return view('Admin.Roles');
+    }
+
+    public function guardarRol(Request $request){
+        return $request->all();
     }
 }

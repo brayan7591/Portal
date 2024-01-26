@@ -310,6 +310,12 @@ return [
             'text' => 'Usuarios',
             'route' => 'Users',
             'icon' => 'fas fa-fw fa-user',
+            'can' => 'Users.mirar',
+        ],
+        [
+            'text' => 'Roles',
+            'route' => 'roles',
+            'icon' => 'fas fa-fw fa-user',
         ],
         [
             'text' => 'blog',
