@@ -113,11 +113,24 @@
                     </div>
                     <div class="mb-3" wire:loading.remove wire:target="update">
                         <label for="Contraseña_Usuario_Update" class="form-label h4 font-weight-normal">Actualiza la contraseña:</label>
-                        <input type="password" class="form-control" id="Contraseña_Usuario_Update" wire:model.defer='password'>
+                        <input type="password" class="form-control" id="Contraseña_Usuario_Update" wire:model.defer='password' placeholder="En caso de no querer actualizarla, no escribir">
                         @error('password')
                             <span>
                                 {{$message}}
                             </span>
+                        @enderror
+                    </div>
+                    <div class="mb-3" wire:loading.remove wire:target="update">
+                        <p class="form-label h4 font-weight-normal">Actualizar roles:</p>
+                        @foreach ($roles as $role)
+                        <div class="form-check">
+                            <label class="form-check-label h5">
+                                <input class="form-check-input" wire:model.defer="rolesUsuario" type="checkbox" name="rol" value="{{$role->id}}">{{$role->name}}
+                            </label>
+                          </div>
+                        @endforeach
+                        @error('rolesUsuario')
+                            <span>{{$message}}</span>
                         @enderror
                     </div>
                 </div>

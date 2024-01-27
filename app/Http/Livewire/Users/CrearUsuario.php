@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Role;
 
 class CrearUsuario extends Component
 {
-    public $name, $email, $password, $rol;
+    public $name, $email, $password, $rolesUsuario = [];
 
     public function render()
     {
@@ -20,7 +20,7 @@ class CrearUsuario extends Component
         'name' => ['required', 'string', 'max:255'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'password' => ['required', 'string', 'min:8'],
-        'rol' => ['required']
+        'rolesUsuario' => ['required']
     ];
 
     public function save(){
@@ -31,9 +31,9 @@ class CrearUsuario extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password
-        ])->assignRole($this->rol);
+        ])->roles()->sync($this->rolesUsuario);
 
-        $this->reset(['name', 'email', 'password', 'rol']);
+        $this->reset(['name', 'email', 'password', 'rolesUsuario']);
         $this->emit('render');
         $this->emit('alert');
     }

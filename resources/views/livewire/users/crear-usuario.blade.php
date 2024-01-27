@@ -45,14 +45,12 @@
                     @foreach ($roles as $role)
                     <div class="form-check">
                         <label class="form-check-label h5">
-                            <input class="form-check-input" wire:model.defer="rol" type="radio" name="rol" value="{{$role->id}}">{{$role->name}}
+                            <input class="form-check-input" wire:model.defer="rolesUsuario" type="checkbox" name="rol" value="{{$role->id}}">{{$role->name}}
                         </label>
                       </div>
                     @endforeach
-                    @error('rol')
-                        <span>
-                            {{$message}}
-                        </span>
+                    @error('rolesUsuario')
+                        <span>{{$message}}</span>
                     @enderror
                 </div>
             </div>

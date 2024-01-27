@@ -13,7 +13,7 @@ class MostrarUsuarios extends Component
     use WithPagination;
 
     public $for = "name";
-    public $search, $roles;
+    public $search, $rolesUsuario = [];
     public $registers = '10';
     public $sort = "id";
     public $direction = "asc";
@@ -31,10 +31,12 @@ class MostrarUsuarios extends Component
     
     public function render()
     {
+        $roles = Role::all();
+
         $users = User::where($this->for, 'LIKE', '%' . $this->search . '%')
         ->orderBy($this->sort, $this->direction)->paginate($this->registers);
 
-        return view('livewire.users.mostrar-usuarios', compact('users'));
+        return view('livewire.users.mostrar-usuarios', compact('users', 'roles'));
     }
 
     public function order($sort){
@@ -52,7 +54,7 @@ class MostrarUsuarios extends Component
 
     public function update(User $user){
 
-        $this->roles = Role::all();
+        $this->rolesUsuario = $user->roles()->pluck('id');
         $this->ActRegister = $user;
         $this->name = $user->name;
         $this->email = $user->email;
@@ -62,6 +64,7 @@ class MostrarUsuarios extends Component
         $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'rolesUsuario' => ['required']
         ]);
 
         $user->name = $this->name;
@@ -70,7 +73,8 @@ class MostrarUsuarios extends Component
             $user->password = $this->password;
         }
         $user->save();
-        $this->reset(['name', 'email', 'password']);
+        $user->roles()->sync($this->rolesUsuario);
+        $this->reset(['name', 'email', 'password', 'rolesUsuario']);
         $this->emit('Actualizado');
     }
 
