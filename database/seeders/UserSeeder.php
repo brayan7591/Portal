@@ -21,5 +21,17 @@ class UserSeeder extends Seeder
         ])->assignRole('Admin');
 
         User::factory(10)->create();
+
+        User::create([
+            'name' => 'editor',
+            'email' => 'editor@editor.com',
+            'password' => bcrypt('123456789')
+        ])->assignRole('Editor');
+
+        User::create([
+            'name' => 'eliminador',
+            'email' => 'eliminador@eliminador.com',
+            'password' => bcrypt('123456789')
+        ])->assignRole('Eliminador');
     }
 }

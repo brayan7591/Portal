@@ -7,7 +7,6 @@
     <label class="w-100">
         <input class="form-control me-2" type="search" placeholder="Escribe Aqui" aria-label="Search" wire:model="search">
     </label>
-    
     <div class="d-flex justify-content-between align-items-center">
         <div>
             <span>Mostrar </span>
@@ -28,7 +27,7 @@
             <table class="table table-hover table-dark text-center">
                 <thead>
                     <tr>
-                        <th scope="col" class="cursor-pointer" wire:click="order('id')">
+                        <th scope="col" class="cursor-pointer align-middle" wire:click="order('id')" style="min-width: 100px">
                             Id
                             @if ($sort == 'id')
                                 @if ($direction == 'asc')
@@ -40,7 +39,7 @@
                             @endif 
                             
                         </th>
-                        <th scope="col" class="cursor-pointer" wire:click="order('name')">
+                        <th scope="col" class="cursor-pointer align-middle" wire:click="order('name')" style="min-width: 200px">
                             Nombre
                             @if ($sort == 'name')
                                 @if ($direction == 'asc')
@@ -51,7 +50,7 @@
                             
                             @endif 
                         </th>
-                        <th scope="col" class="cursor-pointer" wire:click="order('email')">
+                        <th scope="col" class="cursor-pointer align-middle" wire:click="order('email')">
                             Correo Electronico 
                             @if ($sort == 'email')
                                 @if ($direction == 'asc')
@@ -61,17 +60,47 @@
                                 @endif          
                             @endif 
                         </th>
-                        <th scope="col" colspan="2">Opciones</th>
+                        @can('Users.edit',)
+                            <th scope="col">Opciones</th>                            
+                        @elsecan('Users.destroy')
+                            <th scope="col">Opciones</th>
+                        @endcan
                     </tr>
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                    <tr>
-                        <th scope="row">{{$user->id}}</th>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->email}}</td>
-                        <td><button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user}})">Actualizar</button></td>
-                        <td><button class="btn btn-danger" wire:click="$emit('deleteUser', {{$user->id}})">Eliminar</button></td>
+                <tr {{($user->id == auth()->user()->id) ? 'class=bg-info' : '';}}>
+                        <th scope="row" class="align-middle">{{$user->id}}</th>
+                        <td class="align-middle">{{$user->name}}</td>
+                        <td class="align-middle">{{$user->email}}</td>
+                        @can('Users.edit',)
+                        <td class="options">
+                            @if ($user->id == auth()->user()->id)
+                                <button class="btn btn-primary" type="button">Actualizar tu perfil</button> 
+                            @else
+                                @can('Users.edit')
+                                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user}})">Actualizar</button>
+                                @endcan
+                                @can('Users.destroy')
+                                    <button class="btn btn-danger" wire:click="$emit('deleteUser', {{$user}})">Eliminar</button>
+                                @endcan
+                            @endif
+                        </td>                            
+                        @elsecan('Users.destroy')
+                        <td class="options">
+                            @if ($user->id == auth()->user()->id)
+                                <button class="btn btn-primary" type="button">Actualizar tu perfil</button> 
+                            @else
+                                @can('Users.edit')
+                                    <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user}})">Actualizar</button>
+                                @endcan
+                                @can('Users.destroy')
+                                    <button class="btn btn-danger" wire:click="$emit('deleteUser', {{$user}})">Eliminar</button>
+                                @endcan
+                            @endif
+                        </td>
+                        @endcan
+                        
                     </tr>
                 @endforeach
             </tbody>
@@ -82,6 +111,8 @@
                 {{$users->links()}}
             </div>
         @endif
+        @can('Users.edit')
+            
         <div class="modal fade" id="ModificarUsuario" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document" >
             <div class="modal-content">
@@ -92,7 +123,10 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <h2 wire:loading wire:target="update" class="text-center">Cargando ...</h2>
+                    <div wire:loading wire:target="update" class="w-100 d-flex align-items-center justify-content-between">
+                        <strong wire:loading wire:target="update" role="status">Loading...</strong>
+                        <div wire:loading wire:target="update" class="spinner-border ms-auto" aria-hidden="true"></div>
+                    </div>
                     <div class="mb-3" wire:loading.remove wire:target="update">
                         <label for="Nombre_Usuario_Update" class="form-label h4 font-weight-normal">Actualiza el nombre del usuario:</label>
                         <input type="text" class="form-control" id="Nombre_Usuario_Update" wire:model.defer='name'>
@@ -142,6 +176,7 @@
             </div>
             </div>
         </div>
+        @endcan
     @else
         <h1>El usuario no se encontro :(</h1>
     @endif

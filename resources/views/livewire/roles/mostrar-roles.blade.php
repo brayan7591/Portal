@@ -6,7 +6,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
+                        <th>Nombre del rol</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -79,6 +79,11 @@ class MostrarUsuarios extends Component
     }
 
     public function delete(User $user){
-        $user->delete();
+        if ($user->id == auth()->user()->id) {
+            $user->delete();
+            redirect()->route('login');
+        }else{
+            $user->delete();
+        }
     }
 }

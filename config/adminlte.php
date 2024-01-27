@@ -308,27 +308,18 @@ return [
         ],
         [
             'text' => 'Usuarios',
-            'route' => 'Users',
-            'icon' => 'fas fa-fw fa-user',
+            'route' => 'users',
+            'icon' => 'fas fa-fw fa-users',
             'can' => 'Users.mirar',
         ],
         [
             'text' => 'Roles',
             'route' => 'roles',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-unlock',
+            'label'       => 'New',
+            'label_color' => 'danger',
         ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
