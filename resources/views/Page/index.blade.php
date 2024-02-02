@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Home')
+@section('title', 'Portal')
 
 @section('content')
     <h1 class="text-center">El comienzo</h1>
