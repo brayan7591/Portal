@@ -15,5 +15,15 @@
 @stop
 
 @section('js')
-
+    @if (session('success'))
+        <script>
+            setTimeout(function(){
+                Swal.fire({
+                    title: "Bien hecho!",
+                    text: "{{session('success')}}",
+                    type: "success"
+                })
+            }, 1000)
+        </script>
+    @endif
 @stop

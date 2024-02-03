@@ -2,25 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index(){
         return view('Admin.Dashboard');
     }
@@ -33,7 +28,39 @@ class HomeController extends Controller
         return view('Admin.Roles');
     }
 
-    public function guardarRol(Request $request){
-        return $request->all();
+    public function settings(){
+        $user = Auth::user();
+        return view('Admin.Settings', compact('user'));
+    }
+
+    public function ActualizarUsuario(Request $request){
+        $user = User::find(Auth::user()->id);
+        $request->validate([
+            'nombre' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'password' => ['required', 'current_password:web']
+        ]);
+        $user->name = $request->nombre;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->route('dashboard')->with('success', 'Se actualizo su usuario');
+    }
+
+    public function actualizarContra(){
+        return view('Admin.Password');
+    }
+
+    public function updatepassword(Request $request){
+        $user = User::find(Auth::user()->id);
+        $request->validate([
+            'OldPassword' => ['required', 'current_password:web'],
+            'NewPassword' => ['required'],
+            'ConfirmPassword' => ['required', 'same:NewPassword']
+        ]);
+        $user->password = bcrypt($request->NewPassword);
+        $user->save();
+
+        return redirect()->route('dashboard')->with('success', 'Se actualizo su contraseña');
     }
 }

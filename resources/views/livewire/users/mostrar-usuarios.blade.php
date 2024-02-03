@@ -76,7 +76,7 @@
                         @can('Users.edit',)
                         <td class="options">
                             @if ($user->id == auth()->user()->id)
-                                <button class="btn btn-primary" type="button">Actualizar tu perfil</button> 
+                                <a class="btn btn-primary" href="{{route('settings')}}">Actualizar tu perfil</a> 
                             @else
                                 @can('Users.edit')
                                     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user}})">Actualizar</button>
@@ -89,7 +89,7 @@
                         @elsecan('Users.destroy')
                         <td class="options">
                             @if ($user->id == auth()->user()->id)
-                                <button class="btn btn-primary" type="button">Actualizar tu perfil</button> 
+                                <a class="btn btn-primary" href="{{route('settings')}}">Actualizar tu perfil</a> 
                             @else
                                 @can('Users.edit')
                                     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user}})">Actualizar</button>

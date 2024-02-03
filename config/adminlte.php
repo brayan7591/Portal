@@ -319,71 +319,85 @@ return [
             'label'       => 'New',
             'label_color' => 'danger',
         ],
+        
 
-        ['header' => 'account_settings'],
+        ['header' => 'CONFIGURACIÓN'],
+
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Actualizar perfil',
+            'route' => 'settings',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
+            'text' => 'Cambiar Contraseña',
+            'route' => 'CamContra',
             'icon' => 'fas fa-fw fa-lock',
         ],
+
+        ['header' => 'OPCIONES'],
+
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
+            'text' => 'Personajes importantes',
+            'submenu'  => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Instructores',
+                    'icon_color' => 'red',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
+                    'text' => 'Egresados destacados',
+                    'icon_color' => 'yellow',
                     'url'  => '#',
                 ],
+                [
+                    'text' => 'Aprendices destacados',
+                    'icon_color' => 'blue',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Voceros destacados',
+                    'icon_color' => 'blue',
+                    'url'  => '#',
+                ]
             ],
         ],
-        ['header' => 'labels'],
+
         [
-            'text'       => 'important',
+            'text' => 'Curriculum',
             'icon_color' => 'red',
-            'url'        => '#',
+            'url'  => '#',
+        ],
+
+        [
+            'text' => 'Eventos y galeria',
+            'icon_color' => 'blue',
+            'url'  => '#',
+        ],
+
+        [
+            'text' => 'Proyectos',
+            'icon_color' => 'white',
+            'url'  => '#',
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text' => 'Biblioteca',
+            'icon_color' => 'orange',
+            'url'  => '#',
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text' => 'Estadisticas',
+            'icon_color' => 'gray',
+            'url'  => '#',
+        ],
+        [
+            'text' => 'Voceros',
+            'icon_color' => 'purple',
+            'url'  => '#',
+        ],
+        [
+            'text' => 'Competencias',
+            'icon_color' => 'gray',
+            'url'  => '#',
         ],
     ],
 
