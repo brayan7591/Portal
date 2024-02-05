@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function() {return view('Page.index');})->name('landingPage');
+Route::get('/biblioteca', function() {return view('Page.biblioteca');})->name('biblioteca');
 Auth::routes();

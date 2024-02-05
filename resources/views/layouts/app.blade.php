@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @yield('Scripts')
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -45,7 +46,7 @@
                       <a class="nav-link" href="#">Reglamento</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <button class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Apartados</button>
+                        <button class="nav-link {{request()->routeIs('biblioteca') ? 'active' : ''}} dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Apartados</button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="#">Curriculum</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -59,7 +60,14 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Proyectos</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Biblioteca</a></li>
+                            <li>
+                                @if (request()->routeIs('biblioteca'))
+                                    <a class="dropdown-item active">Biblioteca</a>
+                                @else
+                                    <a class="dropdown-item" href="{{route('biblioteca')}}">Biblioteca</a>
+                                @endif
+                                
+                            </li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Estadisticas</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -140,7 +148,7 @@
                         </li>
     
                         <li class="proyectos" style="--i:8;--clr:#ccc" title="Biblioteca">
-                            <a href="#"><i class="fa-sharp fa-solid fa-landmark"></i></a>
+                            <a href="{{route('biblioteca')}}" {{request()->routeIs('biblioteca') ? 'class=disabled' : ''}}><i class="fa-sharp fa-solid fa-landmark"></i></a>
                         </li>
     
                         <li class="proyectos" style="--i:9;--clr:#FF0E43" title="Estadisticas">
