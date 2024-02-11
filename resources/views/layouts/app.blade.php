@@ -27,8 +27,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg bg-dark py-2" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand d-flex gap-2" href="{{route('landingPage')}}">
-                    <img src="/images/logo.jpg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">PortalWeb
+                <a class="navbar-brand d-flex gap-2 align-items" href="{{route('landingPage')}}">
+                    <img src="{{Storage::url('imagenes/logo.png')}}" alt="Logo" width="30" height="24" class="d-inline-block bg-white align-text-top">PortalWeb
                 </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -128,7 +128,7 @@
                         </li>
     
                         <li class="proyectos" style="--i:3;--clr:#00FFF3" title="Egresados">
-                            <a href="#"><i class="fa-solid fa-user-plus"></i></a><
+                            <a href="#"><i class="fa-solid fa-user-plus"></i></a>
                         </li>
     
                         <li class="proyectos" style="--i:4;--clr:#00FFF3" title="Eventos y Galerias">

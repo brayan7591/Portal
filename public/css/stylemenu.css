@@ -5,7 +5,7 @@
 }
 
 .fondo{
-  background: url(../images/fondo3.jpg);
+  background: url(../storage/imagenes/fondo.jpg);
   background-size: cover;
   display: flex;
   justify-content: center;

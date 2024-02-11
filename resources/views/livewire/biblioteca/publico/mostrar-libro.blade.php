@@ -11,7 +11,7 @@
                     <div class="contenedor">
                         <div class="libro">
                             <div class="caratula">
-                                <img src="{{$libro->Imagen}}" alt="imagen del libro">
+                                <img src="{{Storage::url($libro->Imagen)}}" alt="imagen del libro">
                             </div>
                             <div class="detalles">
                                 <div class="pagina">
@@ -35,7 +35,7 @@
                 <div class="contenedor">
                     <div class="libro">
                         <div class="caratula">
-                            <img src="{{asset('images/fondo3.jpg')}}" alt="imagen del libro">
+                            <img src="{{Storage::url('imagenes/logo.png')}}" alt="imagen del libro">
                         </div>
                         <div class="detalles">
                             <div class="pagina">

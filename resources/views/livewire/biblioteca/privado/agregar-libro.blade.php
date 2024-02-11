@@ -10,7 +10,7 @@
                         <div class="contenedor">
                             <div class="libro">
                                 <div class="caratula">
-                                    <img src="fgdfgdf/ghf" alt="imagen del libro">
+                                    <img src="{{Storage::url('imagenes/logo.png')}}" alt="imagen del libro">
                                 </div>
                                 <div class="detalles">
                                     <div class="pagina">
