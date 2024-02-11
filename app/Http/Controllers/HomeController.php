@@ -11,8 +11,7 @@ use Illuminate\Validation\Rule;
 class HomeController extends Controller
 {
 
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
     }
 
@@ -31,6 +30,10 @@ class HomeController extends Controller
     public function settings(){
         $user = Auth::user();
         return view('Admin.Settings', compact('user'));
+    }
+
+    public function biblioteca(){
+        return view('Admin.Biblioteca');
     }
 
     public function ActualizarUsuario(Request $request){

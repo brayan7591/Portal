@@ -10,3 +10,4 @@ Route::get('/Admin/settings', [HomeController::class, 'settings'])->name('settin
 Route::post('/Admin/settings', [HomeController::class, 'ActualizarUsuario'])->name('settings.update');
 Route::get('/Admin/updatePassword', [HomeController::class, 'actualizarContra'])->name('CamContra');
 Route::post('/Admin/updatePassword', [HomeController::class, 'updatepassword'])->name('password.update');
+Route::get('/Admin/biblioteca', [HomeController::class, 'biblioteca'])->name('admin.biblioteca');

@@ -382,7 +382,7 @@ return [
         [
             'text' => 'Biblioteca',
             'icon_color' => 'orange',
-            'url'  => '#',
+            'route' => 'admin.biblioteca',
         ],
         [
             'text' => 'Estadisticas',
