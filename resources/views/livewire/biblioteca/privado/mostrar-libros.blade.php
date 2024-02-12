@@ -117,7 +117,7 @@
                                             {{$message}}
                                         @enderror
                                         <label>Imagen:
-                                            <input type="file" wire:model="ImagenActualizar" accept="image/*">
+                                            <input type="file" wire:model="ImagenActualizar" id="inputImage" accept="image/*">
                                         </label>
                                         @error('ImagenActualizar')
                                             {{$message}}

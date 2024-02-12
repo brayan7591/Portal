@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Administrador',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -64,8 +64,8 @@ return [
     */
 
     'logo' => '<b>Portal</b>WEB',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img' => 'storage/imagenes/logo.png',
+    'logo_img_class' => 'brand-image img-circle elevation-3 bg-white',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'Admin Logo',
@@ -109,8 +109,8 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-            'alt' => 'AdminLTE Preloader Image',
+            'path' => 'storage/imagenes/logo.png',
+            'alt' => 'Logo imagen',
             'effect' => 'animation__shake',
             'width' => 60,
             'height' => 60,
@@ -291,6 +291,11 @@ return [
 
     'menu' => [
         // Navbar items:
+        [
+            'text' => 'Volver al inicio',
+            'route' => 'landingPage',
+            'topnav_right' => true,
+        ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,

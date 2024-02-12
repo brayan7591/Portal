@@ -28,6 +28,7 @@
         })
         Livewire.on('ActualizarLibro', function (){
             document.getElementById('CerrarLibroActualizar').click();
+            document.getElementById('inputImage').value = null;
             Swal.fire({
                 title: "Bien hecho!",
                 text: "Has actualizado el libro",
