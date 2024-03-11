@@ -11,3 +11,7 @@ Route::post('/Admin/settings', [HomeController::class, 'ActualizarUsuario'])->na
 Route::get('/Admin/updatePassword', [HomeController::class, 'actualizarContra'])->name('CamContra');
 Route::post('/Admin/updatePassword', [HomeController::class, 'updatepassword'])->name('password.update');
 Route::get('/Admin/biblioteca', [HomeController::class, 'biblioteca'])->name('admin.biblioteca');
+Route::get('/Admin/aprendices', [HomeController::class, 'aprendices'])->name('admin.aprendices');
+Route::get('/Admin/egresados', [HomeController::class, 'egresados'])->name('admin.egresados');
+Route::get('/Admin/instructores', [HomeController::class, 'instructores'])->name('admin.instructores');
+Route::get('/Admin/voceros', [HomeController::class, 'voceros'])->name('admin.voceros');

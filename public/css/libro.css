@@ -10,6 +10,10 @@ section{
     align-items: center;
 }
 
+section.one{
+    grid-template-columns: 1fr;
+}
+
 section .estanteria .contenedor{
     position: relative;
     width: 100%;

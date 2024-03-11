@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PrincipalController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {return view('Page.index');})->name('landingPage');
-Route::get('/biblioteca', function() {return view('Page.biblioteca');})->name('biblioteca');
+Route::get('/', [PrincipalController::class, 'index'])->name('principal');
 Auth::routes();
+Route::get('/{programa}', [PrincipalController::class, 'landingpage'])->name('landingPage');
+Route::get('/{programa}/biblioteca', [PrincipalController::class, 'biblioteca'])->name('biblioteca');

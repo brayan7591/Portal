@@ -4,7 +4,11 @@
             <input type="text" wire:model="search">
         </label>
     </div>
-    <section>
+    @if ($libros->count() < 2)
+        <section class="one">
+    @else
+        <section>
+    @endif
         @if ($libros->count())
             @foreach ($libros as $libro)
                 <div class="estanteria">

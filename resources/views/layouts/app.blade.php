@@ -27,7 +27,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-lg bg-dark py-2" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand d-flex gap-2 align-items" href="{{route('landingPage')}}">
+                <a class="navbar-brand d-flex gap-2 align-items" href="{{route('principal')}}">
                     <img src="{{Storage::url('imagenes/logo.png')}}" alt="Logo" width="30" height="24" class="d-inline-block bg-white align-text-top">PortalWeb
                 </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,7 @@
                     @if (request()->routeIs('landingPage'))
                         <a class="nav-link active disabled" aria-current="page">Inicio</a>
                     @else
-                        <a class="nav-link" aria-current="page" href="{{route('landingPage')}}">Inicio</a>
+                        <a class="nav-link" aria-current="page" href="{{route('landingPage', compact('programa'))}}">Inicio</a>
                     @endif
                   </li>
                   <li class="nav-item">
@@ -64,7 +64,7 @@
                                 @if (request()->routeIs('biblioteca'))
                                     <a class="dropdown-item active">Biblioteca</a>
                                 @else
-                                    <a class="dropdown-item" href="{{route('biblioteca')}}">Biblioteca</a>
+                                    <a class="dropdown-item" href="{{route('biblioteca', $programa->slug)}}">Biblioteca</a>
                                 @endif
                                 
                             </li>
@@ -112,11 +112,12 @@
         @if (!(request()->routeIs('login') || request()->routeIs('register')))
             <article>
                 <div class="fondo">
+                    <img src="{{$programa->imagen}}" alt="Imagen de {{$programa->NombrePrograma}}">
                     <ul class="menu">
                         <div class="toggle"><i class="fa-solid fa-plus"></i></div>
     
                         <li class="proyectos" style="--i:0;--clr:#F5FF00" title="inicio">
-                            <a href="{{route('landingPage')}}" {{request()->routeIs('landingPage') ? 'class=disabled' : ''}}><i class="fa-solid fa-house"></i></a>
+                            <a href="{{route('landingPage', compact('programa'))}}" {{request()->routeIs('landingPage') ? 'class=disabled' : ''}}><i class="fa-solid fa-house"></i></a>
                         </li>
     
                         <li class="proyectos" style="--i:1;--clr:#E2FF00" title="Curriculum">
@@ -148,7 +149,7 @@
                         </li>
     
                         <li class="proyectos" style="--i:8;--clr:#ccc" title="Biblioteca">
-                            <a href="{{route('biblioteca')}}" {{request()->routeIs('biblioteca') ? 'class=disabled' : ''}}><i class="fa-sharp fa-solid fa-landmark"></i></a>
+                            <a href="{{route('biblioteca', $programa->slug)}}" {{request()->routeIs('biblioteca') ? 'class=disabled' : ''}}><i class="fa-sharp fa-solid fa-landmark"></i></a>
                         </li>
     
                         <li class="proyectos" style="--i:9;--clr:#FF0E43" title="Estadisticas">

@@ -66,4 +66,17 @@ class HomeController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Se actualizo su contraseña');
     }
+
+    public function aprendices(){
+        return view('Admin.Aprendices');
+    }
+    public function egresados(){
+        return view('Admin.Egresados');
+    }
+    public function instructores(){
+        return view('Admin.Instructores');
+    }
+    public function voceros(){
+        return view('Admin.Voceros');
+    }
 }

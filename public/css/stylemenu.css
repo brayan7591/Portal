@@ -5,26 +5,37 @@
 }
 
 .fondo{
-  background: url(../storage/imagenes/fondo.jpg);
-  background-size: cover;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
 }
 
-.disabled{
+.fondo img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.menu .proyectos a.disabled{
   pointer-events: none;
+  background: var(--clr);
+  color: gray;
 }
 
 .menu{
   position: relative;
   width: 100%;
-  min-height: 400px;
+  min-height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .menu .toggle{
@@ -83,111 +94,3 @@
 .menu.active .proyectos{
   transform: rotate(calc(360deg / 12 * var(--i))) translateX(-130px);
 }
-/* 
-
-
-
-
-  .tooltip{
-    font-weight: normal;
-    color: green;
-    text-decoration: none;
-    position: relative;
-  }
-
-  .tooltip:hover{
-    text-decoration: underline;
-  }
-
-  .proyectos:hover .tooltip-box{
-    display: inline-block;
-  }
-
-  .tooltip-box{
-    display: none;
-    position: absolute;
-    line-height: 20px;
-    z-index: 500;
-    color: #000;
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 5px ;
-    -webkit-border-radius: 5px ;
-    -moz-border-radius: 5px ;
-    -ms-border-radius: 5px ;
-    -o-border-radius: 5px ; 
-    left: 50px;
-    right: 50px;
-    bottom: 80px;
-}
-
-.tooltip-box::after{
-     content: "";
-     display: block;
-     border-top: 7px solid forestgreen;
-     border-left: 7px solid transparent;
-     border-right: 7px solid transparent;
-     position: absolute;
-     bottom: -7px;
-    left: calc(50% - 7px);
-}
-
-.proyectos1{
-    position: absolute;
-    line-height: 20px;
-    z-index: 500;
-    color: #000;
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 5px ;
-    -webkit-border-radius: 5px ;
-    -moz-border-radius: 5px ;
-    -ms-border-radius: 5px ;
-    -o-border-radius: 5px ; 
-    left: 0;
-    right: 0;
-}
-
-.tooltip{
-    font-weight: normal;
-    color: green;
-    text-decoration: none;
-    position: relative;
-  }
-
-  .tooltip:hover{
-    text-decoration: underline;
-  }
-
-  .proyectos1:hover .tooltip-box{
-    display: inline-block;
-  }
-
-  .tooltip-box{
-    display: none;
-    position: absolute;
-    line-height: 20px;
-    z-index: 500;
-    color: #000;
-    font-size: 14px;
-    padding: 5px 10px;
-    border-radius: 5px ;
-    -webkit-border-radius: 5px ;
-    -moz-border-radius: 5px ;
-    -ms-border-radius: 5px ;
-    -o-border-radius: 5px ; 
-    left: 50px;
-    right: 50px;
-    bottom: 80px;
-}
-
-.tooltip-box::after{
-     content: "";
-     display: block;
-     border-top: 7px solid forestgreen;
-     border-left: 7px solid transparent;
-     border-right: 7px solid transparent;
-     position: absolute;
-     bottom: -7px;
-    left: calc(50% - 7px);
-} */

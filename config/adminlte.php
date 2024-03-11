@@ -293,7 +293,7 @@ return [
         // Navbar items:
         [
             'text' => 'Volver al inicio',
-            'route' => 'landingPage',
+            'route' => 'principal',
             'topnav_right' => true,
         ],
         [
@@ -342,29 +342,25 @@ return [
         ['header' => 'OPCIONES'],
 
         [
-            'text' => 'Personajes importantes',
-            'submenu'  => [
-                [
-                    'text' => 'Instructores',
-                    'icon_color' => 'red',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Egresados destacados',
-                    'icon_color' => 'yellow',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Aprendices destacados',
-                    'icon_color' => 'blue',
-                    'url'  => '#',
-                ],
-                [
-                    'text' => 'Voceros destacados',
-                    'icon_color' => 'blue',
-                    'url'  => '#',
-                ]
-            ],
+            'text' => 'Voceros',
+            'icon_color' => 'blue',
+            'route' => 'admin.voceros',
+        ],
+        
+        [
+            'text' => 'Instructores',
+            'icon_color' => 'red',
+            'route' => 'admin.instructores',
+        ],
+        [
+            'text' => 'Egresados destacados',
+            'icon_color' => 'yellow',
+            'route' => 'admin.egresados',
+        ],
+        [
+            'text' => 'Aprendices destacados',
+            'icon_color' => 'blue',
+            'route' => 'admin.aprendices',
         ],
 
         [
@@ -392,11 +388,6 @@ return [
         [
             'text' => 'Estadisticas',
             'icon_color' => 'gray',
-            'url'  => '#',
-        ],
-        [
-            'text' => 'Voceros',
-            'icon_color' => 'purple',
             'url'  => '#',
         ],
         [
