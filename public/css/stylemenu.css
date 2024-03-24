@@ -94,3 +94,8 @@
 .menu.active .proyectos{
   transform: rotate(calc(360deg / 12 * var(--i))) translateX(-130px);
 }
+
+p{
+  font-size: 1rem;
+  line-height: 1.6;
+}

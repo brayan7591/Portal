@@ -15,6 +15,7 @@ class CreateDetPrincipiosConceptosTable extends Migration
     {
         Schema::create('det_principios_conceptos', function (Blueprint $table) {
             $table->id();
+            $table->string('detalle');
             $table->unsignedBigInteger('principios_concepto_id');
             $table->foreign('principios_concepto_id')->references('id')->on('principios_conceptos')->onDelete('cascade');
             $table->timestamps();

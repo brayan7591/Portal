@@ -3,7 +3,10 @@
     min-height: 100vh;
     padding-top: 8px;
 }
-
+nav{
+    z-index: 20;
+    background-color: rgb(255, 255, 255);
+}
 .programas{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -23,7 +26,7 @@
     background-color: rgb(232, 241, 244);
 }
 .programas .ajustar .sobretexto{
-    white-space: normal;
+    white-space: pre-line;
     overflow-y: auto;
 }
 .imagen{
@@ -33,4 +36,19 @@
 .imagen img{
     width: 100%;
     height: 100%;
+}
+.texto-prueba{
+    font-family: "Roboto","Arial",sans-serif;
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    font-weight: 500;
+    overflow: hidden;
+    /* display: block; */
+    /* max-height: 4.4rem; */
+    -webkit-line-clamp: 2;
+    display: box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    white-space: normal;
 }

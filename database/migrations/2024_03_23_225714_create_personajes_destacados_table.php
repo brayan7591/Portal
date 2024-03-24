@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEgresadosTable extends Migration
+class CreatePersonajesDestacadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateEgresadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('egresados', function (Blueprint $table) {
+        Schema::create('personajes_destacados', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('correo');
+            $table->integer('numero_ficha')->nullable();
+            $table->text('motivo');
             $table->unsignedBigInteger('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas')->onDelete('cascade');
+            $table->enum('rol', ['Aprendiz', 'Egresado']);
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ class CreateEgresadosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('egresados');
+        Schema::dropIfExists('personajes_destacados');
     }
 }

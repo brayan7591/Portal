@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAprendicesTable extends Migration
+class CreateBibliotecasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,19 @@ class CreateAprendicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('aprendices', function (Blueprint $table) {
+        Schema::create('bibliotecas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->integer('IdBiblioteca')->unique();
+            $table->string('Titulo');
+            $table->date('FechaEstreno');
+            $table->string('Editorial');
+            $table->string('Imagen');
+            $table->string('Formato');
+            $table->date('FechaIngreso');
             $table->unsignedBigInteger('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas')->onDelete('cascade');
+            $table->integer('Copias');
+            $table->string('Estado');
             $table->timestamps();
         });
     }
@@ -29,6 +37,6 @@ class CreateAprendicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aprendices');
+        Schema::dropIfExists('bibliotecas');
     }
 }

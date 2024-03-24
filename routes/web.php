@@ -19,3 +19,4 @@ Route::get('/', [PrincipalController::class, 'index'])->name('principal');
 Auth::routes();
 Route::get('/{programa}', [PrincipalController::class, 'landingpage'])->name('landingPage');
 Route::get('/{programa}/biblioteca', [PrincipalController::class, 'biblioteca'])->name('biblioteca');
+Route::get('/{programa}/instructores', [PrincipalController::class, 'instructores'])->name('instructores');

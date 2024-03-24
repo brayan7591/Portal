@@ -15,6 +15,7 @@ class CreateOrganizacionsTable extends Migration
     {
         Schema::create('organizacions', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
             $table->unsignedBigInteger('evento_id');
             $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade');
             $table->timestamps();

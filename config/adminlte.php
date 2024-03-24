@@ -1,5 +1,7 @@
 <?php
 
+use SebastianBergmann\Type\FalseType;
+
 return [
 
     /*
@@ -30,7 +32,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*

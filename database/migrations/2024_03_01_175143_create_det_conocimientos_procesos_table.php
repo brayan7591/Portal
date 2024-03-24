@@ -15,6 +15,7 @@ class CreateDetConocimientosProcesosTable extends Migration
     {
         Schema::create('det_conocimientos_procesos', function (Blueprint $table) {
             $table->id();
+            $table->string('detalle');
             $table->unsignedBigInteger('conocimientos_proceso_id');
             $table->foreign('conocimientos_proceso_id')->references('id')->on('conocimientos_procesos')->onDelete('cascade');
             $table->timestamps();

@@ -18,4 +18,8 @@ class PrincipalController extends Controller
     public function biblioteca(programa $programa){
         return view('Page.biblioteca', compact('programa'));
     }
+
+    public function instructores(programa $programa){
+        return view('Page.instructores', compact('programa'));
+    }
 }

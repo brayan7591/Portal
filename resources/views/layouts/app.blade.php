@@ -35,41 +35,41 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    @if (request()->routeIs('landingPage'))
-                        <a class="nav-link active disabled" aria-current="page">Inicio</a>
-                    @else
-                        <a class="nav-link" aria-current="page" href="{{route('landingPage', compact('programa'))}}">Inicio</a>
-                    @endif
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Reglamento</a>
+                   <li class="nav-item">
+                        @if (request()->routeIs('landingPage'))
+                            <a class="nav-link active disabled" aria-current="page">Inicio</a>
+                        @else
+                            <a class="nav-link" aria-current="page" href="{{route('landingPage', compact('programa'))}}">Inicio</a>
+                        @endif
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Curriculum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{request()->routeIs('biblioteca') ? 'active disabled' : ''}}" href="{{route('biblioteca', $programa->slug)}}">Biblioteca</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <button class="nav-link {{request()->routeIs('biblioteca') ? 'active' : ''}} dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Apartados</button>
+                        <button class="nav-link {{request()->routeIs('instructores') ? 'active' : ''}} dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Apartados</button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="#">Curriculum</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Instructores</a></li>
+
+                            <li>
+                                @if (request()->routeIs('instructores'))
+                                    <a class="dropdown-item active">Instructores</a>
+                                @else
+                                    <a class="dropdown-item" href="{{route('instructores', $programa->slug)}}">Instructores</a>
+                                @endif
+                            </li>
+
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Egresados</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Eventos y galeria</a></li>
-                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Aprendices</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Proyectos</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li>
-                                @if (request()->routeIs('biblioteca'))
-                                    <a class="dropdown-item active">Biblioteca</a>
-                                @else
-                                    <a class="dropdown-item" href="{{route('biblioteca', $programa->slug)}}">Biblioteca</a>
-                                @endif
-                                
-                            </li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Estadisticas</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="#">Voceros</a></li>
                             <li><hr class="dropdown-divider"></li>
@@ -78,16 +78,7 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    @guest
-                        <li class="d-flex gap-2 justify-content-between nav-item">
-                            @if (Route::has('login'))
-                                    <a class="btn btn-outline-light" href="{{route('login')}}">Iniciar sesion</a>
-                            @endif
-                            @if (Route::has('register'))
-                                    <a class="btn btn-outline-light" href="{{route('register')}}">Crear cuenta</a>
-                            @endif
-                            </li>
-                    @else
+                    @auth
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
@@ -103,70 +94,70 @@
                                 </form>
                             </div>
                         </li>
-                    @endguest
-                </ul>
+                    @else
+                        <a class="btn btn-outline-white border-white" href="{{route('principal')}}">Volver a la pagina principal</a>
+                    @endauth
+                    </ul>
               </div>
             </div>
         </nav>
 
-        @if (!(request()->routeIs('login') || request()->routeIs('register')))
-            <article>
-                <div class="fondo">
-                    <img src="{{$programa->imagen}}" alt="Imagen de {{$programa->NombrePrograma}}">
-                    <ul class="menu">
-                        <div class="toggle"><i class="fa-solid fa-plus"></i></div>
-    
-                        <li class="proyectos" style="--i:0;--clr:#F5FF00" title="inicio">
-                            <a href="{{route('landingPage', compact('programa'))}}" {{request()->routeIs('landingPage') ? 'class=disabled' : ''}}><i class="fa-solid fa-house"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:1;--clr:#E2FF00" title="Curriculum">
-                            <a href="#"><i class="fa-solid fa-address-card"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:2;--clr:#2BFF00" title="Instructores">
-                            <a href="#"><i class="fa-solid fa-users"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:3;--clr:#00FFF3" title="Egresados">
-                            <a href="#"><i class="fa-solid fa-user-plus"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:4;--clr:#00FFF3" title="Eventos y Galerias">
-                            <a href="#"><i class="fa-solid fa-calendar-days"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:5;--clr:#00C1FC" title="Reglamento">
-                            <a href="#"><i class="fa-solid fa-book"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:6;--clr:#fff" title="Aprendices">
-                            <a href="#"><i class="fa-solid fa-medal"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:7;--clr:#ffff00" title="Proyectos">
-                            <a href="#"><i class="fa-solid fa-diagram-project"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:8;--clr:#ccc" title="Biblioteca">
-                            <a href="{{route('biblioteca', $programa->slug)}}" {{request()->routeIs('biblioteca') ? 'class=disabled' : ''}}><i class="fa-sharp fa-solid fa-landmark"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:9;--clr:#FF0E43" title="Estadisticas">
-                            <a href="#"><i class="fa-solid fa-chart-line"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:10;--clr:#FF6961" title="Voceros">
-                            <a href="#"><i class="fa-solid fa-user-tie"></i></a>
-                        </li>
-    
-                        <li class="proyectos" style="--i:11;--clr:#FB00FC" title="Competencias">
-                            <a href="#"><i class="fa-regular fa-circle-check"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </article>
-        @endif
+        <article>
+            <div class="fondo">
+                <img src="{{$programa->imagen}}" alt="Imagen de {{$programa->NombrePrograma}}">
+                <ul class="menu">
+                    <div class="toggle"><i class="fa-solid fa-plus"></i></div>
+
+                    <li class="proyectos" style="--i:0;--clr:#F5FF00" title="inicio">
+                        <a href="{{route('landingPage', compact('programa'))}}" {{request()->routeIs('landingPage') ? 'class=disabled' : ''}}><i class="fa-solid fa-house"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:1;--clr:#E2FF00" title="Curriculum">
+                        <a href="#"><i class="fa-solid fa-address-card"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:2;--clr:#2BFF00" title="Instructores">
+                        <a href="{{route('instructores', $programa->slug)}}" {{request()->routeIs('instructores') ? 'class=disabled' : ''}}><i class="fa-solid fa-users"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:3;--clr:#00FFF3" title="Egresados">
+                        <a href="#"><i class="fa-solid fa-user-plus"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:4;--clr:#00FFF3" title="Eventos y Galerias">
+                        <a href="#"><i class="fa-solid fa-calendar-days"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:5;--clr:#00C1FC" title="Reglamento">
+                        <a href="#"><i class="fa-solid fa-book"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:6;--clr:#fff" title="Aprendices">
+                        <a href="#"><i class="fa-solid fa-medal"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:7;--clr:#ffff00" title="Proyectos">
+                        <a href="#"><i class="fa-solid fa-diagram-project"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:8;--clr:#ccc" title="Biblioteca">
+                        <a href="{{route('biblioteca', $programa->slug)}}" {{request()->routeIs('biblioteca') ? 'class=disabled' : ''}}><i class="fa-sharp fa-solid fa-landmark"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:9;--clr:#FF0E43" title="Estadisticas">
+                        <a href=""><i class="fa-solid fa-chart-line"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:10;--clr:#FF6961" title="Voceros">
+                        <a href="#"><i class="fa-solid fa-user-tie"></i></a>
+                    </li>
+
+                    <li class="proyectos" style="--i:11;--clr:#FB00FC" title="Competencias">
+                        <a href="#"><i class="fa-regular fa-circle-check"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </article>
 
         <main class="py-4">
             @yield('content')

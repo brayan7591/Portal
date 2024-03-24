@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Password')
+@section('title', 'Cambiar contraseña')
 
 @section('content_header')
     <h1>Bienvenido {{Auth::user()->name}} aqui podras actualizar tu contraseña</h1>

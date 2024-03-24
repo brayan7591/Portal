@@ -15,6 +15,7 @@ class CreateRecuerdosTable extends Migration
     {
         Schema::create('recuerdos', function (Blueprint $table) {
             $table->id();
+            $table->text('descripcion');
             $table->unsignedBigInteger('evento_id');
             $table->foreign('evento_id')->references('id')->on('eventos')->onDelete('cascade');
             $table->timestamps();

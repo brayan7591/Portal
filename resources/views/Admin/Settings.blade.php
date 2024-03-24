@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Settings')
+@section('title', 'Actualizar perfil')
 
 @section('content_header')
     <h1>Bienvenido {{$user->name}} aqui podras actualizar tu perfil</h1>

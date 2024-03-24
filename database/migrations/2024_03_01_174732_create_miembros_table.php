@@ -15,6 +15,7 @@ class CreateMiembrosTable extends Migration
     {
         Schema::create('miembros', function (Blueprint $table) {
             $table->id();
+            $table->string('Nombre');
             $table->unsignedBigInteger('proyecto_id');
             $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade');
             $table->timestamps();
