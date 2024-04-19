@@ -18,10 +18,6 @@ class CreateProgramasTable extends Migration
             $table->string('NombrePrograma')->unique();
             $table->string('slug')->unique();
             $table->integer('codigoPrograma')->unique();
-            $table->date('FechaInicio');
-            $table->date('FechaFin')->nullable();
-            $table->integer('HorasEtapaLectiva');
-            $table->integer('HorasEtapaProductiva');
             $table->string('imagen');
             $table->text('Descripcion');
             $table->timestamps();

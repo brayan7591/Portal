@@ -1,0 +1,89 @@
+main{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    color: black;
+}
+.contenedor{
+    margin: 8px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border: 2px solid;
+    align-self: center;
+    justify-content: center;
+}
+
+.todo{
+    display: flex;
+    height: 100%;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 0;
+    align-items: center;
+    background-color: white;
+}
+.horas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 100%;
+    padding: 0;
+    border-collapse: collapse;
+}
+.fechas{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    padding: 0;
+    border-collapse: collapse;
+}
+.horas h3, .fechas h3{
+    border: 1px solid black;
+    height: 100%;
+    margin: 0;
+}
+.color{
+    background-color: lightgrey;
+}
+.centrado-total{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 0;
+}
+.completo{
+    grid-column: 1/4;
+}
+.uno{
+    grid-column: 1/2;
+}
+.dos{
+    grid-column: 2/4;
+}
+.uno-tres{
+    grid-column: 1/3;
+}
+.tres-cuatro{
+    grid-column: 3/4;
+}
+input.input-color:focus{
+    outline: none;
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid black;
+    margin: 0;
+    border-radius: none;
+    font-style: oblique;
+    color: black;
+    background-color: transparent;
+}
+.input-color{
+    border: none;
+    border-bottom: 2px solid black;
+    text-align: center;
+}

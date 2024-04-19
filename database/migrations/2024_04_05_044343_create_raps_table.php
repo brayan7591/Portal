@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDetPrincipiosConceptosTable extends Migration
+class CreateRapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateDetPrincipiosConceptosTable extends Migration
      */
     public function up()
     {
-        Schema::create('det_principios_conceptos', function (Blueprint $table) {
+        Schema::create('raps', function (Blueprint $table) {
             $table->id();
-            $table->string('detalle');
-            $table->unsignedBigInteger('principios_concepto_id');
-            $table->foreign('principios_concepto_id')->references('id')->on('principios_conceptos')->onDelete('cascade');
+            $table->string('descripcion');
+            $table->integer('codigo_competencia');
+            $table->foreign('codigo_competencia')->references('codigo')->on('competencias')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateDetPrincipiosConceptosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('det_principios_conceptos');
+        Schema::dropIfExists('raps');
     }
 }

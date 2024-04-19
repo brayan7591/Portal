@@ -15,6 +15,10 @@ class programa extends Model
         return $this->hasMany('App\Models\aprendice');
     }
 
+    public function niveles(){
+        return $this->hasMany('App\Models\nivele');
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';

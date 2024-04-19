@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCompetenciasTable extends Migration
+class CreateNivelesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateCompetenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('competencias', function (Blueprint $table) {
-            $table->id();
+        Schema::create('niveles', function (Blueprint $table) {
+            $table->enum('nivel', ['Tecnico', 'Tecnologo']);
+            $table->date('FechaInicio');
+            $table->date('FechaFin')->nullable();
+            $table->integer('HorasEtapaLectiva');
+            $table->integer('HorasEtapaProductiva');
             $table->unsignedBigInteger('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas')->onDelete('cascade');
+            $table->primary(['nivel', 'programa_id']);
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ class CreateCompetenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competencias');
+        Schema::dropIfExists('niveles');
     }
 }

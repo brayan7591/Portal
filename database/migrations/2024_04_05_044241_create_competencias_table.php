@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRapsTable extends Migration
+class CreateCompetenciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateRapsTable extends Migration
      */
     public function up()
     {
-        Schema::create('raps', function (Blueprint $table) {
-            $table->id();
-            $table->string('rap');
-            $table->unsignedBigInteger('competencia_id');
-            $table->foreign('competencia_id')->references('id')->on('competencias')->onDelete('cascade');
+        Schema::create('competencias', function (Blueprint $table) {
+            $table->string('norma');
+            $table->string('nombre');
+            $table->integer('duracion');
+            $table->integer('codigo')->unique();
+            $table->primary('codigo');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateRapsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('raps');
+        Schema::dropIfExists('competencias');
     }
 }

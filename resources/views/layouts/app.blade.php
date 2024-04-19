@@ -11,6 +11,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/localstorage.js') }}"></script>
+
     @yield('Scripts')
 
     <!-- Fonts -->
@@ -42,9 +44,19 @@
                             <a class="nav-link" aria-current="page" href="{{route('landingPage', compact('programa'))}}">Inicio</a>
                         @endif
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Curriculum</a>
-                    </li>
+                    @if ($programa->niveles->count() > 0)
+                        <li class="nav-item dropdown">
+                            <button class="nav-link {{request()->routeIs('curriculum') ? 'active' : ''}} dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Curriculum</button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                @foreach ($programa->niveles as $posicion => $nivel)
+                                    <li><a class="dropdown-item {{request()->routeIs('curriculum') ? ($nivelaceptado->nivel == $nivel->nivel ? 'active' : '') : ''}}" href="{{route('curriculum', [$programa->slug, $nivel->nivel])}}"> {{$nivel->nivel}} </a></li>
+                                    @if (!($posicion + 1 == $programa->niveles->count()))
+                                        <li><hr class="dropdown-divider"></li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="#">Eventos</a>
                     </li>
@@ -76,6 +88,12 @@
                             <li><a class="dropdown-item" href="#">Competencias</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Ocultar menu</label>
+                        </div>
+                    </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     @auth
@@ -102,7 +120,7 @@
             </div>
         </nav>
 
-        <article>
+        <article id="background-image">
             <div class="fondo">
                 <img src="{{$programa->imagen}}" alt="Imagen de {{$programa->NombrePrograma}}">
                 <ul class="menu">
@@ -111,7 +129,7 @@
                     <li class="proyectos" style="--i:0;--clr:#F5FF00" title="inicio">
                         <a href="{{route('landingPage', compact('programa'))}}" {{request()->routeIs('landingPage') ? 'class=disabled' : ''}}><i class="fa-solid fa-house"></i></a>
                     </li>
-
+                    
                     <li class="proyectos" style="--i:1;--clr:#E2FF00" title="Curriculum">
                         <a href="#"><i class="fa-solid fa-address-card"></i></a>
                     </li>

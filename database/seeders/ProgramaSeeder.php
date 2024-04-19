@@ -25,9 +25,6 @@ class ProgramaSeeder extends Seeder
             El número de profesionales de tecnología que demandan las empresas colombianas, es mucho mayor que el de profesionales disponibles en el país, según datos del Ministerio de Tecnologías de la Información y las Comunicaciones (MinTIC). El déficit de profesionales en esa área será de casi 70 mil cerrando el 2019 [3]. Dadas las proyecciones, después de 2019 el problema de la escasez de talento humano formado en áreas de TI, seguirá creciendo y no puede resolverse fácilmente, por lo tanto, el Gobierno de Colombia debe adoptar medidas para superar este déficit.
             ',
             'codigoPrograma' => '228118',
-            'FechaInicio' => '2021-06-10',
-            'HorasEtapaLectiva' => '3120',
-            'HorasEtapaProductiva' => '864',
         ]);
 
         programa::create([
@@ -36,9 +33,6 @@ class ProgramaSeeder extends Seeder
             'imagen' => '/imagen/programas/Cocina.jpg',
             'Descripcion' => 'Este programa de formacion se enfoca en mostrar las mejores recetas del mundo',
             'codigoPrograma' => '26879184',
-            'FechaInicio' => '2021-06-10',
-            'HorasEtapaLectiva' => '3120',
-            'HorasEtapaProductiva' => '864',
         ]);
     }
 }

@@ -22,4 +22,13 @@ class PrincipalController extends Controller
     public function instructores(programa $programa){
         return view('Page.instructores', compact('programa'));
     }
+
+    public function curriculum(programa $programa, $nivel){
+        $nivelaceptado = $programa->niveles->where('nivel', $nivel)->first();
+        if ($nivelaceptado) {
+            return view('Page.curriculum', compact('programa', 'nivelaceptado'));
+        }else{
+            return redirect()->route('landingPage', compact('programa'));
+        }
+    }
 }
