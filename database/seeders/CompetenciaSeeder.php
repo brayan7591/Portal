@@ -20,5 +20,19 @@ class CompetenciaSeeder extends Seeder
             'duracion' => 48,
             'codigo' => 240201064
         ]);
+
+        competencia::create([
+            'norma' => 'Esto es una fisica',
+            'nombre' => 'FISICA',
+            'duracion' => 48,
+            'codigo' => 240201062
+        ]);
+
+        competencia::create([
+            'norma' => 'Ejercer los derechos fundamentales del trabajo de acuerdo al reconocimiento de la dignidad',
+            'nombre' => 'Derechos fundamentales del trabajo',
+            'duracion' => 48,
+            'codigo' => 210201501
+        ]);
     }
 }

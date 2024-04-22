@@ -87,3 +87,12 @@ input.input-color:focus{
     border-bottom: 2px solid black;
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .todo{
+        grid-column: 1/4;
+    }
+    .completo{
+        justify-content: center;
+    }
+}

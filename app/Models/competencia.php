@@ -21,5 +21,13 @@ class competencia extends Model
         return $this->hasMany('App\Models\rap', 'codigo_competencia', 'codigo');
     }
 
+    public function conceptos(){
+        return $this->hasMany('App\Models\sabere', 'codigo_competencia', 'codigo')->where('saber', 'conocimiento');
+    }
+
+    public function saberes(){
+        return $this->hasMany('App\Models\sabere', 'codigo_competencia', 'codigo')->where('saber', 'proceso');;
+    }
+
     protected $guarded = [];
 }

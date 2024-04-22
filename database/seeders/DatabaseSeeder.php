@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CompetenciaSeeder::class);
         $this->call(NivelSeeder::class);
         $this->call(RapSeeder::class);
+        $this->call(SaberSeeder::class);
+        $this->call(DetalleSabereSeeder::class);
     }
 }

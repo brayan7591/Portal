@@ -11,7 +11,7 @@ class nivele extends Model
 
     public function competencias() {
         $competencias = $this->belongsToMany('App\Models\competencia', 'nivel_competencia', 'nivel', 'codigo_competencia', 'nivel', 'codigo');
-        $competencias->getQuery()->where('nivel_competencia.programa_id', '=', $this->programa_id);
+        $competencias->getQuery()->where('nivel_competencia.programa_id', '=', $this->programa_id)->orderBy('codigo');
         return $competencias;
     }
 
