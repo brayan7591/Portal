@@ -12,4 +12,6 @@ class sabere extends Model
     public function detalle(){
         return $this->hasMany('App\Models\detalleSabere');
     }
+
+    protected $guarded = [];
 }

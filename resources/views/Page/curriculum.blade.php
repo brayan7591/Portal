@@ -33,7 +33,7 @@
         <h2 class="uno todo color">1.6 TIPO DEL PROGRAMA</h2>
         <h3 class="dos todo">Titulado</h3>
         <h2 class="uno todo color">1.7 TITULO O CERTIFICADO QUE OBTENDRA:</h2>
-        <h3 class="dos todo">{{$nivelaceptado->nivel}}</h3>
+        <h3 class="dos todo">{{ucfirst($nivelaceptado->nivel)}}</h3>
     </div>
     @livewire('curriculum.buscar-curriculum', ['nivel' => $nivelaceptado])
 @endsection

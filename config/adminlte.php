@@ -66,7 +66,7 @@ return [
     */
 
     'logo' => '<b>Portal</b>WEB',
-    'logo_img' => 'storage/imagenes/logo.png',
+    'logo_img' => 'favicons/favicon.ico',
     'logo_img_class' => 'brand-image img-circle elevation-3 bg-white',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -111,11 +111,11 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'storage/imagenes/logo.png',
+            'path' => 'favicons/favicon.ico',
             'alt' => 'Logo imagen',
             'effect' => 'animation__shake',
-            'width' => 60,
-            'height' => 60,
+            'width' => 80,
+            'height' => 80,
         ],
     ],
 
@@ -344,6 +344,12 @@ return [
         ['header' => 'OPCIONES'],
 
         [
+            'text' => 'Curriculum',
+            'icon_color' => 'red',
+            'route'  => 'admin.curriculum',
+        ],
+
+        [
             'text' => 'Voceros',
             'icon_color' => 'blue',
             'route' => 'admin.voceros',
@@ -366,12 +372,6 @@ return [
         ],
 
         [
-            'text' => 'Curriculum',
-            'icon_color' => 'red',
-            'url'  => '#',
-        ],
-
-        [
             'text' => 'Eventos y galeria',
             'icon_color' => 'blue',
             'url'  => '#',
@@ -391,12 +391,7 @@ return [
             'text' => 'Estadisticas',
             'icon_color' => 'gray',
             'url'  => '#',
-        ],
-        [
-            'text' => 'Competencias',
-            'icon_color' => 'gray',
-            'url'  => '#',
-        ],
+        ]
     ],
 
     /*

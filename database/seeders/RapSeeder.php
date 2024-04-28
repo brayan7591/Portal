@@ -35,17 +35,17 @@ class RapSeeder extends Seeder
         ]);
 
         rap::create([
-            'descripcion' => 'Valorar la importancia de la ciudadanía laboral con base en elestudio de los derechos humanos y fundamentales del trabajo.',
+            'descripcion' => 'Valorar la importancia de la ciudadanía laboral con base en el estudio de los derechos humanos y fundamentales del trabajo.',
             'codigo_competencia' => 210201501
         ]);
 
         rap::create([
-            'descripcion' => 'Practicar los derechos fundamentales del trabajo de acuerdo conla Constitución Política y los convenios Internacionales.',
+            'descripcion' => 'Practicar los derechos fundamentales del trabajo de acuerdo con la Constitución Política y los convenios Internacionales.',
             'codigo_competencia' => 210201501
         ]);
 
         rap::create([
-            'descripcion' => 'Reconocer el trabajo como uno de los elementos primordialespara la movilidad social y la transformación vital.',
+            'descripcion' => 'Reconocer el trabajo como uno de los elementos primordiales para la movilidad social y la transformación vital.',
             'codigo_competencia' => 210201501
         ]);
 

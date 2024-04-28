@@ -14,7 +14,7 @@ class CreateNivelesTable extends Migration
     public function up()
     {
         Schema::create('niveles', function (Blueprint $table) {
-            $table->enum('nivel', ['Tecnico', 'Tecnologo']);
+            $table->string('nivel');
             $table->date('FechaInicio');
             $table->date('FechaFin')->nullable();
             $table->integer('HorasEtapaLectiva');

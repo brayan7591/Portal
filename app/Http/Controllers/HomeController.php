@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
@@ -78,5 +77,9 @@ class HomeController extends Controller
     }
     public function voceros(){
         return view('Admin.Voceros');
+    }
+
+    public function curriculum(){
+        return view('Admin.Curriculum');
     }
 }
