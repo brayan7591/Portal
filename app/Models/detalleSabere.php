@@ -10,4 +10,5 @@ class detalleSabere extends Model
     use HasFactory;
 
     protected $guarded = [];
+    
 }

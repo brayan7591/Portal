@@ -391,7 +391,8 @@ return [
             'text' => 'Estadisticas',
             'icon_color' => 'gray',
             'url'  => '#',
-        ]
+        ],
+
     ],
 
     /*

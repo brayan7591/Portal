@@ -15,7 +15,7 @@ class NivelSeeder extends Seeder
     public function run()
     {
         $nivelPrueba = nivele::create([
-            'nivel' => 'Tecnico',
+            'nivel' => 'tecnico',
             'FechaInicio' => '2024-03-13',
             'FechaFin' => null,
             'HorasEtapaLectiva' => 2500,
@@ -23,8 +23,8 @@ class NivelSeeder extends Seeder
             'programa_id' => 1
         ]);
 
-        $nivelPrueba->competencias()->attach(240201064, ['nivel' => 'Tecnico', 'programa_id' => 1]);
-        $nivelPrueba->competencias()->attach(240201062, ['nivel' => 'Tecnico', 'programa_id' => 1]);
-        $nivelPrueba->competencias()->attach(210201501, ['nivel' => 'Tecnico', 'programa_id' => 1]);
+        $nivelPrueba->competencias()->attach(240201064, ['nivel' => 'tecnico', 'programa_id' => 1]);
+        $nivelPrueba->competencias()->attach(240201062, ['nivel' => 'tecnico', 'programa_id' => 1]);
+        $nivelPrueba->competencias()->attach(210201501, ['nivel' => 'tecnico', 'programa_id' => 1]);
     }
 }
