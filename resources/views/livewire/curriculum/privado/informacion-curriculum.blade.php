@@ -43,6 +43,7 @@
             @if ($model == 'programas')
                 <button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarPrograma">Agregar Programa</button>
             @else
+                <button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarCompetencia">Agregar Competencia</button>
             @endif
         </div>
 
@@ -95,78 +96,129 @@
                     </div>
                 @endif
             @else
-                <p>NO hay curriculum por el momento :v</p>
+                <div class="contenedor w-100">
+                    <p class="completo text-center todo h1 color">1. INFORMACIÓN BASICA DEL PROGRAMA DE FORMACION TITULADA</p>
+                    <h2 class="uno todo color">1.1 DENOMINACION DEL PROGRAMA:</h2>
+                    <h3 class="dos todo">No hay Error 404</h3>
+                    <h2 class="uno todo color">1.2 CODIGO DEL PROGRAMA:</h2>
+                    <h3 class="dos todo">No hay Error 404</h3>
+                    <h2 class="uno todo color">1.3 VERSION DEL PROGRAMA</h2>
+                    <h3 class="dos todo">No hay Error 404</h3>
+                    <h2 class="uno todo color">1.4 VIGENCIA DEL PROGRAMA </h2>
+                    <div class="dos todo fechas">
+                        <h3 class="color centrado-total">Fecha de inicio:</h3>
+                        <h3 class="centrado-total">404/404/404</h3>
+                        <h3 class="color centrado-total">Fecha de finalización:</h3>
+                        <h3 class="centrado-total justify-content-center">404/404/404</h3>
+                    </div>
+                    <h2 class="uno todo color">1.5 DURACIÓN MÁXIMA ESTIMADA DEL APRENDIZAJE (Horas) </h2>
+                    <div class="dos todo horas">
+                        <h3 class="color centrado-total">Etapa Lectiva</h3>
+                        <h3 class="centrado-total">404 Horas</h3>
+                        <h3 class="color centrado-total">Etapa Productiva</h3>
+                        <h3 class="centrado-total">404 Horas</h3>
+                        <h3 class="color centrado-total">Total:</h3>
+                        <h3 class="centrado-total">404 Horas</h3>
+                    </div>
+                    <h2 class="uno todo color">1.6 TIPO DEL PROGRAMA</h2>
+                    <h3 class="dos todo">No hay Error 404</h3>
+                    <h2 class="uno todo color">1.7 TITULO O CERTIFICADO QUE OBTENDRA:</h2>
+                    <h3 class="dos todo">No hay Error 404</h3>
+                    <p class="completo justify-content-center todo h2 color">1.8 Competencias que contiene:</p>
+                    <p class="completo todo h3">Error 404</p>
+                </div>
             @endif
         @else
-            @foreach ($competencias as $value => $competencia)
+            @if ($competencias->count() > 0)
+                @foreach ($competencias as $value => $competencia)
+                    <div class="contenedor w-100">
+                        <p class="completo justify-content-center todo h1 color">{{$value + 1}} {{$competencia->nombre}}</p>
+                        <h2 class="uno todo color">{{$value + 1}}.1 NORMA / UNIDAD DE COMPETENCIA</h2>
+                        <h3 class="dos todo">{{$competencia->norma}}</h3>
+                        <h2 class="uno todo color">{{$value + 1}}.2 CÓDIGO NORMA DE COMPETENCIA LABORAL</h2>
+                        <h3 class="dos todo">{{$competencia->codigo}}</h3>
+                        <h2 class="uno todo color">{{$value + 1}}.3 NOMBRE DE LA COMPETENCIA</h2>
+                        <h3 class="dos todo">{{$competencia->nombre}}</h3>
+                        <h2 class="uno-tres todo color">{{$value + 1}}.4 DURACION MAXIMA ESTIMADA PARA EL LOGRO DEL APRENDIZAJE</h2>
+                        <h3 class="tres-cuatro todo">{{$competencia->duracion}} Horas</h3>
+                        <p class="completo justify-content-center todo h2 color">{{$value + 1}}.5 RESULTADOS DE APRENDIZAJE (RAPS)</p>
+                        @if ($competencia->raps->count() > 0)
+                            @foreach ($competencia->raps as $value2 => $rap)
+                                <p class="completo todo h3">{{$value2 + 1}}. {{$rap->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('rap', {{$rap->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$rap->id}}, 'rap'])"><i class="fa fa-trash"></i></button></p>
+                            @endforeach
+                            <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('rap', {{$competencia->codigo}})">Agregar nuevo rap</button><button class="btn btn-danger h2" wire:click="$emit('deleteTodosDato', [{{$competencia->codigo}}, 'rap'])">Eliminar todos los raps</button></p>
+                        @else
+                            <p class="completo justify-content-center todo h3">No hay raps para esta competencia por el momento <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('rap', {{$competencia->codigo}})"><i class="fa fa-plus"></i></button></p>
+                        @endif
+                        <p class="completo justify-content-center todo h2 color">{{$value + 1}}.6 SABERES, CONCEPTOS Y PRINCIPIOS</p>
+                        @if ($competencia->conceptos->count() > 0)
+                            @foreach ($competencia->conceptos as $value2 => $concepto)
+                                <p class="completo todo h3">{{$value2 + 1}}. {{$concepto->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('saber', {{$concepto->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$concepto->id}}, 'saber'])"><i class="fa fa-trash"></i></button></p>
+                                @if ($concepto->detalle->count() > 0)
+                                    @foreach ($concepto->detalle as $value3 => $detalle)
+                                        <p class="completo todo h4"><span class="ml-3">{{$value2 + 1}}.{{$value3 + 1}} {{$detalle->descripcion}}</span><button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('detalle', {{$detalle->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$detalle->id}}, 'detalle'])"><i class="fa fa-trash"></i></button></p>
+                                    @endforeach
+                                    <p class="completo justify-content-between todo h4"><button class="ml-3 btn btn-primary h4" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$concepto->id}})">Agregar nuevo detalle</button><button class="mr-3 btn btn-danger h4" wire:click="$emit('deleteTodosDato', [{{$concepto->id}}, 'detalle'])">Eliminar todos los detalles de conceptos</button></p>
+                                @else
+                                    <p class="completo todo h4"><span class="ml-3">No hay detalles por el momento de este proceso</span><button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$concepto->id}})"><i class="fa fa-plus"></i></button></p>
+                                @endif
+                            @endforeach
+                            <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('concepto', {{$competencia->codigo}})">Agregar nuevo concepto</button><button class="btn btn-danger h2" wire:click="$emit('deleteTodosDato', [{{$competencia->codigo}}, 'concepto'])">Eliminar todos los conceptos</button></p>
+                        @else
+                            <p class="completo justify-content-center todo h3">No hay saberes, conceptos o principios para esta competencia por el momento <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('concepto', {{$competencia->codigo}})"><i class="fa fa-plus"></i></button></p>
+                        @endif
+                        <p class="completo justify-content-center todo h2 color">{{$value + 1}}.7 SABERES DE PROCESOS</p>
+                        @if ($competencia->saberes->count() > 0)
+                            @foreach ($competencia->saberes as $value2 => $saber)
+                                <p class="completo todo h3">{{$value2 + 1}}. {{$saber->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('saber', {{$saber->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$saber->id}}, 'saber'])"><i class="fa fa-trash"></i></button></p>
+                                @if ($saber->detalle->count() > 0)
+                                    @foreach ($saber->detalle as $value3 => $detalle)
+                                        <p class="completo todo h4"><span class="ml-3">{{$value2 + 1}}.{{$value3 + 1}} {{$detalle->descripcion}}</span><button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('detalle', {{$detalle->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$detalle->id}}, 'detalle'])"><i class="fa fa-trash"></i></button></p>
+                                    @endforeach
+                                    <p class="completo justify-content-between todo h4"><button class="btn btn-primary h4 ml-3" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$saber->id}})">Agregar nuevo detalle</button><button class="btn btn-danger h4 mr-3" wire:click="$emit('deleteTodosDato', [{{$saber->id}}, 'detalle'])">Eliminar todos los detalles de saberes</button></p>
+                                @else
+                                    <p class="completo todo h4"><span class="ml-3">No hay detalles por el momento de este saber</span><button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$saber->id}})"><i class="fa fa-plus"></i></button></p>
+                                @endif
+                            @endforeach
+                            <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('saber', {{$competencia->codigo}})">Agregar nuevo saber</button><button class="btn btn-danger h2" wire:click="$emit('deleteTodosDato', [{{$competencia->codigo}}, 'saber'])">Eliminar todos los saberes</button></p>
+                        @else
+                            <p class="completo justify-content-center todo h3">No hay saberes de proceso para esta competencia por el momento <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('saber', {{$competencia->codigo}})"><i class="fa fa-plus"></i></button></p>
+                        @endif
+                        <p class="completo justify-content-center todo h2 color">{{$value + 1}}.8 Programas en los cuales esta:</p>
+                        @if ($competencia->niveles->count() > 0)
+                            @foreach ($competencia->niveles as $nivel)
+                                <p class="completo todo h3">{{$nivel->programa->NombrePrograma}}: {{$nivel->nivel}}</p>
+                            @endforeach
+                        @endif
+                        <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#ActualizarCompetencia" wire:click="ActualizarCompetencia({{$competencia->codigo}})">Actualizar información</button><button class="btn btn-danger h2" wire:click="$emit('deleteCompetencia', {{$competencia->codigo}})">Borrar competencia</button></p>
+                    </div><br>
+                @endforeach
+                @if ($competencias->hasPages())
+                    <div>
+                        {{$competencias->links()}}
+                    </div>
+                @endif
+            @else
                 <div class="contenedor w-100">
-                    <p class="completo justify-content-center todo h1 color">{{$value + 1}} {{$competencia->nombre}}</p>
-                    <h2 class="uno todo color">{{$value + 1}}.1 NORMA / UNIDAD DE COMPETENCIA</h2>
-                    <h3 class="dos todo">{{$competencia->norma}}</h3>
-                    <h2 class="uno todo color">{{$value + 1}}.2 CÓDIGO NORMA DE COMPETENCIA LABORAL</h2>
-                    <h3 class="dos todo">{{$competencia->codigo}}</h3>
-                    <h2 class="uno todo color">{{$value + 1}}.3 NOMBRE DE LA COMPETENCIA</h2>
-                    <h3 class="dos todo">{{$competencia->nombre}}</h3>
-                    <h2 class="uno-tres todo color">{{$value + 1}}.4 DURACION MAXIMA ESTIMADA PARA EL LOGRO DEL APRENDIZAJE</h2>
-                    <h3 class="tres-cuatro todo">{{$competencia->duracion}} Horas</h3>
-                    <p class="completo justify-content-center todo h2 color">{{$value + 1}}.5 RESULTADOS DE APRENDIZAJE (RAPS)</p>
-                    @if ($competencia->raps->count() > 0)
-                        @foreach ($competencia->raps as $value2 => $rap)
-                            <p class="completo todo h3">{{$value2 + 1}}. {{$rap->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('rap', {{$rap->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$rap->id}}, 'rap'])"><i class="fa fa-trash"></i></button></p>
-                        @endforeach
-                        <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('rap', {{$competencia->codigo}})">Agregar nuevo rap</button><button class="btn btn-danger h2" wire:click="$emit('deleteTodosDato', [{{$competencia->codigo}}, 'rap'])">Eliminar todos los raps</button></p>
-                    @else
-                        <p class="completo justify-content-center todo h3">No hay raps para esta competencia por el momento <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('rap', {{$competencia->codigo}})"><i class="fa fa-plus"></i></button></p>
-                    @endif
-                    <p class="completo justify-content-center todo h2 color">{{$value + 1}}.6 SABERES, CONCEPTOS Y PRINCIPIOS</p>
-                    @if ($competencia->conceptos->count() > 0)
-                        @foreach ($competencia->conceptos as $value2 => $concepto)
-                            <p class="completo todo h3">{{$value2 + 1}}. {{$concepto->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('saber', {{$concepto->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$concepto->id}}, 'saber'])"><i class="fa fa-trash"></i></button></p>
-                            @if ($concepto->detalle->count() > 0)
-                                @foreach ($concepto->detalle as $value3 => $detalle)
-                                    <p class="completo todo h4"><span class="ml-3">{{$value2 + 1}}.{{$value3 + 1}} {{$detalle->descripcion}}</span><button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('detalle', {{$detalle->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$detalle->id}}, 'detalle'])"><i class="fa fa-trash"></i></button></p>
-                                @endforeach
-                                <p class="completo justify-content-between todo h4"><button class="ml-3 btn btn-primary h4" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$concepto->id}})">Agregar nuevo detalle</button><button class="mr-3 btn btn-danger h4" wire:click="$emit('deleteTodosDato', [{{$concepto->id}}, 'detalle'])">Eliminar todos los detalles de conceptos</button></p>
-                            @else
-                                <p class="completo todo h4"><span class="ml-3">No hay detalles por el momento de este proceso</span><button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$concepto->id}})"><i class="fa fa-plus"></i></button></p>
-                            @endif
-                        @endforeach
-                        <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('concepto', {{$competencia->codigo}})">Agregar nuevo concepto</button><button class="btn btn-danger h2" wire:click="$emit('deleteTodosDato', [{{$competencia->codigo}}, 'concepto'])">Eliminar todos los conceptos</button></p>
-                    @else
-                        <p class="completo justify-content-center todo h3">No hay saberes, conceptos o principios para esta competencia por el momento <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('concepto', {{$competencia->codigo}})"><i class="fa fa-plus"></i></button></p>
-                    @endif
-                    <p class="completo justify-content-center todo h2 color">{{$value + 1}}.7 SABERES DE PROCESOS</p>
-                    @if ($competencia->saberes->count() > 0)
-                        @foreach ($competencia->saberes as $value2 => $saber)
-                            <p class="completo todo h3">{{$value2 + 1}}. {{$saber->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('saber', {{$saber->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$saber->id}}, 'saber'])"><i class="fa fa-trash"></i></button></p>
-                            @if ($saber->detalle->count() > 0)
-                                @foreach ($saber->detalle as $value3 => $detalle)
-                                    <p class="completo todo h4"><span class="ml-3">{{$value2 + 1}}.{{$value3 + 1}} {{$detalle->descripcion}}</span><button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('detalle', {{$detalle->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$detalle->id}}, 'detalle'])"><i class="fa fa-trash"></i></button></p>
-                                @endforeach
-                                <p class="completo justify-content-between todo h4"><button class="btn btn-primary h4 ml-3" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$saber->id}})">Agregar nuevo detalle</button><button class="btn btn-danger h4 mr-3" wire:click="$emit('deleteTodosDato', [{{$saber->id}}, 'detalle'])">Eliminar todos los detalles de saberes</button></p>
-                            @else
-                                <p class="completo todo h4"><span class="ml-3">No hay detalles por el momento de este saber</span><button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$saber->id}})"><i class="fa fa-plus"></i></button></p>
-                            @endif
-                        @endforeach
-                        <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('saber', {{$competencia->codigo}})">Agregar nuevo saber</button><button class="btn btn-danger h2" wire:click="$emit('deleteTodosDato', [{{$competencia->codigo}}, 'saber'])">Eliminar todos los saberes</button></p>
-                    @else
-                        <p class="completo justify-content-center todo h3">No hay saberes de proceso para esta competencia por el momento <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('saber', {{$competencia->codigo}})"><i class="fa fa-plus"></i></button></p>
-                    @endif
-                    <p class="completo justify-content-center todo h2 color">{{$value + 1}}.8 Programas en los cuales esta:</p>
-                    @if ($competencia->niveles->count() > 0)
-                        @foreach ($competencia->niveles as $nivel)
-                            <p class="completo todo h3">{{$nivel->programa->NombrePrograma}}: {{$nivel->nivel}}</p>
-                        @endforeach
-                    @endif
-                    <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2">Actualizar información</button><button class="btn btn-danger h2" wire:click="$emit('deleteCompetencia', {{$competencia->codigo}})">Borrar competencia</button></p>
-                </div><br>
-            @endforeach
-            @if ($competencias->hasPages())
-                <div>
-                    {{$competencias->links()}}
+                    <p class="completo justify-content-center todo h1 color">NO SE ENCONTRO</p>
+                    <h2 class="uno todo color">NORMA / UNIDAD DE COMPETENCIA</h2>
+                    <h3 class="dos todo">{{$search == '' ? 'No hay competencias por el momento' : $search}}</h3>
+                    <h2 class="uno todo color">CÓDIGO NORMA DE COMPETENCIA LABORAL</h2>
+                    <h3 class="dos todo">ERROR 404</h3>
+                    <h2 class="uno todo color">NOMBRE DE LA COMPETENCIA</h2>
+                    <h3 class="dos todo">ERROR 404</h3>
+                    <h2 class="uno-tres todo color">DURACION MAXIMA ESTIMADA PARA EL LOGRO DEL APRENDIZAJE</h2>
+                    <h3 class="tres-cuatro todo">404 Horas</h3>
+                    <p class="completo justify-content-center todo h2 color">RESULTADOS DE APRENDIZAJE (RAPS)</p>
+                    <p class="completo todo h3">Error 404</p>
+                    <p class="completo justify-content-center todo h2 color">SABERES, CONCEPTOS Y PRINCIPIOS</p>
+                    <p class="completo todo h3">Error 404</p>
+                    <p class="completo justify-content-center todo h2 color">SABERES DE PROCESOS</p>
+                    <p class="completo todo h3">Error 404</p>
                 </div>
             @endif
         @endif
+
         <!--Modal de actualizacion y agregación-->
         @if ($model == 'programas')
             <div class="modal fade" id="ModificarPrograma" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -386,6 +438,130 @@
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="ClosemodalAgregarDato" data-dismiss="modal">Cerrar</button>
                     <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="insertarDato" wire:click="insertarDato()">Guardar {{$opciones}}</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="ActualizarCompetencia" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Actualizar Competencia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div wire:loading wire:target="ActualizarCompetencia" class="w-100 d-flex align-items-center justify-content-between">
+                            <strong wire:loading wire:target="ActualizarCompetencia" role="status">Loading...</strong>
+                            <div wire:loading wire:target="ActualizarCompetencia" class="spinner-border ms-auto" aria-hidden="true"></div>
+                        </div>
+                        <div class="mb-3" wire:loading.remove wire:target="ActualizarCompetencia">
+                            <label for="Actualizar_norma" class="form-label h4 font-weight-normal">Actualiza la norma / unidad de competencia:</label>
+                            <textarea class="form-control h4" id="Actualizar_norma" wire:model.defer='norma'></textarea>
+                            @error('norma')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3" wire:loading.remove wire:target="ActualizarCompetencia">
+                            <label for="Actualizar_codigo" class="form-label h4 font-weight-normal">Actualiza el codigo de la competencia:</label>
+                            <input type="number" class="form-control h4" id="Actualizar_codigo" wire:model.defer='codigo'>
+                            @error('codigo')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3" wire:loading.remove wire:target="ActualizarCompetencia">
+                            <label for="Actualizar_nombre" class="form-label h4 font-weight-normal">Actualiza el nombre de la competencia:</label>
+                            <input type="text" class="form-control h4" id="Actualizar_nombre" wire:model.defer='nombre'>
+                            @error('nombre')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3" wire:loading.remove wire:target="ActualizarCompetencia">
+                            <label for="Actualizar_horas" class="form-label h4 font-weight-normal">Actualiza las horas de la competencia:</label>
+                            <input type="number" class="form-control h4" id="Actualizar_horas" wire:model.defer='horas'>
+                            @error('horas')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3" wire:loading.remove wire:target="ActualizarCompetencia">
+                            <p class="form-label h4 font-weight-normal">Actualizar programas:</p>
+                            @foreach ($niveles as $nivel)
+                                <div class="form-check mt-2">
+                                    <label class="form-check-label h5">
+                                        <input class="form-check-input" wire:model.defer="competenciasnivel" type="checkbox" name="nivel" value="{{$nivel->nivel}}_{{$nivel->programa_id}}">{{$nivel->programa->NombrePrograma}}: {{$nivel->nivel}}
+                                    </label>
+                                </div>
+                            @endforeach
+                            @error('competenciasnivel')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="ClosemodalActualizarCompetencia" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="updateCompetencia" wire:click="updateCompetencia()">Actualizar competencia</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="AgregarCompetencia" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document" >
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Agregar Competencia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="Agregar_norma" class="form-label h4 font-weight-normal">Agrega la norma / unidad de competencia:</label>
+                            <textarea class="form-control h4" id="Agregar_norma" wire:model.defer='NuevaNorma'></textarea>
+                            @error('NuevaNorma')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="Agregar_codigo" class="form-label h4 font-weight-normal">Agrega el codigo de la competencia:</label>
+                            <input type="number" class="form-control h4" id="Agregar_codigo" wire:model.defer='NuevoCodigo'>
+                            @error('NuevoCodigo')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="Agregar_nombre" class="form-label h4 font-weight-normal">Agrega el nombre de la competencia:</label>
+                            <input type="text" class="form-control h4" id="Agregar_nombre" wire:model.defer='NuevoNombre'>
+                            @error('NuevoNombre')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="Agregar_horas" class="form-label h4 font-weight-normal">Agrega las horas de la competencia:</label>
+                            <input type="number" class="form-control h4" id="Agregar_horas" wire:model.defer='NuevaHora'>
+                            @error('NuevaHora')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <p class="form-label h4 font-weight-normal">Agrega programas:</p>
+                            @foreach ($niveles as $nivel)
+                                <div class="form-check mt-2">
+                                    <label class="form-check-label h5">
+                                        <input class="form-check-input" wire:model.defer="NuevosNiveles" type="checkbox" name="nivel" value="{{$nivel->nivel}}_{{$nivel->programa_id}}">{{$nivel->programa->NombrePrograma}}: {{$nivel->nivel}}
+                                    </label>
+                                </div>
+                            @endforeach
+                            @error('NuevosNiveles')
+                                <span>{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="ClosemodalAgregarCompetencia" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="guardarCompetencia" wire:click="guardarCompetencia()">Guardar competencia</button>
                     </div>
                 </div>
                 </div>

@@ -14,29 +14,39 @@ nav{
     padding: 8px;
 }
 .programas .ajustar{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
-    gap: 7px;
-    padding: 5px;
-    max-height: 500px;
+    height: 600px;
+    margin: 3px;
 }
+
+.programas .ajustar h2{
+    padding: 0;
+    margin: 0;
+    height: 10%;
+}
+
 .programas .ajustar:hover{
     background-color: rgb(232, 241, 244);
 }
 .programas .ajustar .sobretexto{
+    padding: 0;
+    margin: 0;
+    height: 40%;
     white-space: pre-line;
     overflow-y: auto;
 }
+.programas .ajustar .boton{
+    height: 10%;
+}
+
 .imagen{
-    height: 200px;
+    height: 40%;
     width: 100%;
 }
 .imagen img{
     width: 100%;
     height: 100%;
 }
+
 .texto-prueba{
     font-family: "Roboto","Arial",sans-serif;
     font-size: 1.6rem;

@@ -11,7 +11,7 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/index.css')}} ">
+    <link rel="stylesheet" href="{{asset('css/TableAdmin.css')}} ">
     @livewireStyles
 @stop
 

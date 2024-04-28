@@ -23,6 +23,12 @@ class BuscarCurriculum extends Component
                 $competencias = $nivelaso->competencias;
             }else{
                 $competencias = $nivelaso->competencias->filter(function($value){return false !== stripos($value['norma'], $this->searchnorma);});
+                if ($competencias->count() == 0) {
+                    $competencias = $nivelaso->competencias->filter(function($value){return false !== stripos($value['codigo'], $this->searchnorma);});
+                    if ($competencias->count() == 0) {
+                        $competencias = $nivelaso->competencias->filter(function($value){return false !== stripos($value['nombre'], $this->searchnorma);});
+                    }
+                }
             }
         }
 

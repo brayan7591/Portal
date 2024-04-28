@@ -18,7 +18,7 @@ class CreateNivelCompetenciaTable extends Migration
             $table->unsignedBigInteger('programa_id');
             $table->foreign(['programa_id', 'nivel'])->references(['programa_id', 'nivel'])->on('niveles')->onDelete('cascade');
             $table->integer('codigo_competencia');
-            $table->foreign('codigo_competencia')->references('codigo')->on('competencias')->onDelete('cascade');
+            $table->foreign('codigo_competencia')->references('codigo')->on('competencias')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

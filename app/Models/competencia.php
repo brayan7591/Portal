@@ -16,7 +16,7 @@ class competencia extends Model
     }
 
     protected $primaryKey = 'codigo';
-    
+
     public function getRouteKeyName(){
         return 'codigo';
     }

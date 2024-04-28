@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/landingpage.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/principal.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('favicons/favicon.icon') }}" type="image/x-icon">
     <title>Portal</title>
 </head>
@@ -64,9 +64,6 @@
     <section class="min-vh-100 container bg-white" id="inicio">
         <h1 class="text-center">PORTAL INFORMATIVO DEL SENA CBA</h1>
         <h2>Inicio:</h2>
-        {{-- @foreach ($Programas as $Programa)
-                    <pre class="sobretexto">{{$Programa->Descripcion}}</pre>
-         @endforeach --}}
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus culpa vitae, error corporis illo nihil est illum debitis, earum delectus soluta asperiores facere numquam architecto at dolorem accusamus ipsam reiciendis.</p>
     </section>
     <section class="bg-gray" id="programas">
@@ -78,7 +75,7 @@
                     <h2 class="text-center">{{$Programa->NombrePrograma}}</h2>
                     <div class="imagen"><img src="{{$Programa->imagen}}" alt="imagen de {{$Programa->NombrePrograma}}"></div>
                     <p class="sobretexto">{{$Programa->Descripcion}}</p>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center  align-items-center boton">
                         <a href="{{route('landingPage', $Programa->slug)}}" type="button" class="btn btn-primary text-center">Conoce más</a>
                     </div>
                 </div>

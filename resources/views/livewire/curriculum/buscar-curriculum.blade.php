@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center align-items-center flex-column">
     <div class="contenedor">
         <div class="input-group input-group-lg w-100 completo todo color ">
-            <input type="text" class="form-control input-color color h1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" wire:model="searchnorma" placeholder="Buscar Competencias">
+            <input type="text" class="form-control input-color color h1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" wire:model="searchnorma" placeholder="Buscar Competencias por norma, codigo o nombre (susceptible a tildes)">
         </div>
     </div>
     
@@ -23,7 +23,7 @@
                     <p class="completo todo h3">{{$value2 + 1}}. {{$rap->descripcion}}</p>
                 @endforeach
             @else
-                <p class="completo justify-content-center todo h3">No hay raps para esta competencia el momento</p>
+                <p class="completo justify-content-center todo h3">No hay raps para esta competencia por el momento</p>
             @endif
             <p class="completo justify-content-center todo h2 color">{{$value + 1}}.6 SABERES, CONCEPTOS Y PRINCIPIOS</p>
             @if ($competencia->conceptos->count() > 0)
@@ -57,20 +57,19 @@
     <div class="contenedor">
         <p class="completo justify-content-center todo h1 color">NO SE ENCONTRO</p>
         <h2 class="uno todo color">NORMA / UNIDAD DE COMPETENCIA</h2>
-        <h3 class="dos todo">{{$searchnorma}}</h3>
+        <h3 class="dos todo">{{$searchnorma == '' ? 'No hay competencias por el momento' : $searchnorma}}</h3>
         <h2 class="uno todo color">CÓDIGO NORMA DE COMPETENCIA LABORAL</h2>
-        <h3 class="dos todo">ERROR</h3>
+        <h3 class="dos todo">ERROR 404</h3>
         <h2 class="uno todo color">NOMBRE DE LA COMPETENCIA</h2>
-        <h3 class="dos todo">ERROR</h3>
+        <h3 class="dos todo">ERROR 404</h3>
         <h2 class="uno-tres todo color">DURACION MAXIMA ESTIMADA PARA EL LOGRO DEL APRENDIZAJE</h2>
         <h3 class="tres-cuatro todo">404 Horas</h3>
         <p class="completo justify-content-center todo h2 color">RESULTADOS DE APRENDIZAJE (RAPS)</p>
-        <p class="completo todo h3">No hay raps para esta competencia error 404</p>
+        <p class="completo todo h3">Error 404</p>
         <p class="completo justify-content-center todo h2 color">SABERES, CONCEPTOS Y PRINCIPIOS</p>
-        <p class="completo todo h3">No hay saberes, conceptos o principios para esta competencia error 404</p>
+        <p class="completo todo h3">Error 404</p>
         <p class="completo justify-content-center todo h2 color">SABERES DE PROCESOS</p>
-        <p class="completo todo h3">No hay saberes de proceso para esta competencia error 404</p>
-
-    @endif
+        <p class="completo todo h3">Error 404</p>
     </div>
+    @endif
 </div>

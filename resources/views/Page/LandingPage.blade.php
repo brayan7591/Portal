@@ -3,7 +3,7 @@
 
 @section('content')
     <h1 class="text-center">{{$programa->NombrePrograma}}</h1>
-    <p>{{$programa->Descripcion}}</p>
+    <p class="texto-prueba">{{$programa->Descripcion}}</p>
 @endsection
 
 @section('Scripts')

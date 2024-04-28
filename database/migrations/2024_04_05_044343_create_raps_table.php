@@ -17,7 +17,7 @@ class CreateRapsTable extends Migration
             $table->id();
             $table->string('descripcion');
             $table->integer('codigo_competencia');
-            $table->foreign('codigo_competencia')->references('codigo')->on('competencias')->onDelete('cascade');
+            $table->foreign('codigo_competencia')->references('codigo')->on('competencias')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

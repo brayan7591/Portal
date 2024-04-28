@@ -8,6 +8,7 @@ use App\Models\nivele;
 use App\Models\programa;
 use App\Models\rap;
 use App\Models\sabere;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -30,6 +31,12 @@ class InformacionCurriculum extends Component{
     
     //Variables para actualizar y agregar un Dato de una competencia(rap, saberes, conocimientos)
     public $actDato, $opciones, $identificador, $AgregarDato, $identificadorPadre;
+
+    //Variables para guardar una competencia
+    public $NuevaNorma, $NuevoCodigo, $NuevoNombre, $NuevaHora, $NuevosNiveles = [];
+
+    //Variables para actualizar una competencia
+    public $actCompetencia, $norma, $codigo, $nombre, $horas, $competenciasnivel = [];
 
     protected $listeners = ['delete', 'deleteNivel', 'deleteDatos', 'deleteTodosDatos'];
     protected $paginationTheme = "Bootstrap";
@@ -64,8 +71,9 @@ class InformacionCurriculum extends Component{
             $this->nivelprogramabuscar = '';
             return view('livewire.curriculum.privado.informacion-curriculum', compact('niveles', 'programas', 'competencias'));
         }else{
+            $niveles = nivele::all();
             $competencias = competencia::where($this->for, 'LIKE', '%'. $this->search . '%')->paginate($this->registers);
-            return view('livewire.curriculum.privado.informacion-curriculum', compact('competencias'));
+            return view('livewire.curriculum.privado.informacion-curriculum', compact('competencias', 'niveles'));
         }
     }
 
@@ -261,7 +269,70 @@ class InformacionCurriculum extends Component{
         }
     }
 
-    //Competencia
+    //Competencias
+
+    public function guardarCompetencia(){
+        $this->validate([
+            'NuevaNorma' => ['required'],
+            'NuevoCodigo' => ['required', 'unique:competencias,codigo'],
+            'NuevoNombre' => ['required'],
+            'NuevaHora' => ['required']
+        ]);
+
+        $competencia = new competencia();
+
+        $competencia->norma = $this->NuevaNorma;
+        $competencia->codigo = $this->NuevoCodigo;
+        $competencia->nombre = $this->NuevoNombre;
+        $competencia->duracion = $this->NuevaHora;
+        $competencia->save();
+        
+        foreach ($this->NuevosNiveles as $niveles) {
+            $datos = explode('_', $niveles);
+            DB::insert("insert into nivel_competencia (nivel, programa_id, codigo_competencia) values ('$datos[0]', '$datos[1]', '$this->NuevoCodigo')");
+        }
+
+        $this->reset(['NuevaNorma', 'NuevoCodigo', 'NuevoNombre', 'NuevaHora', 'NuevosNiveles']);
+        $this->emit('CompetenciaAgregada');
+    }
+
+    public function updateCompetencia(){
+        $competencia = $this->actCompetencia;
+        $this->validate([
+            'norma' => ['required'],
+            'codigo' => ['required', Rule::unique('competencias')->ignore($competencia->codigo, 'codigo')],
+            'nombre' => ['required'],
+            'horas' => ['required']
+        ]);
+
+        $competencia->norma = $this->norma;
+        $competencia->codigo = $this->codigo;
+        $competencia->nombre = $this->nombre;
+        $competencia->duracion = $this->horas;
+        $competencia->save();
+
+        DB::table('nivel_competencia')->where('codigo_competencia', $this->codigo)->delete();
+        
+        foreach ($this->competenciasnivel as $niveles) {
+            $datos = explode('_', $niveles);
+            DB::insert("insert into nivel_competencia (nivel, programa_id, codigo_competencia) values ('$datos[0]', '$datos[1]', '$this->codigo')");
+        }
+
+        $this->reset(['norma', 'codigo', 'nombre', 'horas', 'actCompetencia', 'competenciasnivel']);
+        $this->emit('CompetenciaActualizada');
+    }
+
+    public function ActualizarCompetencia(competencia $competencia){
+        $this->competenciasnivel = [];
+        $this->actCompetencia = $competencia;
+        $this->norma = $competencia->norma;
+        $this->codigo = $competencia->codigo;
+        $this->nombre = $competencia->nombre;
+        $this->horas = $competencia->duracion;
+        foreach ($competencia->niveles as $nivel) {
+            array_push($this->competenciasnivel, $nivel->nivel . '_' . $nivel->programa_id);
+        }
+    }
 
     public function delete(competencia $competencia){
         $competencia->delete();

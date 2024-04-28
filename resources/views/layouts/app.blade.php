@@ -22,7 +22,7 @@
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/stylemenu.css')}}" rel="stylesheet" >
+    <link href="{{ asset('css/layout.css')}}" rel="stylesheet" >
     @yield('links')
 </head>
 <body class="bg-dark text-white">

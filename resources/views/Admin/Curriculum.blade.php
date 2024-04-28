@@ -81,6 +81,24 @@
             })
         })
 
+        Livewire.on('CompetenciaActualizada', function(){
+            document.getElementById('ClosemodalActualizarCompetencia').click();
+            Swal.fire({
+                title: "Bien hecho!",
+                text: "Has Actualizado la competencia",
+                type: "success"
+            })
+        })
+
+        Livewire.on('CompetenciaAgregada', function(){
+            document.getElementById('ClosemodalAgregarCompetencia').click();
+            Swal.fire({
+                title: "Bien hecho!",
+                text: "Has agregado la competencia",
+                type: "success"
+            })
+        })
+
         Livewire.on('ProgramaAgregado', function(){
             document.getElementById('ClosemodalAgregar').click();
             Swal.fire({
