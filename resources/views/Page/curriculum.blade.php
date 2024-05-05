@@ -6,6 +6,12 @@
 @endsection
 
 @section('content')
+    <div class="d-flex justify-content-end align-items-center" style="width: 90%">
+        <form action="{{ route('generar.pdf', [$programa->slug, $nivelaceptado->nivel]) }}" method="POST">
+            @csrf
+            <button class="btn btn-danger btn-lg" type="submit">Generar pdf</button>
+        </form>
+    </div>
     <div class="contenedor">
         <p class="completo text-center todo h1 color">1. INFORMACION BASICA DEL PROGRAMA DE FORMACION TITULADA</p>
         <h2 class="uno todo color">1.1 DENOMINACION DEL PROGRAMA:</h2>

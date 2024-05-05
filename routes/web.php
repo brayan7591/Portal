@@ -19,5 +19,6 @@ Route::get('/', [PrincipalController::class, 'index'])->name('principal');
 Auth::routes();
 Route::get('/{programa}', [PrincipalController::class, 'landingpage'])->name('landingPage');
 Route::get('/{programa}/curriculum/{nivel}', [PrincipalController::class, 'curriculum'])->name('curriculum');
+Route::post('/{programa}/curriculum/{nivel}', [PrincipalController::class, 'pdf'])->name('generar.pdf');
 Route::get('/{programa}/biblioteca', [PrincipalController::class, 'biblioteca'])->name('biblioteca');
 Route::get('/{programa}/instructores', [PrincipalController::class, 'instructores'])->name('instructores');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\programa;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PrincipalController extends Controller
 {
@@ -30,5 +31,10 @@ class PrincipalController extends Controller
         }else{
             return redirect()->route('landingPage', compact('programa'));
         }
+    }
+
+    public function pdf(programa $programa, $nivel){
+        $curriculum =  $programa->niveles->where('nivel', $nivel)->first();
+        return Pdf::loadview('Page.GeneradorPdf', compact('curriculum'))->download('curriculum.pdf');
     }
 }
