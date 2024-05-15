@@ -1,7 +1,7 @@
 <div>
     <div class="buscador">
         <label>Busca aqui:
-            <input type="text" wire:model="search">
+            <input type="text" wire:model.live="search">
         </label>
     </div>
     @if ($libros->count() < 2)

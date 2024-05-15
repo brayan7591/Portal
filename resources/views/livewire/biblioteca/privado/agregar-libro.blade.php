@@ -21,61 +21,61 @@
                                     <div class="pagina">
                                         <h3>Rellena todos los campos para poder guardar el libro.</h3>
                                         <label>Id de la biblioteca:
-                                            <input type="number" wire:model.defer='IdBiblioteca'>
+                                            <input type="number" wire:model='IdBiblioteca'>
                                         </label>
                                         @error('IdBiblioteca')
                                             {{$message}}
                                         @enderror
                                         <label>Titulo:
-                                            <input type="text" wire:model.defer='Titulo'>
+                                            <input type="text" wire:model='Titulo'>
                                         </label>
                                         @error('Titulo')
                                             {{$message}}
                                         @enderror
                                         <label>Fecha de estreno:
-                                            <input type="date" wire:model.defer='FechaEstreno'>
+                                            <input type="date" wire:model='FechaEstreno'>
                                         </label>
                                         @error('FechaEstreno')
                                             {{$message}}
                                         @enderror
                                         <label>Editorial:
-                                            <input type="text" wire:model.defer='Editorial'>
+                                            <input type="text" wire:model='Editorial'>
                                         </label>
                                         @error('Editorial')
                                             {{$message}}
                                         @enderror
                                         <label>Imagen:
-                                            <input type="file" wire:model="Imagen">
+                                            <input type="file" wire:model.live="Imagen">
                                         </label>
                                         @error('Imagen')
                                             {{$message}}
                                         @enderror
                                         <label>Formato:
-                                            <input type="text" wire:model.defer='Formato'>
+                                            <input type="text" wire:model='Formato'>
                                         </label>
                                         @error('Formato')
                                             {{$message}}
                                         @enderror
                                         <label>Fecha de ingreso:
-                                            <input type="date" wire:model.defer='FechaIngreso'>
+                                            <input type="date" wire:model='FechaIngreso'>
                                         </label>
                                         @error('FechaIngreso')
                                             {{$message}}
                                         @enderror
                                         <label>Programa de formacion:
-                                            <input type="text" wire:model.defer='ProgramaFormacion'>
+                                            <input type="text" wire:model='ProgramaFormacion'>
                                         </label>
                                         @error('ProgramaFormacion')
                                             {{$message}}
                                         @enderror
                                         <label>Numero de copias:
-                                            <input type="number" wire:model.defer='Copias'>
+                                            <input type="number" wire:model='Copias'>
                                         </label>
                                         @error('Copias')
                                             {{$message}}
                                         @enderror
                                         <label>Estado:
-                                            <input type="text" wire:model.defer='Estado'>
+                                            <input type="text" wire:model='Estado'>
                                         </label>
                                         @error('Estado')
                                             {{$message}}

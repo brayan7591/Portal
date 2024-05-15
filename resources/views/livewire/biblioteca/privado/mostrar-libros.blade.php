@@ -1,10 +1,10 @@
 <div>
     <div class="buscador">
         <label>Busca aqui:
-            <input type="text" wire:model="search">
+            <input type="text" wire:model.live="search">
         </label>
         <label>Cuantos deseas mirar:
-            <select wire:model="Books">
+            <select wire:model.live="Books">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="30">10</option>
@@ -33,7 +33,7 @@
                                     <p class="h4">Esta disponible en {{$libro->Formato}} Con {{$libro->Copias}} Copias en nuestra Biblioteca y actualmente esta {{$libro->Estado}}.</p>
                                     <p class="h4">Estrenado el {{$libro->FechaIngreso}}</p>
                                     <div class="opciones">
-                                        <button class="btn-danger h4" wire:click="$emit('deleteBook', {{$libro}})">Eliminar</button>
+                                        <button class="btn-danger h4" wire:click="$dispatch('deleteBook', {{$libro}})">Eliminar</button>
                                         <button class="btn-primary h4" type="button" data-toggle="modal" data-target="#Actualizarlibro" wire:click="update({{$libro}})">Actualizar</button>
                                     </div>
                                 </div>
@@ -93,61 +93,61 @@
                                     <div class="pagina">
                                         <h3>Rellena todos los campos para poder guardar el libro.</h3>
                                         <label>Id de la biblioteca:
-                                            <input type="number" wire:model.defer='IdBibliotecaActualizar'>
+                                            <input type="number" wire:model='IdBibliotecaActualizar'>
                                         </label>
                                         @error('IdBibliotecaActualizar')
                                             {{$message}}
                                         @enderror
                                         <label>Titulo:
-                                            <input type="text" wire:model.defer='TituloActualizar'>
+                                            <input type="text" wire:model='TituloActualizar'>
                                         </label>
                                         @error('TituloActualizar')
                                             {{$message}}
                                         @enderror
                                         <label>Fecha de estreno:
-                                            <input type="date" wire:model.defer='FechaEstrenoActualizar'>
+                                            <input type="date" wire:model='FechaEstrenoActualizar'>
                                         </label>
                                         @error('FechaEstrenoActualizar')
                                             {{$message}}
                                         @enderror
                                         <label>Editorial:
-                                            <input type="text" wire:model.defer='EditorialActualizar'>
+                                            <input type="text" wire:model='EditorialActualizar'>
                                         </label>
                                         @error('EditorialActualizar')
                                             {{$message}}
                                         @enderror
                                         <label>Imagen:
-                                            <input type="file" wire:model="ImagenActualizar" id="inputImage" accept="image/*">
+                                            <input type="file" wire:model.live="ImagenActualizar" id="inputImage" accept="image/*">
                                         </label>
                                         @error('ImagenActualizar')
                                             {{$message}}
                                         @enderror
                                         <label>Formato:
-                                            <input type="text" wire:model.defer='FormatoActualizar'>
+                                            <input type="text" wire:model='FormatoActualizar'>
                                         </label>
                                         @error('FormatoActualizar')
                                             {{$message}}
                                         @enderror
                                         <label>Fecha de ingreso:
-                                            <input type="date" wire:model.defer='FechaIngresoActualizar'>
+                                            <input type="date" wire:model='FechaIngresoActualizar'>
                                         </label>
                                         @error('FechaIngresoActualizar')
                                             {{$message}}
                                         @enderror
                                         <label>Programa de formacion:
-                                            <input type="text" wire:model.defer='ProgramaFormacionActualizar'>
+                                            <input type="text" wire:model='ProgramaFormacionActualizar'>
                                         </label>
                                         @error('ProgramaFormacionActualizar')
                                             {{$message}}
                                         @enderror
                                         <label>Numero de copias:
-                                            <input type="number" wire:model.defer='CopiasActualizar'>
+                                            <input type="number" wire:model='CopiasActualizar'>
                                         </label>
                                         @error('CopiasActualizar')
                                             {{$message}}
                                         @enderror
                                         <label>Estado:
-                                            <input type="text" wire:model.defer='EstadoActualizar'>
+                                            <input type="text" wire:model='EstadoActualizar'>
                                         </label>
                                         @error('EstadoActualizar')
                                             {{$message}}

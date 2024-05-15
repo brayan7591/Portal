@@ -41,7 +41,7 @@
         <h2 class="uno todo color">1.7 TITULO O CERTIFICADO QUE OBTENDRA:</h2>
         <h3 class="dos todo">{{ucfirst($nivelaceptado->nivel)}}</h3>
     </div>
-    @livewire('curriculum.buscar-curriculum', ['nivel' => $nivelaceptado])
+    @livewire('curriculum.buscar-curriculum', ['nivel' => $nivelaceptado->nivel, 'programa' => $nivelaceptado->programa_id])
 @endsection
 
 @section('Scripts')

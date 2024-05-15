@@ -61,7 +61,7 @@
           </div>
         </div>
     </nav>
-    <section class="min-vh-100 container bg-white" id="inicio">
+    <section class="min-vh-100 bg-red" id="inicio">
         <h1 class="text-center">PORTAL INFORMATIVO DEL SENA CBA</h1>
         <h2>Inicio:</h2>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus culpa vitae, error corporis illo nihil est illum debitis, earum delectus soluta asperiores facere numquam architecto at dolorem accusamus ipsam reiciendis.</p>

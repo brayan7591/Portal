@@ -1,6 +1,6 @@
 <div>
     <p class="my-0">Buscar: </p>
-    <select class="form-control me-2 mb-2" wire:model="model">
+    <select class="form-control me-2 mb-2" wire:model.live="model">
         <option value="programas">Programas</option>
         <option value="competencias">Competencias</option>
     </select>
@@ -11,7 +11,7 @@
     <div wire:loading.remove wire:target="model">
         @if ($model == 'programas')
             <p class="my-0">Seleccione el programa de formacion: </p>
-            <select class="form-control me-2" wire:model="search">
+            <select class="form-control me-2" wire:model.live="search">
                 <option value="">Todos</option>
                 @foreach ($programas as $programa)
                     <option value="{{$programa->id}}">{{$programa->NombrePrograma}}</option>
@@ -19,21 +19,21 @@
             </select>
         @else
             <p class="my-0">Buscar por: </p>
-            <select class="form-control me-2" wire:model="for">
+            <select class="form-control me-2" wire:model.live="for">
                 <option value="norma">Norma</option>
                 <option value="codigo">Codigo</option>
                 <option value="nombre">Nombre</option>
                 <option value="duracion">Duracion</option>
             </select>
             <label class="w-100">
-                <input class="form-control me-2" type="search" placeholder="Escribe Aqui" aria-label="Search" wire:model="search">
+                <input class="form-control me-2" type="search" placeholder="Escribe Aqui" aria-label="Search" wire:model.live="search">
             </label>
         @endif
         
         <div class="d-flex justify-content-between align-items-center mt-2">
             <div>
                 <span>Mostrar</span>
-                <select wire:model="registers">
+                <select wire:model.live="registers">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="5">5</option>
@@ -87,7 +87,7 @@
                             @else
                                 <p class="completo todo h3">No tiene competencias por el momento</p>
                             @endif
-                        <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2 type="button" data-toggle="modal" data-target="#ModificarPrograma" wire:click="updatePrograma({{$nivel}})"">Actualizar información</button><button class="btn btn-danger h2" wire:click="$emit('deleteProgramaNivel', {{$nivel}})">Borrar curriculum de  {{$nivel->nivel}} en  {{$nivel->programa->NombrePrograma}}</button></p>
+                        <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2 type="button" data-toggle="modal" data-target="#ModificarPrograma" wire:click="updatePrograma({{$nivel}})"">Actualizar información</button><button class="btn btn-danger h2" wire:click="$dispatch('deleteProgramaNivel', {{$nivel}})">Borrar curriculum de  {{$nivel->nivel}} en  {{$nivel->programa->NombrePrograma}}</button></p>
                     </div><br>
                 @endforeach
                 @if ($niveles->hasPages())
@@ -144,43 +144,43 @@
                         <p class="completo justify-content-center todo h2 color">{{$value + 1}}.5 RESULTADOS DE APRENDIZAJE (RAPS)</p>
                         @if ($competencia->raps->count() > 0)
                             @foreach ($competencia->raps as $value2 => $rap)
-                                <p class="completo todo h3">{{$value2 + 1}}. {{$rap->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('rap', {{$rap->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$rap->id}}, 'rap'])"><i class="fa fa-trash"></i></button></p>
+                                <p class="completo todo h3">{{$value2 + 1}}. {{$rap->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('rap', {{$rap->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$dispatch('deleteDato', [{{$rap->id}}, 'rap'])"><i class="fa fa-trash"></i></button></p>
                             @endforeach
-                            <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('rap', {{$competencia->codigo}})">Agregar nuevo rap</button><button class="btn btn-danger h2" wire:click="$emit('deleteTodosDato', [{{$competencia->codigo}}, 'rap'])">Eliminar todos los raps</button></p>
+                            <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('rap', {{$competencia->codigo}})">Agregar nuevo rap</button><button class="btn btn-danger h2" wire:click="$dispatch('deleteTodosDato', [{{$competencia->codigo}}, 'rap'])">Eliminar todos los raps</button></p>
                         @else
                             <p class="completo justify-content-center todo h3">No hay raps para esta competencia por el momento <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('rap', {{$competencia->codigo}})"><i class="fa fa-plus"></i></button></p>
                         @endif
                         <p class="completo justify-content-center todo h2 color">{{$value + 1}}.6 SABERES, CONCEPTOS Y PRINCIPIOS</p>
                         @if ($competencia->conceptos->count() > 0)
                             @foreach ($competencia->conceptos as $value2 => $concepto)
-                                <p class="completo todo h3">{{$value2 + 1}}. {{$concepto->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('saber', {{$concepto->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$concepto->id}}, 'saber'])"><i class="fa fa-trash"></i></button></p>
+                                <p class="completo todo h3">{{$value2 + 1}}. {{$concepto->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('saber', {{$concepto->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$dispatch('deleteDato', [{{$concepto->id}}, 'saber'])"><i class="fa fa-trash"></i></button></p>
                                 @if ($concepto->detalle->count() > 0)
                                     @foreach ($concepto->detalle as $value3 => $detalle)
-                                        <p class="completo todo h4"><span class="ml-3">{{$value2 + 1}}.{{$value3 + 1}} {{$detalle->descripcion}}</span><button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('detalle', {{$detalle->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$detalle->id}}, 'detalle'])"><i class="fa fa-trash"></i></button></p>
+                                        <p class="completo todo h4"><span class="ml-3">{{$value2 + 1}}.{{$value3 + 1}} {{$detalle->descripcion}}</span><button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('detalle', {{$detalle->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$dispatch('deleteDato', [{{$detalle->id}}, 'detalle'])"><i class="fa fa-trash"></i></button></p>
                                     @endforeach
-                                    <p class="completo justify-content-between todo h4"><button class="ml-3 btn btn-primary h4" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$concepto->id}})">Agregar nuevo detalle</button><button class="mr-3 btn btn-danger h4" wire:click="$emit('deleteTodosDato', [{{$concepto->id}}, 'detalle'])">Eliminar todos los detalles de conceptos</button></p>
+                                    <p class="completo justify-content-between todo h4"><button class="ml-3 btn btn-primary h4" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$concepto->id}})">Agregar nuevo detalle</button><button class="mr-3 btn btn-danger h4" wire:click="$dispatch('deleteTodosDato', [{{$concepto->id}}, 'detalle'])">Eliminar todos los detalles de conceptos</button></p>
                                 @else
                                     <p class="completo todo h4"><span class="ml-3">No hay detalles por el momento de este proceso</span><button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$concepto->id}})"><i class="fa fa-plus"></i></button></p>
                                 @endif
                             @endforeach
-                            <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('concepto', {{$competencia->codigo}})">Agregar nuevo concepto</button><button class="btn btn-danger h2" wire:click="$emit('deleteTodosDato', [{{$competencia->codigo}}, 'concepto'])">Eliminar todos los conceptos</button></p>
+                            <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('concepto', {{$competencia->codigo}})">Agregar nuevo concepto</button><button class="btn btn-danger h2" wire:click="$dispatch('deleteTodosDato', [{{$competencia->codigo}}, 'concepto'])">Eliminar todos los conceptos</button></p>
                         @else
                             <p class="completo justify-content-center todo h3">No hay saberes, conceptos o principios para esta competencia por el momento <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('concepto', {{$competencia->codigo}})"><i class="fa fa-plus"></i></button></p>
                         @endif
                         <p class="completo justify-content-center todo h2 color">{{$value + 1}}.7 SABERES DE PROCESOS</p>
                         @if ($competencia->saberes->count() > 0)
                             @foreach ($competencia->saberes as $value2 => $saber)
-                                <p class="completo todo h3">{{$value2 + 1}}. {{$saber->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('saber', {{$saber->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$saber->id}}, 'saber'])"><i class="fa fa-trash"></i></button></p>
+                                <p class="completo todo h3">{{$value2 + 1}}. {{$saber->descripcion}}<button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('saber', {{$saber->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$dispatch('deleteDato', [{{$saber->id}}, 'saber'])"><i class="fa fa-trash"></i></button></p>
                                 @if ($saber->detalle->count() > 0)
                                     @foreach ($saber->detalle as $value3 => $detalle)
-                                        <p class="completo todo h4"><span class="ml-3">{{$value2 + 1}}.{{$value3 + 1}} {{$detalle->descripcion}}</span><button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('detalle', {{$detalle->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$emit('deleteDato', [{{$detalle->id}}, 'detalle'])"><i class="fa fa-trash"></i></button></p>
+                                        <p class="completo todo h4"><span class="ml-3">{{$value2 + 1}}.{{$value3 + 1}} {{$detalle->descripcion}}</span><button class="btn btn-primary mr-2 ml-2" type="button" data-toggle="modal" data-target="#ModificarDatos" wire:click="ActualizarDato('detalle', {{$detalle->id}})"><i class="fa fa-pen"></i></button><button class="btn btn-danger" wire:click="$dispatch('deleteDato', [{{$detalle->id}}, 'detalle'])"><i class="fa fa-trash"></i></button></p>
                                     @endforeach
-                                    <p class="completo justify-content-between todo h4"><button class="btn btn-primary h4 ml-3" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$saber->id}})">Agregar nuevo detalle</button><button class="btn btn-danger h4 mr-3" wire:click="$emit('deleteTodosDato', [{{$saber->id}}, 'detalle'])">Eliminar todos los detalles de saberes</button></p>
+                                    <p class="completo justify-content-between todo h4"><button class="btn btn-primary h4 ml-3" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$saber->id}})">Agregar nuevo detalle</button><button class="btn btn-danger h4 mr-3" wire:click="$dispatch('deleteTodosDato', [{{$saber->id}}, 'detalle'])">Eliminar todos los detalles de saberes</button></p>
                                 @else
                                     <p class="completo todo h4"><span class="ml-3">No hay detalles por el momento de este saber</span><button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('detalle', {{$saber->id}})"><i class="fa fa-plus"></i></button></p>
                                 @endif
                             @endforeach
-                            <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('saber', {{$competencia->codigo}})">Agregar nuevo saber</button><button class="btn btn-danger h2" wire:click="$emit('deleteTodosDato', [{{$competencia->codigo}}, 'saber'])">Eliminar todos los saberes</button></p>
+                            <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('saber', {{$competencia->codigo}})">Agregar nuevo saber</button><button class="btn btn-danger h2" wire:click="$dispatch('deleteTodosDato', [{{$competencia->codigo}}, 'saber'])">Eliminar todos los saberes</button></p>
                         @else
                             <p class="completo justify-content-center todo h3">No hay saberes de proceso para esta competencia por el momento <button class="btn btn-primary ml-2" type="button" data-toggle="modal" data-target="#AgregarDatos" wire:click="AgregarDatoFuncion('saber', {{$competencia->codigo}})"><i class="fa fa-plus"></i></button></p>
                         @endif
@@ -190,7 +190,7 @@
                                 <p class="completo todo h3">{{$nivel->programa->NombrePrograma}}: {{$nivel->nivel}}</p>
                             @endforeach
                         @endif
-                        <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#ActualizarCompetencia" wire:click="ActualizarCompetencia({{$competencia->codigo}})">Actualizar información</button><button class="btn btn-danger h2" wire:click="$emit('deleteCompetencia', {{$competencia->codigo}})">Borrar competencia</button></p>
+                        <p class="completo justify-content-between todo h2"><button class="btn btn-primary h2" type="button" data-toggle="modal" data-target="#ActualizarCompetencia" wire:click="ActualizarCompetencia({{$competencia->codigo}})">Actualizar información</button><button class="btn btn-danger h2" wire:click="$dispatch('deleteCompetencia', {{$competencia->codigo}})">Borrar competencia</button></p>
                     </div><br>
                 @endforeach
                 @if ($competencias->hasPages())
@@ -237,28 +237,28 @@
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="updatePrograma">
                             <label for="Actualizar_Fecha_Inicio" class="form-label h4 font-weight-normal">Actualiza la fecha de inicio:</label>
-                            <input type="date" class="form-control" id="Actualizar_Fecha_Inicio" wire:model.defer='actFechaInicio'>
+                            <input type="date" class="form-control" id="Actualizar_Fecha_Inicio" wire:model='actFechaInicio'>
                             @error('actFechaInicio')
                                 <span>{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="updatePrograma">
                             <label for="Actualizar_Fecha_Final" class="form-label h4 font-weight-normal">Actualiza la fecha de finalización:</label>
-                            <input type="date" class="form-control" id="Actualizar_Fecha_Final" wire:model.defer='actFechaFinal'>
+                            <input type="date" class="form-control" id="Actualizar_Fecha_Final" wire:model='actFechaFinal'>
                             @error('actFechaFinal')
                                 <span>{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="updatePrograma">
                             <label for="Actualizar_Hora_Lectiva" class="form-label h4 font-weight-normal">Actualiza las horas lectivas:</label>
-                            <input type="number" class="form-control" id="Actualizar_Hora_Lectiva" wire:model.defer='actHoraLectiva' placeholder="En caso de no querer actualizarla, no escribir">
+                            <input type="number" class="form-control" id="Actualizar_Hora_Lectiva" wire:model='actHoraLectiva' placeholder="En caso de no querer actualizarla, no escribir">
                             @error('actHoraLectiva')
                                 <span>{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="updatePrograma">
                             <label for="Actualizar_Hora_Productiva" class="form-label h4 font-weight-normal">Actualiza las horas productivas:</label>
-                            <input type="number" class="form-control" id="Actualizar_Hora_Productiva" wire:model.defer='actHoraProductiva' placeholder="En caso de no querer actualizarla, no escribir">
+                            <input type="number" class="form-control" id="Actualizar_Hora_Productiva" wire:model='actHoraProductiva' placeholder="En caso de no querer actualizarla, no escribir">
                             @error('actHoraProductiva')
                                 <span>{{$message}}</span>
                             @enderror
@@ -268,7 +268,7 @@
                             @foreach ($competencias as $competencia)
                                 <div class="form-check mt-2">
                                     <label class="form-check-label h5">
-                                        <input class="form-check-input" wire:model.defer="CompetenciasPrograma" type="checkbox" name="rol" value="{{$competencia->codigo}}">{{$competencia->norma}}
+                                        <input class="form-check-input" wire:model="CompetenciasPrograma" type="checkbox" name="rol" value="{{$competencia->codigo}}">{{$competencia->norma}}
                                     </label>
                                 </div>
                             @endforeach
@@ -297,7 +297,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="Seleccionar_programa" class="form-label h4 font-weight-normal">Seleccione el programa de formación:</label>
-                            <select class="form-control me-2" wire:model="programaAgregar" id="Seleccionar_programa">
+                            <select class="form-control me-2" wire:model.live="programaAgregar" id="Seleccionar_programa">
                                 <option value="">Seleccione programa...</option>
                                 @foreach ($programas as $programa)
                                     <option value="{{$programa->id}}">{{$programa->NombrePrograma}}</option>
@@ -317,7 +317,7 @@
                             
                             <div class="mb-3" wire:loading.remove wire:target="programaAgregar">
                                 <label for="Ingresar_nivel" class="form-label h4 font-weight-normal">Escribe el nivel del programa:</label>
-                                <input type="text" class="form-control" id="Ingresar_nivel" wire:model='nivelAgregar' placeholder="Ejemplo: tecnico, tecnologo, etc">
+                                <input type="text" class="form-control" id="Ingresar_nivel" wire:model.live='nivelAgregar' placeholder="Ejemplo: tecnico, tecnologo, etc">
                                 @error('nivelAgregar')
                                     <span>{{$message}}</span>
                                 @enderror
@@ -329,28 +329,28 @@
                             @if ($mensajeExistente == false)
                                 <div class="mb-3" wire:loading.remove wire:target="programaAgregar">
                                     <label for="Agregar_Fecha_Inicio" class="form-label h4 font-weight-normal">Agrega la fecha de inicio:</label>
-                                    <input type="date" class="form-control" id="Agregar_Fecha_Inicio" wire:model.defer='AgregarFechaInicio'>
+                                    <input type="date" class="form-control" id="Agregar_Fecha_Inicio" wire:model='AgregarFechaInicio'>
                                     @error('AgregarFechaInicio')
                                         <span>{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-3" wire:loading.remove wire:target="programaAgregar">
                                     <label for="Agregar_Fecha_Final" class="form-label h4 font-weight-normal">Agrega la fecha de finalización:</label>
-                                    <input type="date" class="form-control" id="Agregar_Fecha_Final" wire:model.defer='AgregarFechaFinal'>
+                                    <input type="date" class="form-control" id="Agregar_Fecha_Final" wire:model='AgregarFechaFinal'>
                                     @error('AgregarFechaFinal')
                                         <span>{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-3" wire:loading.remove wire:target="programaAgregar">
                                     <label for="Agregar_Hora_Lectiva" class="form-label h4 font-weight-normal">Agregar las horas lectivas:</label>
-                                    <input type="number" class="form-control" id="Agregar_Hora_Lectiva" wire:model.defer='AgregarHoraLectiva'>
+                                    <input type="number" class="form-control" id="Agregar_Hora_Lectiva" wire:model='AgregarHoraLectiva'>
                                     @error('AgregarHoraLectiva')
                                         <span>{{$message}}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-3" wire:loading.remove wire:target="programaAgregar">
                                     <label for="Agregar_Hora_Productiva" class="form-label h4 font-weight-normal">Agregar las horas productivas:</label>
-                                    <input type="number" class="form-control" id="Agregar_Hora_Productiva" wire:model.defer='AgregarHoraProductiva'>
+                                    <input type="number" class="form-control" id="Agregar_Hora_Productiva" wire:model='AgregarHoraProductiva'>
                                     @error('AgregarHoraProductiva')
                                         <span>{{$message}}</span>
                                     @enderror
@@ -360,7 +360,7 @@
                                     @foreach ($competencias as $competencia)
                                         <div class="form-check mt-2">
                                             <label class="form-check-label h5">
-                                                <input class="form-check-input" wire:model.defer="AgregarCompetencias" type="checkbox" name="rol" value="{{$competencia->codigo}}">{{$competencia->norma}}
+                                                <input class="form-check-input" wire:model="AgregarCompetencias" type="checkbox" name="rol" value="{{$competencia->codigo}}">{{$competencia->norma}}
                                             </label>
                                         </div>
                                     @endforeach
@@ -399,7 +399,7 @@
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="ActualizarDato">
                             <label for="Actualizar_Dato" class="form-label h4 font-weight-normal">Actualiza el {{$opciones}}:</label>
-                            <textarea class="form-control h4" id="Actualizar_Dato" wire:model.defer='actDato'></textarea>
+                            <textarea class="form-control h4" id="Actualizar_Dato" wire:model='actDato'></textarea>
                             @error('actDato')
                                 <span>{{$message}}</span>
                             @enderror
@@ -429,7 +429,7 @@
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="AgregarDatoFuncion">
                             <label for="Agregar_Dato" class="form-label h4 font-weight-normal">Agregar un {{$opciones}}:</label>
-                            <textarea class="form-control h4" id="Agregar_Dato" wire:model.defer='AgregarDato'></textarea>
+                            <textarea class="form-control h4" id="Agregar_Dato" wire:model='AgregarDato'></textarea>
                             @error('AgregarDato')
                                 <span>{{$message}}</span>
                             @enderror
@@ -459,28 +459,28 @@
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="ActualizarCompetencia">
                             <label for="Actualizar_norma" class="form-label h4 font-weight-normal">Actualiza la norma / unidad de competencia:</label>
-                            <textarea class="form-control h4" id="Actualizar_norma" wire:model.defer='norma'></textarea>
+                            <textarea class="form-control h4" id="Actualizar_norma" wire:model='norma'></textarea>
                             @error('norma')
                                 <span>{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="ActualizarCompetencia">
                             <label for="Actualizar_codigo" class="form-label h4 font-weight-normal">Actualiza el codigo de la competencia:</label>
-                            <input type="number" class="form-control h4" id="Actualizar_codigo" wire:model.defer='codigo'>
+                            <input type="number" class="form-control h4" id="Actualizar_codigo" wire:model='codigo'>
                             @error('codigo')
                                 <span>{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="ActualizarCompetencia">
                             <label for="Actualizar_nombre" class="form-label h4 font-weight-normal">Actualiza el nombre de la competencia:</label>
-                            <input type="text" class="form-control h4" id="Actualizar_nombre" wire:model.defer='nombre'>
+                            <input type="text" class="form-control h4" id="Actualizar_nombre" wire:model='nombre'>
                             @error('nombre')
                                 <span>{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3" wire:loading.remove wire:target="ActualizarCompetencia">
                             <label for="Actualizar_horas" class="form-label h4 font-weight-normal">Actualiza las horas de la competencia:</label>
-                            <input type="number" class="form-control h4" id="Actualizar_horas" wire:model.defer='horas'>
+                            <input type="number" class="form-control h4" id="Actualizar_horas" wire:model='horas'>
                             @error('horas')
                                 <span>{{$message}}</span>
                             @enderror
@@ -490,7 +490,7 @@
                             @foreach ($niveles as $nivel)
                                 <div class="form-check mt-2">
                                     <label class="form-check-label h5">
-                                        <input class="form-check-input" wire:model.defer="competenciasnivel" type="checkbox" name="nivel" value="{{$nivel->nivel}}_{{$nivel->programa_id}}">{{$nivel->programa->NombrePrograma}}: {{$nivel->nivel}}
+                                        <input class="form-check-input" wire:model="competenciasnivel" type="checkbox" name="nivel" value="{{$nivel->nivel}}_{{$nivel->programa_id}}">{{$nivel->programa->NombrePrograma}}: {{$nivel->nivel}}
                                     </label>
                                 </div>
                             @endforeach
@@ -519,28 +519,28 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="Agregar_norma" class="form-label h4 font-weight-normal">Agrega la norma / unidad de competencia:</label>
-                            <textarea class="form-control h4" id="Agregar_norma" wire:model.defer='NuevaNorma'></textarea>
+                            <textarea class="form-control h4" id="Agregar_norma" wire:model='NuevaNorma'></textarea>
                             @error('NuevaNorma')
                                 <span>{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="Agregar_codigo" class="form-label h4 font-weight-normal">Agrega el codigo de la competencia:</label>
-                            <input type="number" class="form-control h4" id="Agregar_codigo" wire:model.defer='NuevoCodigo'>
+                            <input type="number" class="form-control h4" id="Agregar_codigo" wire:model='NuevoCodigo'>
                             @error('NuevoCodigo')
                                 <span>{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="Agregar_nombre" class="form-label h4 font-weight-normal">Agrega el nombre de la competencia:</label>
-                            <input type="text" class="form-control h4" id="Agregar_nombre" wire:model.defer='NuevoNombre'>
+                            <input type="text" class="form-control h4" id="Agregar_nombre" wire:model='NuevoNombre'>
                             @error('NuevoNombre')
                                 <span>{{$message}}</span>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label for="Agregar_horas" class="form-label h4 font-weight-normal">Agrega las horas de la competencia:</label>
-                            <input type="number" class="form-control h4" id="Agregar_horas" wire:model.defer='NuevaHora'>
+                            <input type="number" class="form-control h4" id="Agregar_horas" wire:model='NuevaHora'>
                             @error('NuevaHora')
                                 <span>{{$message}}</span>
                             @enderror
@@ -550,7 +550,7 @@
                             @foreach ($niveles as $nivel)
                                 <div class="form-check mt-2">
                                     <label class="form-check-label h5">
-                                        <input class="form-check-input" wire:model.defer="NuevosNiveles" type="checkbox" name="nivel" value="{{$nivel->nivel}}_{{$nivel->programa_id}}">{{$nivel->programa->NombrePrograma}}: {{$nivel->nivel}}
+                                        <input class="form-check-input" wire:model="NuevosNiveles" type="checkbox" name="nivel" value="{{$nivel->nivel}}_{{$nivel->programa_id}}">{{$nivel->programa->NombrePrograma}}: {{$nivel->nivel}}
                                     </label>
                                 </div>
                             @endforeach

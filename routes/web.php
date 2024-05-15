@@ -22,3 +22,18 @@ Route::get('/{programa}/curriculum/{nivel}', [PrincipalController::class, 'curri
 Route::post('/{programa}/curriculum/{nivel}', [PrincipalController::class, 'pdf'])->name('generar.pdf');
 Route::get('/{programa}/biblioteca', [PrincipalController::class, 'biblioteca'])->name('biblioteca');
 Route::get('/{programa}/instructores', [PrincipalController::class, 'instructores'])->name('instructores');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

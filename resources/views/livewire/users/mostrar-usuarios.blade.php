@@ -1,16 +1,16 @@
 <div>
     <p>Busqueda por: </p>
-    <select class="form-control me-2" wire:model="for">
+    <select class="form-control me-2" wire:model.live="for">
         <option value="name">Nombre</option>
         <option value="email">Correo electronico</option>
     </select>
     <label class="w-100">
-        <input class="form-control me-2" type="search" placeholder="Escribe Aqui" aria-label="Search" wire:model="search">
+        <input class="form-control me-2" type="search" placeholder="Escribe Aqui" aria-label="Search" wire:model.live="search">
     </label>
     <div class="d-flex justify-content-between align-items-center">
         <div>
             <span>Mostrar </span>
-            <select wire:model="registers">
+            <select wire:model.live="registers">
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="30">30</option>
@@ -82,7 +82,7 @@
                                     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user}})">Actualizar</button>
                                 @endcan
                                 @can('Users.destroy')
-                                    <button class="btn btn-danger" wire:click="$emit('deleteUser', {{$user}})">Eliminar</button>
+                                    <button class="btn btn-danger" wire:click="$dispatch('deleteUser', {{$user}})">Eliminar</button>
                                 @endcan
                             @endif
                         </td>                            
@@ -95,7 +95,7 @@
                                     <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ModificarUsuario" wire:click="update({{$user}})">Actualizar</button>
                                 @endcan
                                 @can('Users.destroy')
-                                    <button class="btn btn-danger" wire:click="$emit('deleteUser', {{$user}})">Eliminar</button>
+                                    <button class="btn btn-danger" wire:click="$dispatch('deleteUser', {{$user}})">Eliminar</button>
                                 @endcan
                             @endif
                         </td>
@@ -129,7 +129,7 @@
                     </div>
                     <div class="mb-3" wire:loading.remove wire:target="update">
                         <label for="Nombre_Usuario_Update" class="form-label h4 font-weight-normal">Actualiza el nombre del usuario:</label>
-                        <input type="text" class="form-control" id="Nombre_Usuario_Update" wire:model.defer='name'>
+                        <input type="text" class="form-control" id="Nombre_Usuario_Update" wire:model='name'>
                         @error('name')
                             <span>
                                 {{$message}}
@@ -138,7 +138,7 @@
                     </div>
                     <div class="mb-3" wire:loading.remove wire:target="update">
                         <label for="Email_Usuario_Update" class="form-label h4 font-weight-normal">Actualiza el correo del usuario:</label>
-                        <input type="email" class="form-control" id="Email_Usuario_Update" wire:model.defer='email'>
+                        <input type="email" class="form-control" id="Email_Usuario_Update" wire:model='email'>
                         @error('email')
                         <span>
                             {{$message}}
@@ -147,7 +147,7 @@
                     </div>
                     <div class="mb-3" wire:loading.remove wire:target="update">
                         <label for="Contraseña_Usuario_Update" class="form-label h4 font-weight-normal">Actualiza la contraseña:</label>
-                        <input type="password" class="form-control" id="Contraseña_Usuario_Update" wire:model.defer='password' placeholder="En caso de no querer actualizarla, no escribir">
+                        <input type="password" class="form-control" id="Contraseña_Usuario_Update" wire:model='password' placeholder="En caso de no querer actualizarla, no escribir">
                         @error('password')
                             <span>
                                 {{$message}}
@@ -159,7 +159,7 @@
                         @foreach ($roles as $role)
                         <div class="form-check">
                             <label class="form-check-label h5">
-                                <input class="form-check-input" wire:model.defer="rolesUsuario" type="checkbox" name="rol" value="{{$role->id}}">{{$role->name}}
+                                <input class="form-check-input" wire:model="rolesUsuario" type="checkbox" name="rol" value="{{$role->id}}">{{$role->name}}
                             </label>
                           </div>
                         @endforeach

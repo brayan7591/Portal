@@ -12,11 +12,9 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('css/TableAdmin.css')}} ">
-    @livewireStyles
 @stop
 
 @section('js')
-    @livewireScripts
     <script>
         Livewire.on('alertLibros', function (){
             document.getElementById('CerrarLibro').click();

@@ -12,11 +12,9 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/curriculum.css') }}">
-    @livewireStyles
 @stop
 
 @section('js')
-    @livewireScripts
     <script>
     function auto_grow(element) {
         element.style.height = "5px";
@@ -38,7 +36,7 @@
                 }).then((result) => {
                     if (result.value == true) {
 
-                        Livewire.emitTo('curriculum.privado.informacion-curriculum', 'delete', CompetenciaCodigo)
+                        Livewire.dispatchTo('curriculum.privado.informacion-curriculum', 'delete', [CompetenciaCodigo])
 
                         Swal.fire({
                             title: "Eliminado!",
@@ -62,7 +60,7 @@
                 }).then((result) => {
                     if (result.value == true) {
 
-                        Livewire.emitTo('curriculum.privado.informacion-curriculum', 'deleteNivel', ProgramaNivel)
+                        Livewire.dispatchTo('curriculum.privado.informacion-curriculum', 'deleteNivel', [ProgramaNivel])
 
                         Swal.fire({
                             title: "Eliminado!",
@@ -139,7 +137,7 @@
                 }).then((result) => {
                     if (result.value == true) {
 
-                        Livewire.emitTo('curriculum.privado.informacion-curriculum', 'deleteDatos', Dato)
+                        Livewire.dispatchTo('curriculum.privado.informacion-curriculum', 'deleteDatos', [Dato])
 
                         Swal.fire({
                             title: "Eliminado!",
@@ -163,7 +161,7 @@
                 }).then((result) => {
                     if (result.value == true) {
 
-                        Livewire.emitTo('curriculum.privado.informacion-curriculum', 'deleteTodosDatos', Dato)
+                        Livewire.dispatchTo('curriculum.privado.informacion-curriculum', 'deleteTodosDatos', [Dato])
 
                         Swal.fire({
                             title: "Eliminado!",

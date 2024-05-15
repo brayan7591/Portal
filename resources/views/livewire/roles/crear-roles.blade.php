@@ -16,7 +16,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="Rol" class="form-label h4 font-weight-normal">Nombre del rol:</label>
-                        <input type="text" class="form-control" name="rol" id="Rol" wire:model.defer='rol'>
+                        <input type="text" class="form-control" name="rol" id="Rol" wire:model='rol'>
                         @error('rol')
                             <span>
                                 {{$message}}

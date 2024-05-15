@@ -12,9 +12,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('css/TableAdmin.css')}} ">
-    @livewireStyles
 @stop
 
 @section('js')
-    @livewireScripts
 @stop

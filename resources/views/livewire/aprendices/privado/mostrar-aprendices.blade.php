@@ -1,13 +1,13 @@
 <div>
     <p>Busqueda por programa de formacion: </p>
-    <select class="form-control me-2" wire:model="for">
+    <select class="form-control me-2" wire:model.live="for">
         <option value="todos">Todos</option>
         @foreach ($programas as $programa)
             <option value="{{$programa->id}}">{{$programa->NombrePrograma}}</option>
         @endforeach
     </select>
     <label class="w-100">
-        <input class="form-control me-2" type="search" placeholder="Escribe Aqui" aria-label="Search" wire:model="search">
+        <input class="form-control me-2" type="search" placeholder="Escribe Aqui" aria-label="Search" wire:model.live="search">
     </label>
 
     @if ($aprendices->count())

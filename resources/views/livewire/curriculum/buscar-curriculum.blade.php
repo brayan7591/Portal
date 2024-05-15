@@ -1,10 +1,9 @@
 <div class="d-flex justify-content-center align-items-center flex-column">
     <div class="contenedor">
         <div class="input-group input-group-lg w-100 completo todo color ">
-            <input type="text" class="form-control input-color color h1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" wire:model="searchnorma" placeholder="Buscar Competencias por norma, codigo o nombre (susceptible a tildes)">
+            <input type="text" class="form-control input-color color h1" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" wire:model.live="searchnorma" placeholder="Buscar Competencias por norma, codigo o nombre (susceptible a tildes)">
         </div>
     </div>
-    
     @if ($competencias->count() > 0)
         @foreach ($competencias as $value => $competencia)
         <div class="contenedor">
@@ -54,22 +53,22 @@
         </div>
         @endforeach
     @else
-    <div class="contenedor">
-        <p class="completo justify-content-center todo h1 color">NO SE ENCONTRO</p>
-        <h2 class="uno todo color">NORMA / UNIDAD DE COMPETENCIA</h2>
-        <h3 class="dos todo">{{$searchnorma == '' ? 'No hay competencias por el momento' : $searchnorma}}</h3>
-        <h2 class="uno todo color">CÓDIGO NORMA DE COMPETENCIA LABORAL</h2>
-        <h3 class="dos todo">ERROR 404</h3>
-        <h2 class="uno todo color">NOMBRE DE LA COMPETENCIA</h2>
-        <h3 class="dos todo">ERROR 404</h3>
-        <h2 class="uno-tres todo color">DURACION MAXIMA ESTIMADA PARA EL LOGRO DEL APRENDIZAJE</h2>
-        <h3 class="tres-cuatro todo">404 Horas</h3>
-        <p class="completo justify-content-center todo h2 color">RESULTADOS DE APRENDIZAJE (RAPS)</p>
-        <p class="completo todo h3">Error 404</p>
-        <p class="completo justify-content-center todo h2 color">SABERES, CONCEPTOS Y PRINCIPIOS</p>
-        <p class="completo todo h3">Error 404</p>
-        <p class="completo justify-content-center todo h2 color">SABERES DE PROCESOS</p>
-        <p class="completo todo h3">Error 404</p>
-    </div>
+        <div class="contenedor">
+            <p class="completo justify-content-center todo h1 color">NO SE ENCONTRO</p>
+            <h2 class="uno todo color">NORMA / UNIDAD DE COMPETENCIA</h2>
+            <h3 class="dos todo">{{$searchnorma == '' ? 'No hay competencias por el momento' : $searchnorma}}</h3>
+            <h2 class="uno todo color">CÓDIGO NORMA DE COMPETENCIA LABORAL</h2>
+            <h3 class="dos todo">ERROR 404</h3>
+            <h2 class="uno todo color">NOMBRE DE LA COMPETENCIA</h2>
+            <h3 class="dos todo">ERROR 404</h3>
+            <h2 class="uno-tres todo color">DURACION MAXIMA ESTIMADA PARA EL LOGRO DEL APRENDIZAJE</h2>
+            <h3 class="tres-cuatro todo">404 Horas</h3>
+            <p class="completo justify-content-center todo h2 color">RESULTADOS DE APRENDIZAJE (RAPS)</p>
+            <p class="completo todo h3">Error 404</p>
+            <p class="completo justify-content-center todo h2 color">SABERES, CONCEPTOS Y PRINCIPIOS</p>
+            <p class="completo todo h3">Error 404</p>
+            <p class="completo justify-content-center todo h2 color">SABERES DE PROCESOS</p>
+            <p class="completo todo h3">Error 404</p>
+        </div>
     @endif
 </div>

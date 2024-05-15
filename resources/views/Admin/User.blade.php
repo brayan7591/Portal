@@ -12,12 +12,11 @@
 
 @section('css')
     <link rel="stylesheet" href="{{asset('css/TableAdmin.css')}} ">
-    @livewireStyles
 @stop
 
 @section('js')
-    @livewireScripts
     <script>
+
         Livewire.on('alert', function (){
             document.getElementById('Closemodal').click();
             Swal.fire({
@@ -34,7 +33,7 @@
                 type: "success"
             })
         })
-        Livewire.on('deleteUser', userId => {
+        Livewire.on('deleteUser', userId=> {
             Swal.fire({
                 title: "¿Estas seguro de eliminar este registro?",
                 text: "Esta accion no se puede revertir! ",
@@ -45,9 +44,10 @@
                 confirmButtonText: "Eliminar!",
                 cancelButtonText: "Cancelar"
                 }).then((result) => {
+                    
                     if (result.value == true) {
 
-                        Livewire.emitTo('users.mostrar-usuarios', 'delete', userId)
+                        Livewire.dispatchTo('users.mostrar-usuarios', 'delete', [userId])
 
                         Swal.fire({
                             title: "Eliminado!",

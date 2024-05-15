@@ -15,7 +15,7 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <label for="Nombre_Usuario" class="form-label h4 font-weight-normal">Nombre del usuario:</label>
-                    <input type="text" class="form-control" id="Nombre_Usuario" wire:model.defer='name'>
+                    <input type="text" class="form-control" id="Nombre_Usuario" wire:model='name'>
                     @error('name')
                         <span>
                             {{$message}}
@@ -24,7 +24,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="Email_Usuario" class="form-label h4 font-weight-normal">Correo del usuario:</label>
-                    <input type="email" class="form-control" id="Email_Usuario" wire:model.defer='email'>
+                    <input type="email" class="form-control" id="Email_Usuario" wire:model='email'>
                     @error('email')
                     <span>
                         {{$message}}
@@ -33,7 +33,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="Contraseña_Usuario" class="form-label h4 font-weight-normal">Contraseña:</label>
-                    <input type="password" class="form-control" id="Contraseña_Usuario" wire:model.defer='password'>
+                    <input type="password" class="form-control" id="Contraseña_Usuario" wire:model='password'>
                     @error('password')
                         <span>
                             {{$message}}
@@ -45,7 +45,7 @@
                     @foreach ($roles as $role)
                     <div class="form-check">
                         <label class="form-check-label h5">
-                            <input class="form-check-input" wire:model.defer="rolesUsuario" type="checkbox" name="rol" value="{{$role->id}}">{{$role->name}}
+                            <input class="form-check-input" wire:model="rolesUsuario" type="checkbox" name="rol" value="{{$role->id}}">{{$role->name}}
                         </label>
                       </div>
                     @endforeach
