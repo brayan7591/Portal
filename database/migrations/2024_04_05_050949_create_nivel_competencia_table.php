@@ -14,9 +14,9 @@ class CreateNivelCompetenciaTable extends Migration
     public function up()
     {
         Schema::create('nivel_competencia', function (Blueprint $table) {
-            $table->string('nivel');
+            $table->string('SlugInterno');
             $table->unsignedBigInteger('programa_id');
-            $table->foreign(['programa_id', 'nivel'])->references(['programa_id', 'nivel'])->on('niveles')->onDelete('cascade');
+            $table->foreign(['programa_id', 'SlugInterno'])->references(['programa_id', 'SlugInterno'])->on('niveles')->onDelete('cascade');
             $table->integer('codigo_competencia');
             $table->foreign('codigo_competencia')->references('codigo')->on('competencias')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

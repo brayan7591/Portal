@@ -14,14 +14,15 @@ class CreateNivelesTable extends Migration
     public function up()
     {
         Schema::create('niveles', function (Blueprint $table) {
-            $table->string('nivel');
+            $table->string('Nivel');
+            $table->string('SlugInterno');
             $table->date('FechaInicio');
             $table->date('FechaFin')->nullable();
             $table->integer('HorasEtapaLectiva');
             $table->integer('HorasEtapaProductiva');
             $table->unsignedBigInteger('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas')->onDelete('cascade');
-            $table->primary(['nivel', 'programa_id']);
+            $table->primary(['SlugInterno', 'programa_id']);
             $table->timestamps();
         });
     }

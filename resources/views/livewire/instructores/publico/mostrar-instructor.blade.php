@@ -1,11 +1,6 @@
 <div>
-    <header id="inicio" class="container__cover div__offset">
-        <div class="cover">
-            <section class="text__cover">
-                <h1>Instructores del CBA en el programa {{$programa->NombrePrograma}}</h1>
-            </section>
-        </div>
-</header>
+    <h1 class="text-center">Instructores del CBA en el programa {{$programa->NombrePrograma}}</h1>
+
     <div class="container__about div__offset">
         <div class="about" id="buscar">
             <div class="text__about">
@@ -29,7 +24,6 @@
                 <p>Explora nuestras diversas áreas de estudio.Utiliza nuestros filtros por área de estudio para encontrar instructores especializados en el campo que te interese.</p>
             </div>
             <div class="container__trust container__box-cardPrimary">
-            <div class='card__trust box__card-primary'><img src='img/user.png' alt><br><a href="?area=#swipe">Todas las carreras</a></div>
             {{-- <?php
     // Consulta para obtener las carreras disponibles
     $consultaCarreras = "SELECT DISTINCT area FROM tinstructores";
@@ -137,44 +131,4 @@
     }
     ?> --}}
     
-    <section class="form" id="form_nuevo">
-    <form action="#swipe" method="POST"  enctype="multipart/form-data">
-    <h2>Informacion Basica</h2>
-    <label for="nombres">Nombres:</label>
-    <input type="text" name="nombres"  required><br>
-    
-    <label for="apellidos">Apellidos:</label>
-    <input type="text" name="apellidos" required><br>
-    
-    <label for="correo_electronico">Correo Electrónico:</label>
-    <input type="email" name="correo_electronico" required><br>
-    
-    <label for="telefono">Teléfono:</label>
-    <input type="text" name="telefono"  required><br>
-    
-    <label for="descripcion">Descripción:</label>
-    <textarea name="descripcion" required></textarea><br>
-    
-    <label for="imagen">Imagen:</label>
-    <input type="file" name="imagen" required><br>
-    
-    <label for="especialidad">Especialidad:</label>
-    <input type="text" name="especialidad" required><br>
-    
-    <label for="area">Area:</label>
-    <input type="text" name="area" required><br>
-    
-    <label for="competencias">Competencias (separadas por guion "-"):</label>
-    <textarea name="competencias" required></textarea><br>
-    
-    <label for="jornada">Jornada:</label>
-    <select name="jornada" required>
-    <option value="manana" >mañana</option>
-    <option value="tarde">tarde</option>
-    <option value="mixta">mixta</option>
-    <option value="nocturna">nocturna</option>
-    </select><br>
-    <input type="submit" name="envio" value="Ingresar nuevo instructor">
-    </form>
-    </section>
 </div>

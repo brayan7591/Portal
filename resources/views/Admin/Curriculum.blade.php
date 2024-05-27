@@ -3,15 +3,20 @@
 @section('title', 'Curriculum')
 
 @section('content_header')
-    <h1>Curriculum</h1>
+    <h1 class="text-center">CURRICULUM</h1>
 @stop
 
 @section('content')
-    @livewire('curriculum.privado.informacion-curriculum')
+    @livewire('admin.curriculum')
 @stop
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/curriculum.css') }}">
+    <style>
+        :root{
+            scrollbar-gutter: stable;
+        }
+    </style>
 @stop
 
 @section('js')
@@ -60,7 +65,7 @@
                 }).then((result) => {
                     if (result.value == true) {
 
-                        Livewire.dispatchTo('curriculum.privado.informacion-curriculum', 'deleteNivel', [ProgramaNivel])
+                        Livewire.dispatchTo('admin.curriculum', 'deleteNivel', [ProgramaNivel])
 
                         Swal.fire({
                             title: "Eliminado!",

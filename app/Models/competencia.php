@@ -10,7 +10,7 @@ class competencia extends Model
     use HasFactory;
 
     public function niveles() {
-        $niveles = $this->belongsToMany('App\Models\nivele', 'nivel_competencia', 'codigo_competencia', 'nivel', 'codigo', 'nivel');
+        $niveles = $this->belongsToMany('App\Models\nivele', 'nivel_competencia', 'codigo_competencia', 'SlugInterno', 'codigo', 'SlugInterno');
         $niveles->getBaseQuery()->joins[0]->wheres[1] = ['type' => 'Column', "first" => "niveles.programa_id", "operator" => "=", "second" => "nivel_competencia.programa_id", "boolean" => "and"];
         return $niveles;
     }

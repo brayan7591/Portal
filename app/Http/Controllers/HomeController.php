@@ -20,7 +20,7 @@ class HomeController extends Controller
     }
 
     public function users(){
-        return view('Admin.User');
+        return view('Admin.Usuarios');
     }
 
     public function roles(){
@@ -32,8 +32,28 @@ class HomeController extends Controller
         return view('Admin.Settings', compact('user'));
     }
 
+    public function curriculum(){
+        return view('Admin.Curriculum');
+    }
+
+    public function eventos(){
+        return view('Admin.Eventos');
+    }
+
+    public function proyectos(){
+        return view('Admin.Proyectos');
+    }
+
     public function biblioteca(){
         return view('Admin.Biblioteca');
+    }
+    
+    public function personajes_informativos(){
+        return view('Admin.PersonajesInformativos');
+    }
+
+    public function personajes_destacados(){
+        return view('Admin.PersonajesDestacados');
     }
 
     public function ActualizarUsuario(Request $request){
@@ -66,21 +86,5 @@ class HomeController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Se actualizo su contraseña');
     }
-
-    public function aprendices(){
-        return view('Admin.Aprendices');
-    }
-    public function egresados(){
-        return view('Admin.Egresados');
-    }
-    public function instructores(){
-        return view('Admin.Instructores');
-    }
-    public function voceros(){
-        return view('Admin.Voceros');
-    }
     
-    public function curriculum(){
-        return view('Admin.Curriculum');
-    }
 }

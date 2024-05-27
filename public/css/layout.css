@@ -1,15 +1,26 @@
 :root{
   --tamañoIcons: 75px;
-  --SubIcons: 50px;
-  --num:12;
+  --SubIcons: 60px;
+  --num:8;
 }
-
 .fondo{
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
+  height: 500px;
+  transition: height 1s ease;
+}
+
+.menuhidden .fondo{
+  height: 0;
+}
+
+.menuhidden .menu{
+  z-index: -1;
+  opacity: 0;
+  transition: z-index 1s step-end, opacity 1s linear;
 }
 
 .fondo img{
@@ -29,13 +40,15 @@
 .menu{
   position: relative;
   width: 100%;
-  min-height: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0;
   margin-top: 0;
   margin-bottom: 0;
+  z-index: 1;
+  opacity: 1;
+  transition: z-index 1s step-start, opacity 1s linear;
 }
 
 .menu .toggle{
@@ -60,10 +73,12 @@
   transition: .5s;
   width: var(--SubIcons);
   height: var(--SubIcons);
-  border: 1px solid var(--clr);
   list-style: none;
   border-radius: 100%;
   transition-delay: calc(0.1s * var(--i));
+}
+.menu .proyectos:hover{
+  z-index: 2;
 }
 
 .menu .proyectos a{
@@ -76,8 +91,19 @@
   border: 2px solid var(--clr);
   border-radius: 100%;
   font-size: 1.5em;
-  transform: rotate(calc(360deg / -12 * var(--i)));
+  transform: rotate(calc(360deg / (-1 * var(--num)) * var(--i)));
   transition: 1s;
+}
+
+.menu .proyectos a span{
+  position: absolute;
+  color: black;
+  background-color: var(--clr);
+  top: var(--SubIcons);
+  opacity: 1;
+  font-size: 15px;
+  visibility: hidden;
+  padding: 3px;
 }
 
 .menu .proyectos a:hover{
@@ -87,15 +113,18 @@
   color: #333;
 }
 
+.menu .proyectos a:hover span{
+  visibility: visible;
+}
+
 .menu.active .toggle{
   transform: rotate(345deg);
 }
 
 .menu.active .proyectos{
-  transform: rotate(calc(360deg / 12 * var(--i))) translateX(-130px);
+  transform: rotate(calc(360deg / var(--num) * var(--i))) translateX(-130px);
 }
 
 p{
-  font-size: 4rem;
   line-height: 2;
 }

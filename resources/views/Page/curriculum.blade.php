@@ -7,7 +7,7 @@
 
 @section('content')
     <div class="d-flex justify-content-end align-items-center" style="width: 90%">
-        <form action="{{ route('generar.pdf', [$programa->slug, $nivelaceptado->nivel]) }}" method="POST">
+        <form action="{{ route('generar.pdf', [$programa->slug, $nivelaceptado->SlugInterno]) }}" method="POST">
             @csrf
             <button class="btn btn-danger btn-lg" type="submit">Generar pdf</button>
         </form>
@@ -39,9 +39,9 @@
         <h2 class="uno todo color">1.6 TIPO DEL PROGRAMA</h2>
         <h3 class="dos todo">Titulado</h3>
         <h2 class="uno todo color">1.7 TITULO O CERTIFICADO QUE OBTENDRA:</h2>
-        <h3 class="dos todo">{{ucfirst($nivelaceptado->nivel)}}</h3>
+        <h3 class="dos todo">{{$nivelaceptado->Nivel}}</h3>
     </div>
-    @livewire('curriculum.buscar-curriculum', ['nivel' => $nivelaceptado->nivel, 'programa' => $nivelaceptado->programa_id])
+    @livewire('curriculum.buscar-curriculum', ['nivel' => $nivelaceptado->SlugInterno, 'programa' => $nivelaceptado->programa_id])
 @endsection
 
 @section('Scripts')
