@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/principal.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('favicons/favicon.icon') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" type="image/x-icon">
     <title>Portal</title>
 </head>
 <body>
     <nav class="navbar sticky-top navbar-expand-lg py-2" id="navbar-principal">
         <div class="container-fluid">
             <a class="navbar-brand d-flex gap-2 align-items" href="{{route('principal')}}">
-                <img src="{{Storage::url('imagenes/logo.png')}}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">PortalWeb
+                <img src="{{asset('favicons/favicon.ico')}}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">PortalWeb
             </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,6 +28,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contacto">Contactanos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#ubicacion">Ubicacion</a>
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
@@ -47,7 +50,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            @can('dashboard')
+                            @can('Dashboard')
                                 <a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a>
                             @endcan
                             <form action="{{ route('logout') }}" method="POST">
@@ -61,19 +64,19 @@
           </div>
         </div>
     </nav>
-    <section class="min-vh-100 bg-red" id="inicio">
+    <section class="min-vh-100 p-4" id="inicio">
         <h1 class="text-center">PORTAL INFORMATIVO DEL SENA CBA</h1>
         <h2>Inicio:</h2>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus culpa vitae, error corporis illo nihil est illum debitis, earum delectus soluta asperiores facere numquam architecto at dolorem accusamus ipsam reiciendis.</p>
     </section>
-    <section class="bg-gray" id="programas">
+    <section class="min-vh-100 bg-gray p-4" id="programas">
         <span class="text-center d-block h3">Conoce mas</span>
         <h1 class="text-center text-primary">OBTENDRAS MAS INFORMACIÓN ACERCA DE NUESTROS PROGRAMAS</h1>
         <div class="programas">
             @foreach ($Programas as $Programa)
                 <div class="border border-dark rounded ajustar">
                     <h2 class="text-center">{{$Programa->NombrePrograma}}</h2>
-                    <div class="imagen"><img src="{{$Programa->imagen}}" alt="imagen de {{$Programa->NombrePrograma}}"></div>
+                    <div class="imagen"><img src="{{Storage::url($Programa->imagen)}}" alt="imagen de {{$Programa->NombrePrograma}}"></div>
                     <p class="sobretexto">{{$Programa->Descripcion}}</p>
                     <div class="d-flex justify-content-center  align-items-center boton">
                         <a href="{{route('landingPage', $Programa->slug)}}" type="button" class="btn btn-primary text-center">Conoce más</a>
@@ -82,9 +85,15 @@
             @endforeach
         </div>
     </section>
-    <section class="min-vh-100 bg-white" id="contacto">
+    <section class="min-vh-100 bg-white p-4" id="contacto">
         <h1 class="text-center">Contactanos</h1>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus culpa vitae, error corporis illo nihil est illum debitis, earum delectus soluta asperiores facere numquam architecto at dolorem accusamus ipsam reiciendis.</p>
+    </section>
+    <section class="min-vh-100 bg-gray p-4" id="ubicacion">
+        <h1 class="text-center">Donde estamos ubicados:</h1>
+        <div class="mapa" style="height:100vh">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4644.341978578333!2d-74.21820092438342!3d4.695709041699507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9d58cf6e291b%3A0x8946ec678fcf04b4!2sSENA%20Mosquera%20-%20Centro%20de%20Biotecnolog%C3%ADa%20Agropecuaria%20(CBA)!5e1!3m2!1ses-419!2sco!4v1716822480771!5m2!1ses-419!2sco" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+        </div>
     </section>
     <footer class="bg-dark text-white p-4">
         <p class="h1 m-0">Todos los derechos reservados Copyrigth &copy;</p>

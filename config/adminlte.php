@@ -312,19 +312,21 @@ return [
             'text' => 'Dashboard',
             'route' => 'dashboard',
             'icon' => 'fas fa-fw fa-home',
+            'can' => 'Dashboard',
         ],
         [
             'text' => 'Usuarios',
             'route' => 'users',
             'icon' => 'fas fa-fw fa-users',
-            'can' => 'Users.mirar',
+            'can' => 'Usuarios.mirar',
         ],
         [
             'text' => 'Roles',
             'route' => 'roles',
             'icon' => 'fas fa-fw fa-unlock',
-            'label'       => 'New',
+            'label'       => 'Nuevos',
             'label_color' => 'danger',
+            'can' => 'Roles.mirar',
         ],
         
 
@@ -334,11 +336,13 @@ return [
             'text' => 'Actualizar perfil',
             'route' => 'settings',
             'icon' => 'fas fa-fw fa-user',
+            'can' => 'Dashboard',
         ],
         [
             'text' => 'Cambiar Contraseña',
             'route' => 'CamContra',
             'icon' => 'fas fa-fw fa-lock',
+            'can' => 'Dashboard',
         ],
 
         ['header' => 'OPCIONES'],
@@ -347,50 +351,41 @@ return [
             'text' => 'Curriculum',
             'icon_color' => 'red',
             'route'  => 'admin.curriculum',
-        ],
-
-        [
-            'text' => 'Voceros',
-            'icon_color' => 'blue',
-            'route' => 'admin.voceros',
-        ],
-        
-        [
-            'text' => 'Instructores',
-            'icon_color' => 'red',
-            'route' => 'admin.instructores',
-        ],
-        [
-            'text' => 'Egresados destacados',
-            'icon_color' => 'yellow',
-            'route' => 'admin.egresados',
-        ],
-        [
-            'text' => 'Aprendices destacados',
-            'icon_color' => 'blue',
-            'route' => 'admin.aprendices',
+            'can' => 'Curriculum.mirar',
         ],
 
         [
             'text' => 'Eventos y galeria',
             'icon_color' => 'blue',
-            'url'  => '#',
+            'route'  => 'admin.eventos',
+            'can' => 'Eventos.mirar',
         ],
 
         [
             'text' => 'Proyectos',
             'icon_color' => 'white',
-            'url'  => '#',
+            'route'  => 'admin.proyectos',
+            'can' => 'Proyectos.mirar',
         ],
         [
             'text' => 'Biblioteca',
             'icon_color' => 'orange',
             'route' => 'admin.biblioteca',
+            'can' => 'Biblioteca.mirar',
         ],
+
         [
-            'text' => 'Estadisticas',
-            'icon_color' => 'gray',
-            'url'  => '#',
+            'text' => 'Voceros e Instructores',
+            'icon_color' => 'blue',
+            'route' => 'admin.informativos',
+            'can' => 'Informativos.mirar',
+        ],
+        
+        [
+            'text' => 'Egresados y Aprendices',
+            'icon_color' => 'yellow',
+            'route' => 'admin.destacados',
+            'can' => 'Destacados.mirar',
         ],
 
     ],
@@ -451,7 +446,7 @@ return [
             ],
         ],
         'Select2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

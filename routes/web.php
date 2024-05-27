@@ -16,24 +16,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PrincipalController::class, 'index'])->name('principal');
+Route::post('/actualizar-menu', [PrincipalController::class, 'menu'])->name('actualizar-menu');
+
 Auth::routes();
+
 Route::get('/{programa}', [PrincipalController::class, 'landingpage'])->name('landingPage');
 Route::get('/{programa}/curriculum/{nivel}', [PrincipalController::class, 'curriculum'])->name('curriculum');
 Route::post('/{programa}/curriculum/{nivel}', [PrincipalController::class, 'pdf'])->name('generar.pdf');
+Route::get('/{programa}/eventos', [PrincipalController::class, 'eventos'])->name('eventos');
+Route::get('/{programa}/proyectos', [PrincipalController::class, 'proyectos'])->name('proyectos');
 Route::get('/{programa}/biblioteca', [PrincipalController::class, 'biblioteca'])->name('biblioteca');
 Route::get('/{programa}/instructores', [PrincipalController::class, 'instructores'])->name('instructores');
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{programa}/egresados', [PrincipalController::class, 'egresados'])->name('egresados');
+Route::get('/{programa}/aprendices', [PrincipalController::class, 'aprendices'])->name('aprendices');
+Route::get('/{programa}/voceros', [PrincipalController::class, 'voceros'])->name('voceros');

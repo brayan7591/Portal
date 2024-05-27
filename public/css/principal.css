@@ -3,15 +3,21 @@
     min-height: 100vh;
     padding-top: 8px;
 }
+
 nav{
     z-index: 20;
     background-color: rgb(255, 255, 255);
 }
+
+.mapa{
+    min-height: 300px;
+    height:100vh;
+}
+
 .programas{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 8px;
-    padding: 8px;
 }
 .programas .ajustar{
     height: 600px;
@@ -27,13 +33,15 @@ nav{
 .programas .ajustar:hover{
     background-color: rgb(232, 241, 244);
 }
+
 .programas .ajustar .sobretexto{
-    padding: 0;
+    padding: 4px;
     margin: 0;
     height: 40%;
     white-space: pre-line;
     overflow-y: auto;
 }
+
 .programas .ajustar .boton{
     height: 10%;
 }
@@ -53,8 +61,6 @@ nav{
     line-height: 2.2rem;
     font-weight: 500;
     overflow: hidden;
-    /* display: block; */
-    /* max-height: 4.4rem; */
     -webkit-line-clamp: 2;
     display: box;
     display: -webkit-box;

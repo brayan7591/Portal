@@ -18,20 +18,34 @@ class UserSeeder extends Seeder
             'name' => 'lol',
             'email' => 'lol@lol.com',
             'password' => bcrypt('123456789')
-        ])->assignRole('Admin');
+        ])->assignRole('Administrador');
 
-        User::factory(10)->create();
+        User::create([
+            'name' => 'espectador',
+            'email' => 'espectador@espectador.com',
+            'password' => bcrypt('espectador')
+        ])->assignRole('Espectador');
+
+        User::create([
+            'name' => 'creador',
+            'email' => 'creador@creador.com',
+            'password' => bcrypt('creador')
+        ])->assignRole('Creador');
 
         User::create([
             'name' => 'editor',
             'email' => 'editor@editor.com',
-            'password' => bcrypt('123456789')
+            'password' => bcrypt('editor')
         ])->assignRole('Editor');
 
         User::create([
             'name' => 'eliminador',
             'email' => 'eliminador@eliminador.com',
-            'password' => bcrypt('123456789')
+            'password' => bcrypt('eliminador')
         ])->assignRole('Eliminador');
+
+        User::factory(10)->create();
+
+        
     }
 }

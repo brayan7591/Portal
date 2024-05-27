@@ -1,5 +1,5 @@
 <div>
-    <button class="btn btn-success" id="modal" type="button" data-toggle="modal" data-target="#AgregarRol">Agregar Rol</button>
+    
   
   <!-- Modal -->
     <div class="modal fade" id="AgregarRol" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

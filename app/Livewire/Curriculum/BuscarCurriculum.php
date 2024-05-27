@@ -12,7 +12,7 @@ class BuscarCurriculum extends Component
     public $searchnorma = '';
 
     public function render(){
-        $nivelaso = nivele::where('nivel', $this->nivel)->where('programa_id', $this->programa)->first();
+        $nivelaso = nivele::where('SlugInterno', $this->nivel)->where('programa_id', $this->programa)->first();
 
         $competencias = $nivelaso->competencias->filter(function($value){return false !== stripos($value['norma'], $this->searchnorma);});
         if ($competencias->count() == 0) {
