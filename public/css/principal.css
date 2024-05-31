@@ -1,5 +1,7 @@
 .bg-gray{
-    background-color: rgb(237 237 237);
+    background-color: #39a900(60, 30, 190);
+    min-height: 100vh;
+    padding-top: 8px;
 }
 
 nav{
