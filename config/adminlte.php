@@ -376,7 +376,7 @@ return [
 
         [
             'text' => 'Voceros e Instructores',
-            'icon_color' => 'blue',
+            'icon_color' => 'black',
             'route' => 'admin.informativos',
             'can' => 'Informativos.mirar',
         ],

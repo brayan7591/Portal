@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RapSeeder::class);
         $this->call(SaberSeeder::class);
         $this->call(DetalleSabereSeeder::class);
-
+        $this->call(InstructorSeeder::class);
+        
         biblioteca::factory(5)->create();
 
     }
