@@ -17,9 +17,11 @@ class DatabaseSeeder extends Seeder
     {
         Storage::deleteDirectory('public/imagenes/libro');
         Storage::deleteDirectory('public/imagenes/programas');
+        Storage::deleteDirectory('public/imagenes/instructores');
+        
         Storage::makeDirectory('public/imagenes/libro');
         Storage::makeDirectory('public/imagenes/programas');
-
+        Storage::makeDirectory('public/imagenes/instructores');
         
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);

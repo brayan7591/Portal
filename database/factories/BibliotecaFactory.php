@@ -22,7 +22,7 @@ class BibliotecaFactory extends Factory
             'Titulo' => $this->faker->word(10),
             'FechaEstreno' => $this->faker->date(),
             'Editorial' => $this->faker->word(20),
-            'Imagen' => 'imagenes/libro/' . $this->faker->image('public/storage/imagenes/libro', 480, 640, 'Libro', false),
+            'Imagen' => "imagenes/libro/" . $this->faker->image('public/storage/imagenes/libro', 480, 640, 'Libro', false),
             'Formato' => $this->faker->randomElement(['pdf', 'papel']),
             'FechaIngreso' => $this->faker->date(),
             'programa_id' => programa::all()->random()->id,

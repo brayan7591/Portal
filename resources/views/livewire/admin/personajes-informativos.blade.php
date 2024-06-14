@@ -1,8 +1,18 @@
 <div>
-    <h2>Instructores:</h2>
-    @can('Informativos.crear')
-        <button class="btn btn-primary mb-2" id="modal" type="button" data-toggle="modal" data-target="#AgregarInstructor">Agregar Instructor</button>
-    @endcan
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Voceros:</h2>
+        @can('Informativos.crear')
+            <button class="btn btn-primary mb-2" id="modal" type="button" data-toggle="modal" data-target="#AgregarInstructor">Agregar Vocero</button>
+        @endcan
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Instructores:</h2>
+        @can('Informativos.crear')
+            <button class="btn btn-primary mb-2" id="modal" type="button" data-toggle="modal" data-target="#AgregarInstructor">Agregar Instructor</button>
+        @endcan
+    </div>
+
     @if ($instructores->count() > 0)
         <div class="instructores">
             @foreach ($instructores as $instructor)
@@ -10,7 +20,11 @@
                     <div class="tmodal">
                         <div class="pagina inicial">
                             <div class="imagen ml-2">
-
+                                @if ($instructor->imagen)
+                                    <img src="{{Storage::url($instructor->imagen->url)}}" alt="Imagen de {{$instructor->Nombre}}">
+                                @else
+                                    <img src="{{ asset('favicons/favicon.ico') }}" alt="Imagen de {{$instructor->Nombre}}">
+                                @endif
                             </div>
                             <div class="texto-informativo">
                                 <h3 class="text-success">{{$instructor->Nombre}}</h3>
@@ -41,7 +55,7 @@
             @endforeach
         </div>
     @else
-        <div class="bg-dark d-flex justify-content-center align-items-center flex-column gap-4" style="height: 200px">
+        <div class="no-instructores bg-dark">
             <h3 class="text-center">Actualmente no hay instructores en la base de datos :(</h3>
             @can('Informativos.crear')
                 <button class="btn btn-primary" id="modal" type="button" data-toggle="modal" data-target="#AgregarInstructor">Agregar Instructor</button>
@@ -61,7 +75,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="Nombre_Instructor" class="form-label h4 font-weight-normal">Nombre del instructor:</label>
-                        <input type="text" class="form-control" id="Nombre_Instructor" wire:model='NombreInstructor'>
+                        <input type="text" class="form-control" id="Nombre_Instructor" wire:model='NombreInstructor' placeholder="Escribe el nombre del instructor" required>
                         @error('NombreInstructor')
                             <span>
                                 {{$message}}
@@ -70,7 +84,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="Email_Instructor" class="form-label h4 font-weight-normal">Correo del instructor:</label>
-                        <input type="email" class="form-control" id="Email_Instructor" wire:model='CorreoInstructor'>
+                        <input type="email" class="form-control" id="Email_Instructor" wire:model='CorreoInstructor' placeholder="Escribe el correo electronico del instructor" required>
                         @error('CorreoInstructor')
                         <span>
                             {{$message}}
@@ -79,7 +93,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="Especialidad_Instructor" class="form-label h4 font-weight-normal">Especialidad:</label>
-                        <input type="text" class="form-control" id="Especialidad_Instructor" wire:model='EspecialidadInstructor'>
+                        <input type="text" class="form-control" id="Especialidad_Instructor" wire:model='EspecialidadInstructor' placeholder="Escribe la especialidad del instructor" required>
                         @error('EspecialidadInstructor')
                             <span>
                                 {{$message}}
@@ -88,7 +102,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="Telefono_Instructor" class="form-label h4 font-weight-normal">Telefono:</label>
-                        <input type="tel" class="form-control" id="Telefono_Instructor" wire:model='TelefonoInstructor'>
+                        <input type="tel" class="form-control" id="Telefono_Instructor" wire:model='TelefonoInstructor' placeholder="Escribe el telefono de contacto del instructor">
                         @error('TelefonoInstructor')
                             <span>
                                 {{$message}}
@@ -97,7 +111,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="Descripcion_Instructor" class="form-label h4 font-weight-normal">Descripcion:</label>
-                        <input type="tel" class="form-control" id="Descripcion_Instructor" wire:model='DescripcionInstructor'>
+                        <textarea class="form-control" id="Descripcion_Instructor" cols="30" rows="10" wire:model='DescripcionInstructor' placeholder="Escribe una descripcion del instructor"></textarea>
                         @error('DescripcionInstructor')
                             <span>
                                 {{$message}}
@@ -129,10 +143,25 @@
                             <span>{{$message}}</span>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label for="Imagen_instructor" class="form-label h4 font-weight-normal">Adjunta una imagen de perfil (opcional):</label>
+                        <input type="file" class="form-control" id="Imagen_instructor" wire:model.live='imagenInstructor' accept="image/*">
+                        @error('imagenInstructor')
+                            <span>{{$message}}</span>
+                        @enderror
+                    </div>
+                    @if ($imagenInstructor)
+                    <div class="d-flex justify-content-center">
+                        <div class="imagen_temporal">
+                            <img src="{{$imagenInstructor->temporaryUrl()}}" alt="">
+                        </div>
+                    </div>
+                    @endif
+                    
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id="CloseAgregarInstructor" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="GuardarInstructor" wire:click="GuardarInstructor()">Guardar Instructor</button>
+                <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="GuardarInstructor, imagenInstructor" wire:click="GuardarInstructor()">Guardar Instructor</button>
                 </div>
             </div>
             </div>
@@ -191,7 +220,7 @@
                     </div>
                     <div class="mb-3" wire:loading.remove wire:target="obtenerDatos">
                         <label for="Actualizar_Descripcion_Instructor" class="form-label h4 font-weight-normal">Actualizar descripcion:</label>
-                        <input type="tel" class="form-control" id="Actualizar_Descripcion_Instructor" wire:model='ActualizarDescripcionInstructor'>
+                        <textarea class="form-control" id="Actualizar_Descripcion_Instructor" cols="30" rows="10" wire:model='ActualizarDescripcionInstructor'></textarea>
                         @error('ActualizarDescripcionInstructor')
                             <span>
                                 {{$message}}

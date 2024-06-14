@@ -5,11 +5,15 @@ namespace App\Livewire\Admin;
 use App\Models\instructore;
 use App\Models\programa;
 use Livewire\Component;
+use Illuminate\Validation\Rule;
+use Livewire\WithFileUploads;
 
 class PersonajesInformativos extends Component
 {
+    use WithFileUploads;
+
     //Variables para agregar un instructor
-    public $NombreInstructor, $CorreoInstructor, $EspecialidadInstructor, $TelefonoInstructor, $DescripcionInstructor, $ProgramaInstructor, $JornadaInstructor;
+    public $imagenInstructor, $NombreInstructor, $CorreoInstructor, $EspecialidadInstructor, $TelefonoInstructor, $DescripcionInstructor, $ProgramaInstructor, $JornadaInstructor;
 
     //Variables para actualizar un instructor
     public $ActualizarNombreInstructor, $ActualizarCorreoInstructor, $ActualizarEspecialidadInstructor, $ActualizarTelefonoInstructor, $ActualizarDescripcionInstructor, $ActualizarProgramaInstructor, $ActualizarJornadaInstructor, $ActualizarInstructorId;
@@ -36,9 +40,9 @@ class PersonajesInformativos extends Component
     public function ActualizarInstructor(){
         $this->validate([
             'ActualizarNombreInstructor' => ['required'],
-            'ActualizarCorreoInstructor' => ['required'],
+            'ActualizarCorreoInstructor' => ['required', 'string', 'email', 'max:255', Rule::unique('instructores', 'Email')->ignore($this->ActualizarInstructorId)],
             'ActualizarEspecialidadInstructor' => ['required'],
-            'ActualizarTelefonoInstructor' => ['required'],
+            'ActualizarTelefonoInstructor' => ['required', 'max:10'],
             'ActualizarDescripcionInstructor' => ['required'],
             'ActualizarProgramaInstructor' => ['required'],
             'ActualizarJornadaInstructor' => ['required'],
@@ -65,24 +69,39 @@ class PersonajesInformativos extends Component
     public function GuardarInstructor(){
         $this->validate([
             'NombreInstructor' => ['required'],
-            'CorreoInstructor' => ['required'],
+            'CorreoInstructor' => ['required', 'email', 'max:255', 'unique:instructores,Email'],
             'EspecialidadInstructor' => ['required'],
-            'TelefonoInstructor' => ['required'],
+            'TelefonoInstructor' => ['required', 'max:10'],
             'DescripcionInstructor' => ['required'],
             'ProgramaInstructor' => ['required'],
             'JornadaInstructor' => ['required'],
+            'imagenInstructor' => ['nullable', 'image'],
         ]);
-
-        instructore::create([
-            'Nombre' => $this->NombreInstructor,
-            'Email' => $this->CorreoInstructor,
-            'Especialidad' => $this->EspecialidadInstructor,
-            'Telefono' => $this->TelefonoInstructor,
-            'Descripcion' => $this->DescripcionInstructor,
-            'programa_id' => $this->ProgramaInstructor,
-            'jornada' => $this->JornadaInstructor
-        ]);
-        $this->reset(['NombreInstructor', 'CorreoInstructor', 'EspecialidadInstructor', 'TelefonoInstructor', 'DescripcionInstructor', 'ProgramaInstructor', 'JornadaInstructor']);
+        if ($this->imagenInstructor == null || $this->imagenInstructor == "") {
+            instructore::create([
+                'Nombre' => $this->NombreInstructor,
+                'Email' => $this->CorreoInstructor,
+                'Especialidad' => $this->EspecialidadInstructor,
+                'Telefono' => $this->TelefonoInstructor,
+                'Descripcion' => $this->DescripcionInstructor,
+                'programa_id' => $this->ProgramaInstructor,
+                'jornada' => $this->JornadaInstructor
+            ]);
+        }else{
+            $imagen = $this->imagenInstructor->store('public/imagenes/Instructores');
+            
+            instructore::create([
+                'Nombre' => $this->NombreInstructor,
+                'Email' => $this->CorreoInstructor,
+                'Especialidad' => $this->EspecialidadInstructor,
+                'Telefono' => $this->TelefonoInstructor,
+                'Descripcion' => $this->DescripcionInstructor,
+                'programa_id' => $this->ProgramaInstructor,
+                'jornada' => $this->JornadaInstructor
+            ])->imagen()->create(['url' => $imagen]);
+        }
+        
+        $this->reset(['imagenInstructor', 'NombreInstructor', 'CorreoInstructor', 'EspecialidadInstructor', 'TelefonoInstructor', 'DescripcionInstructor', 'ProgramaInstructor', 'JornadaInstructor']);
         $this->dispatch('InstructorAgregado');
     }
 }

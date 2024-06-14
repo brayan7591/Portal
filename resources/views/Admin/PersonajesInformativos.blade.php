@@ -16,6 +16,7 @@
 
 @section('js')
     <script>
+
         Livewire.on('deleteInstructor', InstructorId => {
             Swal.fire({
                 title: "¿Estas seguro de eliminar este instructor?",
