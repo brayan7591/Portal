@@ -7,11 +7,11 @@
 @stop
 
 @section('content')
-    @livewire('admin.personajes-destacados')
+    <livewire:admin.personajes-destacados lazy/>
 @stop
 
 @section('css')
-
+    <link rel="stylesheet" href="{{asset('css/admin/tablas.css')}} ">
 @stop
 
 @section('js')

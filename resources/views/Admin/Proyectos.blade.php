@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    @livewire('admin.proyectos')
+    <livewire:admin.proyectos />
 @stop
 
 @section('css')

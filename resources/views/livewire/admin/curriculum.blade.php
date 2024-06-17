@@ -74,7 +74,7 @@
                             <h3 class="color centrado-total">Fecha de inicio:</h3>
                             <h3 class="centrado-total">{{$nivel->FechaInicio}}</h3>
                             <h3 class="color centrado-total">Fecha de finalización:</h3>
-                            <h3 class="centrado-total justify-content-center">{{$nivel->FechaFin ? $nivel->FechaFin : 'El programa aun se encuentra vigente'}}</h3>
+                            <h3 class="centrado-total justify-content-center py-2">{{$nivel->FechaFin ? $nivel->FechaFin : 'El programa aun se encuentra vigente'}}</h3>
                         </div>
                         <h2 class="uno todo color">1.5 DURACIÓN MÁXIMA ESTIMADA DEL APRENDIZAJE (Horas) </h2>
                         <div class="dos todo horas">

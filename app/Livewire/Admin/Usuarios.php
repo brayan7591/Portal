@@ -112,4 +112,9 @@ class Usuarios extends Component
 
         return view('livewire.admin.usuarios', compact('roles', 'users'));
     }
+
+    public function placeholder(){
+        return view('livewire.admin.cargando');
+    }
+    
 }

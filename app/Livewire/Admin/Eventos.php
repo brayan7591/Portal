@@ -10,4 +10,8 @@ class Eventos extends Component
     {
         return view('livewire.admin.eventos');
     }
+    
+    public function placeholder(){
+        return view('livewire.admin.cargando');
+    }
 }

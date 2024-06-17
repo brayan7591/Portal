@@ -24,6 +24,10 @@ class Roles extends Component
         return view('livewire.admin.roles', compact('roles', 'permisos'));
     }
 
+    public function placeholder(){
+        return view('livewire.admin.cargando');
+    }
+    
     public function deleteRol(Role $rol){
         $rol->delete();
     }

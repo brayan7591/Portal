@@ -10,4 +10,9 @@ class Proyectos extends Component
     {
         return view('livewire.admin.proyectos');
     }
+
+    public function placeholder(){
+        return view('livewire.admin.cargando');
+    }
+    
 }

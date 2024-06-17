@@ -7,11 +7,11 @@
 @stop
 
 @section('content')
-    @livewire('biblioteca.privado.mostrar-libros')
+    <livewire:admin.biblioteca lazy />
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/libroAdmin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/biblioteca.css') }}">
 @stop
 
 @section('js')
@@ -46,7 +46,7 @@
                 }).then((result) => {
                     if (result.value == true) {
 
-                        Livewire.emitTo('biblioteca.privado.mostrar-libros', 'delete', bookId)
+                        Livewire.dispatchTo('admin.biblioteca', 'delete', [bookId])
 
                         Swal.fire({
                             title: "Eliminado!",

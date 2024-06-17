@@ -7,11 +7,11 @@
 @stop
 
 @section('content')
-    @livewire('admin.roles')
+    <livewire:admin.roles lazy/>
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{asset('css/TableAdmin.css')}} ">
+    <link rel="stylesheet" href="{{asset('css/admin/tablas.css')}} ">
 @stop
 
 @section('js')

@@ -50,6 +50,10 @@ class Curriculum extends Component{
         $this->resetPage();
     }
 
+    public function placeholder(){
+        return view('livewire.admin.cargando');
+    }
+    
     public function render(){
         if ($this->model == 'programas') {
             if (nivele::where('SlugInterno', $this->nivelAgregar)->where('programa_id', $this->programaAgregar)->first() || (nivele::where('SlugInterno', strtolower($this->eliminar_acentos($this->actNivel)))->where('programa_id', $this->nivelactualizar['programa_id'])->first() && $this->nivelactualizar['SlugInterno'] != strtolower($this->eliminar_acentos($this->actNivel)))) {

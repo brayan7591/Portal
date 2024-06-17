@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    @livewire('admin.eventos')
+    <livewire:admin.eventos lazy/>
 @stop
 
 @section('css')
