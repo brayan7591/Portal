@@ -42,5 +42,7 @@ class InstructorSeeder extends Seeder
             'programa_id' => '2',
             'jornada' => 'mañana',
         ]);
+
+        instructore::factory(10)->create();
     }
 }

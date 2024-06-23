@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\biblioteca;
+use App\Models\vocero;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,7 +33,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SaberSeeder::class);
         $this->call(DetalleSabereSeeder::class);
         $this->call(InstructorSeeder::class);
-        
+
+        vocero::factory(10)->create();
         biblioteca::factory(5)->create();
 
     }
