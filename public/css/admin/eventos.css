@@ -1,0 +1,69 @@
+.imagenes{
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minMax(470px, 1fr)
+    );
+    gap: 16px;
+    margin-bottom: 4px;
+}
+
+.Agregar_imagenes{
+    border: solid 2px black;
+    padding: 7px;
+}
+.Mostrar_Evento{
+    border: solid 2px black;
+    padding: 10px;
+    background-color: lightcyan;
+    margin-bottom: 10px;
+}
+.agregar_eventos{
+    border: solid 2px black;
+    padding: 7px;
+    margin-bottom: 10px;
+}
+.imagenes img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+.imagenes .contenedor_imagenes{
+    position: relative;
+}
+.vacio{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: black;
+    height: 200px;
+}
+
+.imagenes .boton_eliminar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    opacity: 0;
+}
+.imagenes .formulario{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 6px;
+    background: rgba(255, 255, 255, .5);
+    opacity: 0;
+}
+.contenedor_imagenes:hover .boton_eliminar,
+.contenedor_imagenes:hover .formulario{
+    opacity: 1;
+}
+@media (max-width: 470px){
+    .imagenes{
+        grid-template-columns: 1fr;
+    }
+}

@@ -537,7 +537,7 @@
                     </div><br>
                     <div class="d-flex justify-content-center" wire:loading.class.remove="d-flex" wire:loading.class="d-none" wire:target="obtenerDatosVoceros">
                         @if ($ActualizarImagenVoceroActual)
-                            <button class="btn btn-primary" wire:click="$set('ActualizarImagenVoceroActual', '')">Quitar imagen</button>
+                            <button class="btn btn-primary" wire:click="set$('ActualizarImagenVoceroActual', '')">Quitar imagen</button>
                         @else
                             @if ($ActualizarImagenVocero)
                                 <button class="btn btn-primary" wire:click="$set('ActualizarImagenVocero', '')">Quitar imagen</button>

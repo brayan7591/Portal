@@ -17,11 +17,11 @@ Route::post('/Admin/updatePassword', [HomeController::class, 'updatepassword'])-
 
 Route::get('/Admin/curriculum', [HomeController::class, 'curriculum'])->middleware('can:Curriculum.mirar')->name('admin.curriculum');
 
-Route::get('/Admin/eventos', [HomeController::class, 'eventos'])->middleware('can:Eventos.mirar')->name('admin.eventos');
+Route::get('/Admin/biblioteca', [HomeController::class, 'biblioteca'])->middleware('can:Biblioteca.mirar')->name('admin.biblioteca');
+
+Route::get('/Admin/eventos_y_galeria', [HomeController::class, 'eventos'])->middleware('can:Eventos.mirar')->name('admin.eventos');
 
 Route::get('/Admin/proyectos', [HomeController::class, 'proyectos'])->middleware('can:Proyectos.mirar')->name('admin.proyectos');
-
-Route::get('/Admin/biblioteca', [HomeController::class, 'biblioteca'])->middleware('can:Biblioteca.mirar')->name('admin.biblioteca');
 
 Route::get('/Admin/voceros_e_instructores', [HomeController::class, 'personajes_informativos'])->middleware('can:Informativos.mirar')->name('admin.informativos');
 

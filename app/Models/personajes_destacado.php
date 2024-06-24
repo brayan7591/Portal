@@ -9,7 +9,13 @@ class personajes_destacado extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+    
     public function programa(){
         return $this->belongsTo('App\Models\programa');
+    }
+
+    public function imagen(){
+        return $this->morphOne('App\Models\imagene', 'imageable');
     }
 }

@@ -1,0 +1,18 @@
+.proyectos_vacio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 200px;
+    align-items: center;
+    background-color: black;
+    color: white;
+    margin-top: 10px;
+}
+
+.proyecto{
+    border: solid 2px black;
+    margin: 10px 0;
+    padding: 8px;
+}
