@@ -14,6 +14,10 @@ class PrincipalController extends Controller
         $Programas = programa::all();
         return view('Page.index', compact('Programas'));
     }
+
+    public function Iniciojuego(){
+        return view('Page.Iniciojuego');
+    }
     
     public function menu(Request $request){
         $nuevoValor = $request->input('nuevoValor');

@@ -32,6 +32,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#ubicacion">Ubicacion</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('Iniciojuego')}}">Explora</a>
+                </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
                 @guest
@@ -69,7 +72,7 @@
         <h2>Inicio:</h2>
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus culpa vitae, error corporis illo nihil est illum debitis, earum delectus soluta asperiores facere numquam architecto at dolorem accusamus ipsam reiciendis.</p>
     </section>
-    <section class="min-vh-100 bg-gray p-4" id="programas">
+    <section class="min-vh-100 bg-programas p-4" id="programas">
         <span class="text-center d-block h3">Conoce mas</span>
         <h1 class="text-center text-primary">OBTENDRAS MAS INFORMACIÓN ACERCA DE NUESTROS PROGRAMAS</h1>
         <div class="programas">

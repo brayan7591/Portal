@@ -20,6 +20,8 @@ Route::post('/actualizar-menu', [PrincipalController::class, 'menu'])->name('act
 
 Auth::routes();
 
+Route::get('/Iniciojuego', [PrincipalController::class, 'Iniciojuego'])->name('Iniciojuego');
+
 Route::get('/{programa}', [PrincipalController::class, 'landingpage'])->name('landingPage');
 Route::get('/{programa}/curriculum/{nivel}', [PrincipalController::class, 'curriculum'])->name('curriculum');
 Route::post('/{programa}/curriculum/{nivel}', [PrincipalController::class, 'pdf'])->name('generar.pdf');
