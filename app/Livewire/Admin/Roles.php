@@ -24,13 +24,17 @@ class Roles extends Component
         return view('livewire.admin.roles', compact('roles', 'permisos'));
     }
 
+    public function placeholder(){
+        return view('livewire.admin.cargando');
+    }
+    
     public function deleteRol(Role $rol){
         $rol->delete();
     }
 
     public function save(){
         $this->validate([
-            'AgregarRol' => ['required'],
+            'AgregarRol' => ['required', 'max_digits:255'],
             'AgregarPermisos' => ['required', 'exists:permissions,id']
         ]);
 
@@ -52,7 +56,7 @@ class Roles extends Component
 
     public function Actualizar(Role $rol){
         $this->validate([
-            'ActualizarRol' => ['required'],
+            'ActualizarRol' => ['required', 'max_digits:255'],
             'ActualizarPermisos' => ['required', 'exists:permissions,id']
         ]);
 

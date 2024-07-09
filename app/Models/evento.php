@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class evento extends Model
 {
+    protected $guarded = [];
+
+    public function programa(){
+        return $this->belongsTo('App\Models\programa');
+    }
+    
     use HasFactory;
 }

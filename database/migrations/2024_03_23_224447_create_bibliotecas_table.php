@@ -14,8 +14,7 @@ class CreateBibliotecasTable extends Migration
     public function up()
     {
         Schema::create('bibliotecas', function (Blueprint $table) {
-            $table->id();
-            $table->integer('IdBiblioteca')->unique();
+            $table->bigInteger('IdBiblioteca')->unique()->primary();
             $table->string('Titulo');
             $table->date('FechaEstreno');
             $table->string('Editorial');

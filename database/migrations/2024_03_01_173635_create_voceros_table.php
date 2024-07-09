@@ -15,7 +15,9 @@ class CreateVocerosTable extends Migration
     {
         Schema::create('voceros', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('Nombre');
+            $table->string('Email')->unique();
+            $table->integer('NoFicha')->unique();
             $table->unsignedBigInteger('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas')->onDelete('cascade');
             $table->timestamps();

@@ -11,6 +11,10 @@ class programa extends Model
 
     protected $guarded = [];
 
+    public function imagenes(){
+        return $this->hasMany('App\Models\galeria');
+    }
+
     public function aprendices(){
         return $this->hasMany('App\Models\aprendice');
     }

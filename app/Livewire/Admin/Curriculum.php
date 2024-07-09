@@ -50,6 +50,10 @@ class Curriculum extends Component{
         $this->resetPage();
     }
 
+    public function placeholder(){
+        return view('livewire.admin.cargando');
+    }
+    
     public function render(){
         if ($this->model == 'programas') {
             if (nivele::where('SlugInterno', $this->nivelAgregar)->where('programa_id', $this->programaAgregar)->first() || (nivele::where('SlugInterno', strtolower($this->eliminar_acentos($this->actNivel)))->where('programa_id', $this->nivelactualizar['programa_id'])->first() && $this->nivelactualizar['SlugInterno'] != strtolower($this->eliminar_acentos($this->actNivel)))) {
@@ -86,8 +90,8 @@ class Curriculum extends Component{
             'nivelAgregar' => ['required'],
             'AgregarFechaInicio' => ['required', 'date'],
             'AgregarFechaFinal' => ['date', 'nullable'],
-            'AgregarHoraLectiva' => ['required', 'numeric'],
-            'AgregarHoraProductiva' => ['required', 'numeric']
+            'AgregarHoraLectiva' => ['required', 'numeric', 'max_digits:11'],
+            'AgregarHoraProductiva' => ['required', 'numeric', 'max_digits:11']
         ]);
 
         if ($this->AgregarFechaFinal == '') {
@@ -135,8 +139,8 @@ class Curriculum extends Component{
                 'actNivel' => ['required'],
                 'actFechaInicio' => ['required', 'date'],
                 'actFechaFinal' => ['date', 'nullable'],
-                'actHoraLectiva' => ['required', 'numeric'],
-                'actHoraProductiva' => ['required', 'numeric'],
+                'actHoraLectiva' => ['required', 'numeric', 'max_digits:11'],
+                'actHoraProductiva' => ['required', 'numeric', 'max_digits:11'],
             ]);
     
             DB::table('nivel_competencia')->where('SlugInterno', $nivel['SlugInterno'])->where('programa_id', $nivel['programa_id'])->delete();
@@ -160,7 +164,7 @@ class Curriculum extends Component{
 
     public function insertarDato(){
         $this->validate([
-            'AgregarDato' => ['required']
+            'AgregarDato' => ['required', 'max_digits:255']
         ]);
 
         if ($this->opciones == 'rap') {
@@ -204,7 +208,7 @@ class Curriculum extends Component{
 
     public function UpdateDato(){
         $this->validate([
-            'actDato' => ['required']
+            'actDato' => ['required', 'max_digits:255']
         ]);
         if ($this->opciones == 'rap') {
             rap::where('id', $this->identificador)->update(['descripcion' => $this->actDato]);
@@ -274,10 +278,10 @@ class Curriculum extends Component{
 
     public function guardarCompetencia(){
         $this->validate([
-            'NuevaNorma' => ['required'],
+            'NuevaNorma' => ['required', 'max_digits:255'],
             'NuevoCodigo' => ['required', 'unique:competencias,codigo'],
-            'NuevoNombre' => ['required'],
-            'NuevaHora' => ['required']
+            'NuevoNombre' => ['required', 'max_digits:255'],
+            'NuevaHora' => ['required', 'max_digits:11', 'numeric']
         ]);
 
         $competencia = new competencia();
@@ -300,10 +304,10 @@ class Curriculum extends Component{
     public function updateCompetencia(){
         $competencia = $this->actCompetencia;
         $this->validate([
-            'norma' => ['required'],
+            'norma' => ['required', 'max_digits:255'],
             'codigo' => ['required', Rule::unique('competencias')->ignore($competencia->codigo, 'codigo')],
-            'nombre' => ['required'],
-            'horas' => ['required']
+            'nombre' => ['required', 'max_digits:255'],
+            'horas' => ['required', 'max_digits:11', 'numeric']
         ]);
 
         $competencia->norma = $this->norma;

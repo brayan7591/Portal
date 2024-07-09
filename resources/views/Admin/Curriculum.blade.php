@@ -7,25 +7,14 @@
 @stop
 
 @section('content')
-    @livewire('admin.curriculum')
+    <livewire:admin.curriculum lazy />
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/curriculum.css') }}">
-    <style>
-        :root{
-            scrollbar-gutter: stable;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/admin/curriculum.css') }}">
 @stop
 
 @section('js')
-    <script>
-    function auto_grow(element) {
-        element.style.height = "5px";
-        element.style.height = (element.scrollHeight) + "px";
-    }
-    </script>
     
     <script>
         Livewire.on('deleteCompetencia', CompetenciaCodigo => {
@@ -41,7 +30,7 @@
                 }).then((result) => {
                     if (result.value == true) {
 
-                        Livewire.dispatchTo('curriculum.privado.informacion-curriculum', 'delete', [CompetenciaCodigo])
+                        Livewire.dispatchTo('admin.curriculum', 'delete', [CompetenciaCodigo])
 
                         Swal.fire({
                             title: "Eliminado!",

@@ -61,14 +61,15 @@ class Usuarios extends Component
 
     public function Actualizar(User $user){
         $this->validate([
-            'ActualizarNombre' => ['required', 'string', 'max:255'],
-            'ActualizarCorreo' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->id)],
+            'ActualizarNombre' => ['required', 'string', 'max_digits:255'],
+            'ActualizarCorreo' => ['required', 'string', 'email', 'max_digits:255', Rule::unique('users', 'email')->ignore($user->id)],
+            'ActualizarPassword' => ['nullable', 'max_digits:255'],
             'ActualizarRol' => ['required', 'exists:roles,id']
         ]);
         $user->name = $this->ActualizarNombre;
         $user->email = $this->ActualizarCorreo;
         if ($this->ActualizarPassword) {
-            $user->password = $this->ActualizarPassword;
+            $user->password = bcrypt($this->ActualizarPassword);
         }
         $user->save();
         $user->roles()->sync($this->ActualizarRol);
@@ -87,9 +88,9 @@ class Usuarios extends Component
 
     public function save(){
         $this->validate([
-            'AgregarNombre' => ['required', 'string', 'max:255'],
-            'AgregarCorreo' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'AgregarPassword' => ['required', 'string', 'min:8'],
+            'AgregarNombre' => ['required', 'string', 'max_digits:255'],
+            'AgregarCorreo' => ['required', 'string', 'email', 'max_digits:255', 'unique:users,email'],
+            'AgregarPassword' => ['required', 'string', 'max_digits:255'],
             'AgregarRol' => ['required']
         ]);
         $this->AgregarPassword = bcrypt($this->AgregarPassword);
@@ -112,4 +113,9 @@ class Usuarios extends Component
 
         return view('livewire.admin.usuarios', compact('roles', 'users'));
     }
+
+    public function placeholder(){
+        return view('livewire.admin.cargando');
+    }
+    
 }

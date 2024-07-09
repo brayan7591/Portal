@@ -1,3 +1,7 @@
+.swal2-popup {
+    padding: 0 !important;
+}
+
 .cursor-pointer{
     cursor: pointer;
 }

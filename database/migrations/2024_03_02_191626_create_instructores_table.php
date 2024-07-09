@@ -15,9 +15,14 @@ class CreateInstructoresTable extends Migration
     {
         Schema::create('instructores', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('Nombre');
+            $table->string('Email')->unique();
+            $table->string('Especialidad');
+            $table->integer('Telefono');
+            $table->text('Descripcion');
             $table->unsignedBigInteger('programa_id');
             $table->foreign('programa_id')->references('id')->on('programas')->onDelete('cascade');
+            $table->enum('jornada', ['mañana', 'tarde', 'mixta', 'nocturna']);
             $table->timestamps();
         });
     }

@@ -260,7 +260,7 @@ return [
     'login_url' => 'login',
     'register_url' => 'register',
     'password_reset_url' => 'password.request',
-    'password_email_url' => 'password.confirm',
+    'password_email_url' => 'password.email',
     'profile_url' => false,
 
     /*
@@ -376,7 +376,7 @@ return [
 
         [
             'text' => 'Voceros e Instructores',
-            'icon_color' => 'blue',
+            'icon_color' => 'black',
             'route' => 'admin.informativos',
             'can' => 'Informativos.mirar',
         ],

@@ -1,3 +1,6 @@
+.swal2-popup {
+    padding: 0 !important;
+}
 
 section{
     position: relative;

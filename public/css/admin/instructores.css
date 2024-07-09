@@ -1,0 +1,125 @@
+.swal2-popup {
+    padding: 0 !important;
+}
+
+.instructores{
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minMax(470px, 1fr)
+    );
+    gap: 16px;
+}
+.instructores .tarjeta{
+    width: 100%;
+    overflow: hidden;
+    height: 350px;
+}
+.instructores .tarjeta .tmodal{
+    width: 200%;
+    display: flex;
+    transition: .5s all ease;
+    transform: translateX(0%);
+    height: 80%;
+}
+
+.no-instructores, .no-voceros{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    height: 200px;
+}
+
+.instructores .tarjeta .tmodal:hover{
+    transform: translateX(-50%);
+}
+
+.instructores .tarjeta .tmodal .pagina{
+    width: 50%;
+}
+
+.instructores .tarjeta .pagina .imagen{
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background: white;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}
+
+.instructores .tarjeta .pagina .imagen img{
+    width: 100%;
+    height: 100%;
+}
+
+.instructores .tarjeta .inicial{
+    background: black;
+    display: flex;
+    gap: 16px;
+    color: white;
+    align-items: center;
+}
+.instructores .tarjeta .descripcion{
+    background: rgb(90, 217, 122);
+    color: black;
+    overflow-y: auto;
+}
+.instructores .tarjeta .descripcion p{
+    min-height: 60%;
+}
+.instructores .tarjeta .texto-informativo{
+    flex: 1;
+}
+.instructores .tarjeta .opciones{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background: black;
+    gap: 10px;
+}
+
+.imagen_temporal{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    overflow: hidden;
+    border: solid 2px black;
+}
+
+.imagen_temporal img{
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 470px){
+    .instructores{
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .instructores .tarjeta .inicial{
+        flex-direction: column;
+        gap: 2px;
+    }
+    .instructores .tarjeta .pagina .imagen{
+        margin: 20px;
+        width: 70vw;
+        height: 70vw;
+    }
+    .instructores .tarjeta .texto-informativo{
+        padding: 10px;
+    }
+    .instructores .tarjeta .inicial h3{
+        text-align: center;
+        padding-bottom: 3px;
+    }
+    .instructores .tarjeta{
+       height: 700px;
+    }
+
+}

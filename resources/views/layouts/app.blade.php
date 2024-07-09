@@ -25,7 +25,7 @@
     @yield('links')
 </head>
 <body class="bg-dark text-white {{ $menuAbierto == false ? '' : 'menuhidden'}}">
-    <nav class="navbar navbar-expand-lg bg-black py-2" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-black py-3" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand d-flex gap-2 align-items" href="{{route('principal')}}">
                 <img src="{{asset('logos/logo-verde.png')}}" alt="Logo del portal web" width="30" height="24" class="d-inline-block align-text-top">PortalWeb
@@ -107,7 +107,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" {{ $menuAbierto == false ? '' : 'checked'}}>
                         <label class="form-check-label" for="flexSwitchCheckChecked">Ocultar menu</label>
@@ -115,7 +115,16 @@
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
-                @auth
+                @guest
+                    <li class="d-flex gap-2 justify-content-between nav-item">
+                        @if (Route::has('login'))
+                                <a class="btn btn-outline-light" href="{{route('login')}}">Iniciar sesion</a>
+                        @endif
+                        @if (Route::has('register'))
+                                <a class="btn btn-outline-light" href="{{route('register')}}">Crear cuenta</a>
+                        @endif
+                        </li>
+                @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
@@ -131,9 +140,7 @@
                             </form>
                         </div>
                     </li>
-                @else
-                    <a class="btn btn-outline-white border-white" href="{{route('principal')}}">Volver a la pagina principal</a>
-                @endauth
+                @endguest
                 </ul>
             </div>
         </div>
