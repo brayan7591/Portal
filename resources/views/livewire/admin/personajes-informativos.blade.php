@@ -36,14 +36,22 @@
             @endforeach
 
             @can('Informativos.crear')
-                <div class="Agregar-vocero">
-                    <div class="boton-agregar-vocero" type="button" data-toggle="modal" data-target="#AgregarVocero"><i class="fas fa-fw fa-plus"></i></div>
-                </div>
+                @if ($voceros->hasPages())
+                    @if ($voceros->currentPage() == $voceros->lastPage())
+                        <div class="Agregar-vocero">
+                            <div class="boton-agregar-vocero" type="button" data-toggle="modal" data-target="#AgregarVocero"><i class="fas fa-fw fa-plus"></i></div>
+                        </div>
+                    @endif
+                @else
+                    <div class="Agregar-vocero">
+                        <div class="boton-agregar-vocero" type="button" data-toggle="modal" data-target="#AgregarVocero"><i class="fas fa-fw fa-plus"></i></div>
+                    </div>
+                @endif
             @endcan
         </div>
         @if ($voceros->hasPages())
             <div>
-                {{$voceros->links()}}
+                {{$voceros->links(data: ['scrollTo' => false])}}
             </div>
         @endif
     @else
@@ -109,7 +117,7 @@
 
         @if ($instructores->hasPages())
             <div>
-                {{$instructores->links()}}
+                {{$instructores->links(data: ['scrollTo' => false])}}
             </div>
         @endif
 

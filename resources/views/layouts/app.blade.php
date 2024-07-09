@@ -25,7 +25,7 @@
     @yield('links')
 </head>
 <body class="bg-dark text-white {{ $menuAbierto == false ? '' : 'menuhidden'}}">
-    <nav class="navbar navbar-expand-lg bg-black py-2" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-black py-3" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand d-flex gap-2 align-items" href="{{route('principal')}}">
                 <img src="{{asset('logos/logo-verde.png')}}" alt="Logo del portal web" width="30" height="24" class="d-inline-block align-text-top">PortalWeb
@@ -107,7 +107,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-flex align-items-center">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" {{ $menuAbierto == false ? '' : 'checked'}}>
                         <label class="form-check-label" for="flexSwitchCheckChecked">Ocultar menu</label>

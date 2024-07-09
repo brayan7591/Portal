@@ -24,6 +24,9 @@
         @if ($OpcionActual == 'Eventos')
             <label class="h4 mb-2" for="nombre_evento_search">Busca por el nombre del evento:</label>
             <input type="text" class="form-control" name="nombre_evento_search" id="nombre_evento_search" wire:model.live="search">
+            @can('Eventos.crear')
+                <button class="btn btn-success mt-2 w-100 py-3" wire:loading.class="disabled" wire:target="MostrarMenu" wire:click="$toggle('MostrarMenu')">{{$MostrarMenu ? 'Quitar menu de agregacion de evento' : 'Mostrar menu de agregacion de evento'}}</button>
+            @endcan
         @else
             <label class="h4 mb-2" for="programa_formacion_search">Buscar por el programa de formacion:</label>
             <select class="form-control" name="programa_formacion_search" id="programa_formacion_search" wire:model.live="search">
@@ -32,6 +35,9 @@
                     <option value="{{$programa->id}}">{{$programa->NombrePrograma}}</option>
                 @endforeach
             </select>
+            @can('Eventos.crear')
+                <button class="btn btn-success mt-2 w-100 py-3" wire:loading.class="disabled" wire:target="MostrarMenu" wire:click="$toggle('MostrarMenu')">{{$MostrarMenu ? 'Quitar menu de agregacion de imagenes' : 'Mostrar menu de agregacion de imagenes'}}</button>
+            @endcan
         @endif
     </div>
 
@@ -44,7 +50,7 @@
         
         @if ($OpcionActual == 'Eventos')
             @can('Eventos.crear')
-                <div class="agregar_eventos">
+                <div class="agregar_eventos {{$MostrarMenu ? '' : 'active'}}">
                     <h3 class="text-center">Agrega un nuevo evento</h3>
                     <div class="mt-2">
                         <label for="nombre_evento" class="form-label h4 font-weight-normal">Nombre del evento:</label>
@@ -167,7 +173,7 @@
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" id="CloseActualizarEvento" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="obtenerDatosEvento, ActualizarEvento" wire:click="ActualizarEvento()">Actualizar Instructor</button>
+                            <button type="button" class="btn btn-primary" wire:loading.class="disabled" wire:target="obtenerDatosEvento, ActualizarEvento" wire:click="ActualizarEvento()">Actualizar Evento</button>
                             </div>
                         </div>
                         </div>
@@ -186,7 +192,7 @@
             
         @else
             @can('Eventos.crear')
-                <div class="Agregar_imagenes">
+                <div class="Agregar_imagenes  {{$MostrarMenu ? '' : 'active'}}">
                     <h2 class="text-center">Agregar Nueva imagen</h2>
                     <div>
                         <label for="programa_imagen" class="form-label h4 font-weight-normal">Selecciona el programa de formacion</label>

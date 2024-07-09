@@ -85,9 +85,9 @@ class PersonajesDestacados extends Component
 
     public function GuardarPersonajeDestacado(){
         $this->validate([
-            'NombrePersonajeDestacado' => ['required', 'max:255'],
-            'CorreoPersonajeDestacado' => ['required', 'email', 'max:255', 'unique:personajes_destacados,correo'],
-            'FichaPersonajeDestacado' => ['nullable', 'max:10'],
+            'NombrePersonajeDestacado' => ['required', 'max_digits:255'],
+            'CorreoPersonajeDestacado' => ['required', 'email', 'max_digits:255', 'unique:personajes_destacados,correo'],
+            'FichaPersonajeDestacado' => ['nullable', 'max_digits:10'],
             'MotivoPersonajeDestacado' => ['required'],
             'ProgramaPersonajeDestacado' => ['required', 'numeric', 'exists:programas,id'],
             'RolPersonajeDestacado' => ['required', 'in:Aprendiz,Egresado'],
@@ -135,9 +135,9 @@ class PersonajesDestacados extends Component
 
     public function ActualizarPersonajeDestacado(){
         $this->validate([
-            'ActualizarNombrePersonajeDestacado' => ['required', 'max:255'],
-            'ActualizarCorreoPersonajeDestacado' => ['required', 'email', 'max:255', Rule::unique('personajes_destacados', 'correo')->ignore($this->ActualizarPersonajeDestacadoId)],
-            'ActualizarFichaPersonajeDestacado' => ['nullable', 'max:10'],
+            'ActualizarNombrePersonajeDestacado' => ['required', 'max_digits:255'],
+            'ActualizarCorreoPersonajeDestacado' => ['required', 'email', 'max_digits:255', Rule::unique('personajes_destacados', 'correo')->ignore($this->ActualizarPersonajeDestacadoId)],
+            'ActualizarFichaPersonajeDestacado' => ['nullable', 'max_digits:10'],
             'ActualizarMotivoPersonajeDestacado' => ['required'],
             'ActualizarProgramaPersonajeDestacado' => ['required', 'numeric', 'exists:programas,id'],
             'ActualizarRolPersonajeDestacado' => ['required', 'in:Aprendiz,Egresado'],

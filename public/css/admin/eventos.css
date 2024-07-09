@@ -11,18 +11,43 @@
 .Agregar_imagenes{
     border: solid 2px black;
     padding: 7px;
+    height: 280px;
+    overflow: hidden;
+    transition: border 1s ease, padding 1s ease, height 1s ease 1s;
 }
+
+.Agregar_imagenes.active{
+    border: solid 0px black;
+    padding: 0px;
+    height: 0;
+    transition: border 1s ease 1s, padding 1s ease 1s, height 1s ease;
+}
+
 .Mostrar_Evento{
     border: solid 2px black;
     padding: 10px;
     background-color: lightcyan;
     margin-bottom: 10px;
 }
+
 .agregar_eventos{
     border: solid 2px black;
     padding: 7px;
     margin-bottom: 10px;
+    height: 0;
+    overflow: hidden;
+    height: 650px;
+    transition: border 1s ease, padding 1s ease, height 1s ease 1s;
 }
+
+.agregar_eventos.active{
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: solid 0px black;
+    transition: border 1s ease 1s, padding 1s ease 1s, height 1s ease;
+}
+
 .imagenes img{
     object-fit: cover;
     width: 100%;

@@ -18,7 +18,7 @@ class Eventos extends Component
     protected $paginationTheme = "Bootstrap";
     protected $listeners = ['deleteImagenes', 'deleteEventos'];
 
-    public $OpcionActual = 'Eventos', $search, $registros = 10;
+    public $MostrarMenu = false, $OpcionActual = 'Eventos', $search, $registros = 10;
 
     //Variables para agregar una imagen a la galeria
     public $ProgramaImagen, $Imagen_agregar;
@@ -62,7 +62,7 @@ class Eventos extends Component
 
     public function GuardarEvento(){
         $this->validate([
-            'NombreEvento' => ['required', 'max:255'],
+            'NombreEvento' => ['required', 'max_digits:255'],
             'DescripcionEvento' => ['required'],
             'FechaEvento' => ['required', 'date'],
             'ProgramaEvento' => ['required', 'numeric', 'exists:programas,id'],
@@ -97,7 +97,7 @@ class Eventos extends Component
 
     public function ActualizarEvento(){
         $this->validate([
-            'ActualizarNombreEvento' => ['required', 'max:255'],
+            'ActualizarNombreEvento' => ['required', 'max_digits:255'],
             'ActualizarDescripcionEvento' => ['required'],
             'ActualizarFechaEvento' => ['required', 'date'],
             'ActualizarProgramaEvento' => ['required', 'numeric', 'exists:programas,id'],

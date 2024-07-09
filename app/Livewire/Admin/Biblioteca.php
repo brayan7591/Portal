@@ -37,16 +37,16 @@ class Biblioteca extends Component
 
     public function save(){
         $this->validate([
-            'IdBiblioteca' => ['required', 'unique:bibliotecas,IdBiblioteca'],
-            'Titulo' => ['required', 'string'],
+            'IdBiblioteca' => ['required', 'numeric', 'max_digits:20', 'unique:bibliotecas,IdBiblioteca'],
+            'Titulo' => ['required', 'string','max_digits:255'],
             'FechaEstreno' => ['required', 'date'],
-            'Editorial' => ['required', 'string'],
-            'Imagen' => ['required', 'image'],
-            'Formato' => ['required', 'string'],
+            'Editorial' => ['required', 'string', 'max_digits:255'],
+            'Imagen' => ['required', 'image', 'max_digits:255'],
+            'Formato' => ['required', 'string', 'max_digits:255'],
             'FechaIngreso' => ['required', 'date'],
             'ProgramaFormacion' => ['required', 'numeric', 'exists:programas,id'],
-            'Copias' => ['required'],
-            'Estado' => ['required']
+            'Copias' => ['required', 'numeric', 'max_digits:11'],
+            'Estado' => ['required', 'max_digits:255']
         ]);
 
         $imagen = $this->Imagen->store('public/imagenes/libros');
@@ -90,16 +90,16 @@ class Biblioteca extends Component
     public function Actualizar(ModelsBiblioteca $libro){
 
         $this->validate([
-            'IdBibliotecaActualizar' => ['required', Rule::unique('bibliotecas', 'IdBiblioteca')->ignore($libro)],
-            'TituloActualizar' => ['required', 'string'],
+            'IdBibliotecaActualizar' => ['required', 'numeric', 'max_digits:20', Rule::unique('bibliotecas', 'IdBiblioteca')->ignore($libro)],
+            'TituloActualizar' => ['required', 'string', 'max_digits:255'],
             'FechaEstrenoActualizar' => ['required', 'date'],
-            'EditorialActualizar' => ['required', 'string'],
-            'ImagenActualizar' => ['image', 'nullable'],
-            'FormatoActualizar' => ['required', 'string'],
+            'EditorialActualizar' => ['required', 'string', 'max_digits:255'],
+            'ImagenActualizar' => ['image', 'nullable', 'max_digits:255'],
+            'FormatoActualizar' => ['required', 'string', 'max_digits:255'],
             'FechaIngresoActualizar' => ['required', 'date'],
             'ProgramaFormacionActualizar' => ['required', 'numeric', 'exists:programas,id'],
-            'CopiasActualizar' => ['required'],
-            'EstadoActualizar' => ['required']
+            'CopiasActualizar' => ['required', 'max_digits:11'],
+            'EstadoActualizar' => ['required', 'max_digits:255']
         ]);
 
         if ($this->ImagenActualizar) {
