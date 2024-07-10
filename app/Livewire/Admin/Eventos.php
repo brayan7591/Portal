@@ -62,7 +62,7 @@ class Eventos extends Component
 
     public function GuardarEvento(){
         $this->validate([
-            'NombreEvento' => ['required', 'max_digits:255'],
+            'NombreEvento' => ['required', 'max:255'],
             'DescripcionEvento' => ['required'],
             'FechaEvento' => ['required', 'date'],
             'ProgramaEvento' => ['required', 'numeric', 'exists:programas,id'],
@@ -97,7 +97,7 @@ class Eventos extends Component
 
     public function ActualizarEvento(){
         $this->validate([
-            'ActualizarNombreEvento' => ['required', 'max_digits:255'],
+            'ActualizarNombreEvento' => ['required', 'max:255'],
             'ActualizarDescripcionEvento' => ['required'],
             'ActualizarFechaEvento' => ['required', 'date'],
             'ActualizarProgramaEvento' => ['required', 'numeric', 'exists:programas,id'],

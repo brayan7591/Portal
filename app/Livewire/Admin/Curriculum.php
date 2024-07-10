@@ -164,7 +164,7 @@ class Curriculum extends Component{
 
     public function insertarDato(){
         $this->validate([
-            'AgregarDato' => ['required', 'max_digits:255']
+            'AgregarDato' => ['required', 'max:255']
         ]);
 
         if ($this->opciones == 'rap') {
@@ -208,7 +208,7 @@ class Curriculum extends Component{
 
     public function UpdateDato(){
         $this->validate([
-            'actDato' => ['required', 'max_digits:255']
+            'actDato' => ['required', 'max:255']
         ]);
         if ($this->opciones == 'rap') {
             rap::where('id', $this->identificador)->update(['descripcion' => $this->actDato]);
@@ -278,9 +278,9 @@ class Curriculum extends Component{
 
     public function guardarCompetencia(){
         $this->validate([
-            'NuevaNorma' => ['required', 'max_digits:255'],
+            'NuevaNorma' => ['required', 'max:255'],
             'NuevoCodigo' => ['required', 'unique:competencias,codigo'],
-            'NuevoNombre' => ['required', 'max_digits:255'],
+            'NuevoNombre' => ['required', 'max:255'],
             'NuevaHora' => ['required', 'max_digits:11', 'numeric']
         ]);
 
@@ -304,9 +304,9 @@ class Curriculum extends Component{
     public function updateCompetencia(){
         $competencia = $this->actCompetencia;
         $this->validate([
-            'norma' => ['required', 'max_digits:255'],
+            'norma' => ['required', 'max:255'],
             'codigo' => ['required', Rule::unique('competencias')->ignore($competencia->codigo, 'codigo')],
-            'nombre' => ['required', 'max_digits:255'],
+            'nombre' => ['required', 'max:255'],
             'horas' => ['required', 'max_digits:11', 'numeric']
         ]);
 

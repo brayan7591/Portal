@@ -15,8 +15,32 @@ class programa extends Model
         return $this->hasMany('App\Models\galeria');
     }
 
+    public function eventos(){
+        return $this->hasMany('App\Models\evento');
+    }
+
+    public function proyectos(){
+        return $this->hasMany('App\Models\proyecto');
+    }
+
+    public function libros(){
+        return $this->hasMany('App\Models\biblioteca');
+    }
+
+    public function egresados(){
+        return $this->hasMany('App\Models\personajes_destacado')->where('rol', 'Egresado');
+    }
+
+    public function voceros(){
+        return $this->hasMany('App\Models\vocero');
+    }
+
+    public function instructores(){
+        return $this->hasMany('App\Models\instructore');
+    }
+
     public function aprendices(){
-        return $this->hasMany('App\Models\aprendice');
+        return $this->hasMany('App\Models\personajes_destacado')->where('rol', 'Aprendiz');
     }
 
     public function niveles(){

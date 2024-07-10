@@ -47,13 +47,14 @@ class Usuarios extends Component
         }
     }
 
-    public function update(User $user){
-
+    public function update(User $user)
+    {
         if ($user->roles()->count() > 0) {
             $this->ActualizarRol = $user->roles()->first()->id;
         }else{
             $this->ActualizarRol = null;
         }
+        
         $this->ActRegister = $user;
         $this->ActualizarNombre = $user->name;
         $this->ActualizarCorreo = $user->email;
@@ -61,9 +62,9 @@ class Usuarios extends Component
 
     public function Actualizar(User $user){
         $this->validate([
-            'ActualizarNombre' => ['required', 'string', 'max_digits:255'],
-            'ActualizarCorreo' => ['required', 'string', 'email', 'max_digits:255', Rule::unique('users', 'email')->ignore($user->id)],
-            'ActualizarPassword' => ['nullable', 'max_digits:255'],
+            'ActualizarNombre' => ['required', 'string', 'max:255'],
+            'ActualizarCorreo' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->id)],
+            'ActualizarPassword' => ['nullable', 'max:255'],
             'ActualizarRol' => ['required', 'exists:roles,id']
         ]);
         $user->name = $this->ActualizarNombre;
@@ -88,9 +89,9 @@ class Usuarios extends Component
 
     public function save(){
         $this->validate([
-            'AgregarNombre' => ['required', 'string', 'max_digits:255'],
-            'AgregarCorreo' => ['required', 'string', 'email', 'max_digits:255', 'unique:users,email'],
-            'AgregarPassword' => ['required', 'string', 'max_digits:255'],
+            'AgregarNombre' => ['required', 'string', 'max:255'],
+            'AgregarCorreo' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'AgregarPassword' => ['required', 'string', 'max:255'],
             'AgregarRol' => ['required']
         ]);
         $this->AgregarPassword = bcrypt($this->AgregarPassword);

@@ -4,11 +4,9 @@
             <input type="text" wire:model.live="search">
         </label>
     </div>
-    @if ($libros->count() < 2)
-        <section class="one">
-    @else
-        <section>
-    @endif
+        
+    <section {{$libros->count() < 2 ? 'class=one' : ''}}>
+
         @if ($libros->count())
             @foreach ($libros as $libro)
                 <div class="estanteria">

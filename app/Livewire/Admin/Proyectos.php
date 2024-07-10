@@ -34,7 +34,7 @@ class Proyectos extends Component
 
     public function GuardarProyecto(){
         $this->validate([
-            'NombreProyecto' => ['required', 'max_digits:255'],
+            'NombreProyecto' => ['required', 'max:255'],
             'ObjetivoProyecto' => ['required'],
             'JustificacionProyecto' => ['required'],
             'FechaInicialProyecto' => ['required', 'date'],
@@ -66,7 +66,7 @@ class Proyectos extends Component
     }
     public function ActualizarProyecto(){
         $this->validate([
-            'ActualizarNombreProyecto' => ['required', 'max_digits:255'],
+            'ActualizarNombreProyecto' => ['required', 'max:255'],
             'ActualizarObjetivoProyecto' => ['required'],
             'ActualizarJustificacionProyecto' => ['required'],
             'ActualizarFechaInicialProyecto' => ['required', 'date'],

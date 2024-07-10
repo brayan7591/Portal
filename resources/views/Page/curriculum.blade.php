@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Curriculum')
+
 @section('links')
-    <link rel="stylesheet" href="{{ asset('css/curriculum.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/principal/curriculum.css') }}">
     @livewireStyles
 @endsection
 
@@ -41,7 +42,7 @@
         <h2 class="uno todo color">1.7 TITULO O CERTIFICADO QUE OBTENDRA:</h2>
         <h3 class="dos todo">{{$nivelaceptado->Nivel}}</h3>
     </div>
-    @livewire('curriculum.buscar-curriculum', ['nivel' => $nivelaceptado->SlugInterno, 'programa' => $nivelaceptado->programa_id])
+    @livewire('principal.curriculum', ['nivel' => $nivelaceptado->SlugInterno, 'programa' => $nivelaceptado->programa_id])
 @endsection
 
 @section('Scripts')

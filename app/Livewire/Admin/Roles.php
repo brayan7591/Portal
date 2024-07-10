@@ -34,7 +34,7 @@ class Roles extends Component
 
     public function save(){
         $this->validate([
-            'AgregarRol' => ['required', 'max_digits:255'],
+            'AgregarRol' => ['required', 'max:255'],
             'AgregarPermisos' => ['required', 'exists:permissions,id']
         ]);
 
@@ -56,7 +56,7 @@ class Roles extends Component
 
     public function Actualizar(Role $rol){
         $this->validate([
-            'ActualizarRol' => ['required', 'max_digits:255'],
+            'ActualizarRol' => ['required', 'max:255'],
             'ActualizarPermisos' => ['required', 'exists:permissions,id']
         ]);
 

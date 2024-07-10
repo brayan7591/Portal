@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\Curriculum;
+namespace App\Livewire\Principal;
 
 use App\Models\nivele;
 use Livewire\Component;
 
-class BuscarCurriculum extends Component
+class Curriculum extends Component
 {
     public $nivel;
     public $programa;
@@ -22,6 +22,6 @@ class BuscarCurriculum extends Component
             }
         }
 
-        return view('livewire.curriculum.buscar-curriculum', compact('competencias'));
+        return view('livewire.principal.curriculum', compact('competencias'));
     }
 }

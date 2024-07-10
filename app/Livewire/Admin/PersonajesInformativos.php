@@ -125,8 +125,8 @@ class PersonajesInformativos extends Component
 
     public function ActualizarVocero(){
         $this->validate([
-            'ActualizarNombreVocero' => ['required', 'max_digits:255'],
-            'ActualizarCorreoVocero' => ['required', 'email', 'max_digits:255', Rule::unique('voceros', 'Email')->ignore($this->ActualizarVoceroId)],
+            'ActualizarNombreVocero' => ['required', 'max:255'],
+            'ActualizarCorreoVocero' => ['required', 'email', 'max:255', Rule::unique('voceros', 'Email')->ignore($this->ActualizarVoceroId)],
             'ActualizarFichaVocero' => ['required', 'max_digits:11', 'numeric', Rule::unique('voceros', 'NoFicha')->ignore($this->ActualizarVoceroId)],
             'ActualizarProgramaVocero' => ['required', 'numeric', 'exists:programas,id'],
             'ActualizarImagenVocero' => ['nullable', 'image'],
@@ -161,9 +161,9 @@ class PersonajesInformativos extends Component
 
     public function ActualizarInstructor(){
         $this->validate([
-            'ActualizarNombreInstructor' => ['required', 'max_digits:255'],
-            'ActualizarCorreoInstructor' => ['required', 'string', 'email', 'max_digits:255', Rule::unique('instructores', 'Email')->ignore($this->ActualizarInstructorId)],
-            'ActualizarEspecialidadInstructor' => ['required', 'max_digits:255'],
+            'ActualizarNombreInstructor' => ['required', 'max:255'],
+            'ActualizarCorreoInstructor' => ['required', 'string', 'email', 'max:255', Rule::unique('instructores', 'Email')->ignore($this->ActualizarInstructorId)],
+            'ActualizarEspecialidadInstructor' => ['required', 'max:255'],
             'ActualizarTelefonoInstructor' => ['required', 'numeric', 'max_digits:11'],
             'ActualizarDescripcionInstructor' => ['required'],
             'ActualizarProgramaInstructor' => ['required', 'numeric', 'exists:programas,id'],
@@ -211,8 +211,8 @@ class PersonajesInformativos extends Component
 
     public function GuardarVocero(){
         $this->validate([
-            'NombreVocero' => ['required', 'max_digits:255'],
-            'CorreoVocero' => ['required', 'email', 'max_digits:255', 'unique:voceros,Email'],
+            'NombreVocero' => ['required', 'max:255'],
+            'CorreoVocero' => ['required', 'email', 'max:255', 'unique:voceros,Email'],
             'FichaVocero' => ['required', 'max_digits:11', 'numeric', 'unique:voceros,NoFicha'],
             'ProgramaVocero' => ['required', 'numeric', 'exists:programas,id'],
             'imagenVocero' => ['nullable', 'image'],
@@ -240,9 +240,9 @@ class PersonajesInformativos extends Component
 
     public function GuardarInstructor(){
         $this->validate([
-            'NombreInstructor' => ['required', 'max_digits:255'],
-            'CorreoInstructor' => ['required', 'email', 'max_digits:255', 'unique:instructores,Email'],
-            'EspecialidadInstructor' => ['required', 'max_digits:255'],
+            'NombreInstructor' => ['required', 'max:255'],
+            'CorreoInstructor' => ['required', 'email', 'max:255', 'unique:instructores,Email'],
+            'EspecialidadInstructor' => ['required', 'max:255'],
             'TelefonoInstructor' => ['required', 'max_digits:11', 'numeric'],
             'DescripcionInstructor' => ['required'],
             'ProgramaInstructor' => ['required', 'numeric', 'exists:programas,id'],
