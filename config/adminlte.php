@@ -296,7 +296,7 @@ return [
         [
             'text' => 'Volver al inicio',
             'route' => 'principal',
-            'topnav_right' => true,
+            'topnav' => true,
         ],
         [
             'type'         => 'fullscreen-widget',

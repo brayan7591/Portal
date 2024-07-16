@@ -10,8 +10,7 @@
     <title>@yield('title', 'portal web')</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @yield('Scripts')
 
     <!-- Fonts -->
@@ -20,7 +19,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layout.css')}}" rel="stylesheet" >
     @yield('links')
 </head>
@@ -134,6 +132,7 @@
                             @can('Dashboard')
                                 <a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a>
                             @endcan
+                            <a class="dropdown-item" href="{{route('perfil')}}">Configuracion</a>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button class="dropdown-item">Cerrar sesion</button>
