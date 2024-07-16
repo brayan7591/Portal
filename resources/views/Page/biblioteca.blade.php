@@ -8,8 +8,10 @@
 
 @section('content')
     <h1 class="text-center">La biblioteca de {{$programa->NombrePrograma}}</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit minus sit doloremque quaerat labore architecto cum, corporis et consequatur sunt, esse maxime perferendis, voluptas ratione tenetur ab veniam. Molestiae, nulla.</p>
-    @livewire('principal.biblioteca', ['programaid' => $programa->id])
+    <center><p>Bienvenido a la Biblioteca del Programa {{$programa->NombrePrograma}} </p>
+    <p>Aquí encontrarás una variedad de recursos informativos diseñados para apoyar tu aprendizaje y desarrollo profesional. </p>
+    <p>Explora nuestros libros y artículos disponibles para todos los aprendices y demas usuarios</p>
+@livewire('principal.biblioteca', ['programaid' => $programa->id])</center>
 @endsection
 
 @section('Scripts')

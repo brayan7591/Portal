@@ -148,7 +148,7 @@
 
     <article id="background-image">
         <div class="fondo">
-            <img src="{{Storage::url($programa->imagen)}}" alt="Imagen de {{$programa->NombrePrograma}}">
+            <img src="{{asset('imagenes/programas/ADSO.png')}}" alt="Imagen de {{$programa->NombrePrograma}}">
             <ul class="menu">
                 <div class="toggle"><i class="fa-solid fa-plus"></i></div>
 
