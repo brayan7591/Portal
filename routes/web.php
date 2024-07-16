@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PrincipalController;
+use App\Livewire\ActualizarUsuario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,8 @@ Route::get('/', [PrincipalController::class, 'index'])->middleware('GuardarUrl')
 Route::post('/actualizar-menu', [PrincipalController::class, 'menu'])->name('actualizar-menu');
 
 Auth::routes();
+
+Route::get('/actualizar-perfil', ActualizarUsuario::class)->middleware('auth')->name('perfil');
 
 Route::get('/Iniciojuego', [PrincipalController::class, 'Iniciojuego'])->name('Iniciojuego');
 

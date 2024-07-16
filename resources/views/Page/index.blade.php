@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/principal.css') }}" rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" type="image/x-icon">
     <title>Portal</title>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <nav class="navbar sticky-top navbar-expand-lg py-2" id="navbar-principal">
@@ -56,6 +56,7 @@
                             @can('Dashboard')
                                 <a class="dropdown-item" href="{{route('dashboard')}}">Dashboard</a>
                             @endcan
+                            <a class="dropdown-item" href="{{route('perfil')}}">Configuracion</a>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button class="dropdown-item">Cerrar sesion</button>
@@ -103,6 +104,5 @@
     </footer>
 
     <script src="{{asset('js/index.js')}}"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
 </html>
