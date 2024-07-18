@@ -6,12 +6,14 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center">Voceros</h1>
+    <h1 class="text-center"> <span class="pi">Voceros</span></h1>
     @foreach ($programa->voceros as $vocero)
-        <div class="container bg-light text-dark p-4">
-            Nombre: {{$vocero->Nombre}} <br><br>
-            Correo: {{$vocero->Email}} <br><br>
-            Numero de ficha: {{$vocero->NoFicha}}
+        <div class="container text-white blue p-4">
+            <span class="pr">Nombre:</span> {{$vocero->Nombre}}
+            <hr>
+            <span class="uy">Correo:</span> {{$vocero->Email}} 
+            <hr>
+            <span class="ln">Numero de Ficha:</span> {{$vocero->NoFicha}}
         </div><br>
     @endforeach
 @endsection

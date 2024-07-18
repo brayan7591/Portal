@@ -1,0 +1,74 @@
+.blue{
+    background-color: rgb(26, 167, 21);
+    border: 5px solid rgb(0, 0, 0);
+}
+
+img{
+    width: 350px;
+    height: 250px;
+    margin-right: 25px;
+}
+.lol{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+hr{
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.lal{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.lel{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.lil{
+    color: rgb(255, 255, 255);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.lul{
+    color: rgb(36, 172, 36);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+      
+}
+.yt{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+     
+}
+
+.agh{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.hp{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+      
+}
+
+.jh{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.nd{
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.contenedor{
+    display: flex;
+    text-align: center;
+
+}
+.fi{
+    display: flex;
+
+}

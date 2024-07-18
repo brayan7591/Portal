@@ -24,7 +24,7 @@
     <link href="{{ asset('css/layout.css')}}" rel="stylesheet" >
     @yield('links')
 </head>
-<body class="bg-dark text-white {{ $menuAbierto == false ? '' : 'menuhidden'}}">
+<body class="{{ $menuAbierto == false ? '' : 'menuhidden'}}" style="background-color: #fff">
     <nav class="navbar navbar-expand-lg bg-black py-3" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand d-flex gap-2 align-items" href="{{route('principal')}}">
