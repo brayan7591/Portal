@@ -9,8 +9,8 @@
 
         @if ($libros->count())
             @foreach ($libros as $libro)
-                <div class="estanteria">
-                    <div class="contenedor">
+                <div class="estanteria" style="background-color: #343a40">
+                    <div class="contenedor" style="background-color: #343a40">
                         <div class="libro">
                             <div class="caratula">
                                 <img src="{{Storage::url($libro->Imagen)}}" alt="imagen del libro">

@@ -1,0 +1,36 @@
+.bg-sena-blue{
+    background-color: #00304d;
+}
+.bg-sena-white{
+    background-color: #f6f6f6;
+}
+.bg-sena-blue .nav-link{
+    color: white;
+    opacity: .7;
+}
+
+.bg-sena-blue .nav-link:not(.active):hover{
+    color: white;
+    opacity: 1;
+}
+
+.bg-sena-blue .nav-link.active{
+    opacity: 1;
+}
+
+.text-sena-green{
+    color: #39a900;
+}
+.bg-sena-gray{
+    background-color: #343a40; 
+}
+.text-sena-white-hover{
+    color: #f6f6f6;
+}
+
+.text-sena-white-hover:hover{
+    color: white;
+}
+.bg-sena-blue .input-group .btn-sidebar{
+    color: white;
+}

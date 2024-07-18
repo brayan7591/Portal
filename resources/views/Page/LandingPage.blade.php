@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center">{{$programa->NombrePrograma}}</h1>
+    <h1 class="text-center text-sena-green">{{$programa->NombrePrograma}}</h1>
     <p class="texto-prueba">{{$programa->Descripcion}}</p>
 @endsection
 

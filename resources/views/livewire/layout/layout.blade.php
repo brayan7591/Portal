@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Actualizar Perfil</title>
     <link rel="shortcut icon" href="{{ asset('favicons/favicon.ico') }}" type="image/x-icon">
+    <link href="{{ asset('css/sena/estilos.css')}}" rel="stylesheet" >
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-black py-3" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-sena-blue py-3" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand d-flex gap-2 align-items" href="{{route('principal')}}">
                 <img src="{{asset('logos/logo-verde.png')}}" alt="Logo del portal web" width="30" height="24" class="d-inline-block align-text-top">PortalWeb
@@ -46,7 +47,7 @@
             </div>
         </div>
     </nav>
-    <main class="bg-dark p-2">
+    <main class="bg-sena-white p-2">
         {{$slot}}
     </main>
 

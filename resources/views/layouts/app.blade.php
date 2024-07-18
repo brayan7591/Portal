@@ -20,10 +20,11 @@
     
     <!-- Styles -->
     <link href="{{ asset('css/layout.css')}}" rel="stylesheet" >
+    <link href="{{ asset('css/sena/estilos.css')}}" rel="stylesheet" >
     @yield('links')
 </head>
-<body class="bg-dark text-white {{ $menuAbierto == false ? '' : 'menuhidden'}}">
-    <nav class="navbar navbar-expand-lg bg-black py-3" data-bs-theme="dark">
+<body class="{{ $menuAbierto == false ? '' : 'menuhidden'}}">
+    <nav class="bg-sena-blue navbar navbar-expand-lg py-3" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand d-flex gap-2 align-items" href="{{route('principal')}}">
                 <img src="{{asset('logos/logo-verde.png')}}" alt="Logo del portal web" width="30" height="24" class="d-inline-block align-text-top">PortalWeb
@@ -43,7 +44,7 @@
                 @if ($programa->niveles->count() > 0)
                     <li class="nav-item dropdown">
                         <button class="nav-link {{request()->routeIs('curriculum') ? 'active' : ''}} dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Curriculum</button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <ul class="dropdown-menu bg-sena-gray" aria-labelledby="dropdownMenuButton">
                             @foreach ($programa->niveles as $posicion => $nivel)
                                 <li><a class="dropdown-item {{request()->routeIs('curriculum') ? ($nivelaceptado->SlugInterno == $nivel->SlugInterno ? 'active' : '') : ''}}" href="{{route('curriculum', [$programa->slug, $nivel->SlugInterno])}}"> {{$nivel->SlugInterno}} </a></li>
                                 @if (!($posicion + 1 == $programa->niveles->count()))
@@ -64,7 +65,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <button class="nav-link {{request()->routeIs('instructores') || request()->routeIs('egresados') || request()->routeIs('aprendices') || request()->routeIs('voceros') ? 'active' : ''}} dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">Apartados</button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <ul class="dropdown-menu bg-sena-gray" aria-labelledby="dropdownMenuButton">
 
                         <li>
                             @if (request()->routeIs('instructores'))
@@ -108,7 +109,7 @@
                 <li class="nav-item d-flex align-items-center">
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" {{ $menuAbierto == false ? '' : 'checked'}}>
-                        <label class="form-check-label" for="flexSwitchCheckChecked">Ocultar menu</label>
+                        <label class="form-check-label text-white" for="flexSwitchCheckChecked">Ocultar menu</label>
                     </div>
                 </li>
             </ul>
@@ -186,10 +187,10 @@
         </div>
     </article>
 
-    <main class="py-2 min-vh-100">
+    <main class="bg-sena-white p-2 min-vh-100">
         @yield('content')
     </main>
-    <footer class="bg-black text-white p-4">
+    <footer class="bg-sena-blue text-white p-4">
         <p class="h1 m-0">Todos los derechos reservados Copyrigth &copy;</p>
     </footer>
     <script>

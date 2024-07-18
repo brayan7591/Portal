@@ -1,6 +1,6 @@
 .cajas{
     background-color: #f6f6fa;
-    border: solid 5px #A8D16F ;
+    border: solid 5px #00304d ;
     border-radius: 10px;
     
 }
@@ -8,3 +8,20 @@
     background-color: rgb(218, 235, 250);
 }
 
+.imagenes{
+    padding: 20px 0;
+    position: relative;
+    color:black;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagenes div{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}

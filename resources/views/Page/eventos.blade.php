@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center">Eventos</h1>
+    <h1 class="text-sena-green text-center">Eventos</h1>
     @foreach ($programa->eventos as $evento)
         <div class="container letras cajas text-dark p-4">
             Nombre: {{$evento->nombre}} <br><br>
@@ -14,7 +14,15 @@
             Fecha de inicializacion: {{$evento->Fecha}}
         </div><br>
     @endforeach
-    
+
+    <h2 class="text-center">Imagenes de {{$programa->NombrePrograma}}:</h2>
+    <div class="container bg-sena-blue imagenes">
+        @foreach ($programa->imagenes as $imagen)
+        <div>
+            <img src="{{Storage::url($imagen->imagen)}}" alt="$programa->NombrePrograma">
+        </div>
+        @endforeach
+    </div>
 @endsection
 
 @section('Scripts')

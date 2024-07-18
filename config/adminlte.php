@@ -66,11 +66,11 @@ return [
     */
 
     'logo' => '<b>Portal</b>WEB',
-    'logo_img' => 'favicons/favicon.ico',
-    'logo_img_class' => 'brand-image img-circle elevation-3 bg-white',
+    'logo_img' => 'logos/logo-verde.png',
+    'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => 'Portal web',
 
     /*
     |--------------------------------------------------------------------------
@@ -190,13 +190,13 @@ return [
 
     'classes_body' => '',
     'classes_brand' => '',
-    'classes_brand_text' => '',
+    'classes_brand_text' => 'text-sena-white-hover',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'bg-sena-blue text-white elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'bg-sena-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -425,6 +425,16 @@ return [
     */
 
     'plugins' => [
+        'sena' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'css/sena/estilos.css'
+                ]
+            ]
+        ],
         'Datatables' => [
             'active' => false,
             'files' => [

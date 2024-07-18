@@ -1,7 +1,7 @@
 <div class="container">
-    <h1 class="text-center mt-2 text-white">Configuracion de la cuenta</h1>
+    <h1 class="text-center mt-2 text-sena-green">Configuracion de la cuenta</h1>
 
-    <h2 class="mt-3 text-white" >Configuracion inicial:</h2>
+    <h2 class="mt-3" >Configuracion inicial:</h2>
     <div class="bg-white p-3 mt-2 border border-4 border-black">
         <label for="act_nombre" class="h4">Actualiza tu nombre: </label><br>
         <input type="text" id="act_nombre" class="w-100 form-control" placeholder="Actualizar Nombre del usuario" wire:model="nombre">
@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <h2 class="mt-3 text-white">Configuracion Contraseña</h2>
+    <h2 class="mt-3">Configuracion Contraseña</h2>
     <div class="bg-white p-3 mt-2 border border-4 border-black">
         <label for="contra_nueva" class="h4">Escribe tu nueva contraseña: </label><br>
         <input type="password" id="contra_nueva" class="w-100 form-control" placeholder="Escribe la nueva contraseña" wire:model="nuevaContra">
@@ -45,7 +45,7 @@
         </div>
     </div>
 
-    <h2 class="mt-3 text-white">Eliminar cuenta:</h2>
+    <h2 class="mt-3">Eliminar cuenta:</h2>
     <div class="bg-white p-3 mt-2 border border-4 border-black">
         <label for="contra_borrar" class="mt-3 h4">Escribe tu contraseña actual para eliminar el usuario</label><br>
         <input type="password" id="contra_borrar" class="w-100 form-control" placeholder="Escribe la contraseña actual" wire:model="contraEliminar">

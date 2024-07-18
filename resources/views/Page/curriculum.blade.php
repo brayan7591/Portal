@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+    <h1 class="text-center text-sena-green">Curriculum {{strtolower($nivelaceptado->Nivel)}} de {{$programa->NombrePrograma}} </h1>
     <div class="d-flex justify-content-end align-items-center" style="width: 90%">
         <form action="{{ route('generar.pdf', [$programa->slug, $nivelaceptado->SlugInterno]) }}" method="POST">
             @csrf

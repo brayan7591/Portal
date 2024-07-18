@@ -6,9 +6,9 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center">Proyectos</h1>
+    <h1 class="text-center text-sena-green">Proyectos</h1>
     @foreach ($programa->proyectos as $proyecto)
-        <div class="container index  text-dark p-4">
+        <div class="container index text-dark p-4">
             Nombre: {{$proyecto->Nombre}} <br><br>
             Objetivo: {{$proyecto->Objetivo}} <br><br>
             Justificacion: {{$proyecto->Justificacion}} <br><br>

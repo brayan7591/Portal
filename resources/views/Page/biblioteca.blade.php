@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <h1 class="text-center">La biblioteca de {{$programa->NombrePrograma}}</h1>
+    <h1 class="text-center text-sena-green">La biblioteca de {{$programa->NombrePrograma}}</h1>
     <center><p>Bienvenido a la Biblioteca del Programa {{$programa->NombrePrograma}} </p>
     <p>Aquí encontrarás una variedad de recursos informativos diseñados para apoyar tu aprendizaje y desarrollo profesional. </p>
     <p>Explora nuestros libros y artículos disponibles para todos los aprendices y demas usuarios</p>

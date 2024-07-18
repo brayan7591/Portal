@@ -3,11 +3,14 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Dashboard</h1>
+    <h1 class="text-center">Informacion del portal web</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div>
+        <h2>Numero total de programas:</h2>
+        <h3>{{$programas}} Programas</h3>
+    </div>
 @stop
 
 @section('css')

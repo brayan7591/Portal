@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\programa;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 class HomeController extends Controller
@@ -16,7 +16,8 @@ class HomeController extends Controller
     }
 
     public function index(){
-        return view('Admin.Dashboard');
+        $programas = programa::count();
+        return view('Admin.Dashboard', compact('programas'));
     }
 
     public function users(){
