@@ -6,14 +6,21 @@
 @endsection
 
 @section('content')
+      <h1 class="text-center"> <span class="lul">Instructores</span></h1>
+    
   @foreach ($programa->instructores as $instructor)
-        <div class="container bg-light text-dark p-4">
-            Nombre: {{$instructor->Nombre}} <br><br>
-            Correo: {{$instructor->Email}} <br><br>
-            Especialidad: {{$instructor->Especialidad}} <br><br>
-            Telefono: {{$instructor->Telefono}} <br><br>
-            Descripcion: {{$instructor->Descripcion}} <br><br>
-            Jornada: {{$instructor->jornada}} <br><br>
+        <div class="container text-white blue p-4">
+            <span class="p">Nombre:</span> {{$instructor->Nombre}}
+            <hr>
+            <span class="o">Correo:</span> {{$instructor->Email}}
+            <hr>
+            <span class="l">Especialidad:</span> {{$instructor->Especialidad}}
+            <hr>
+            <span class="m">Telefono:</span> {{$instructor->Telefono}} 
+            <hr>
+            <span class="n">Descripcion:</span> {{$instructor->Descripcion}} 
+            <hr>
+            <span class="b">Jornada: </span> {{$instructor->jornada}} <br><br>
         </div><br>
     @endforeach
 @endsection
@@ -21,3 +28,4 @@
 @section('Scripts')
 
 @endsection
+
