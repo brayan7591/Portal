@@ -1,0 +1,9 @@
+.index{
+    background-color: #f6f6fa;
+    border: solid 5px #A8D16F ;
+    border-radius: 10px;
+    
+}
+.index:hover{
+   background-color: rgb(218, 235, 250);
+}

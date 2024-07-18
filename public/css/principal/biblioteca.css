@@ -18,7 +18,7 @@ section .estanteria .contenedor{
     position: relative;
     width: 100%;
     min-height: 700px;
-    background-color: #39a900;
+    background-color: #A4D1C0;
     -webkit-box-shadow: inset 0px 0px 14px 16px rgba(0,0,0,0.62);
     -moz-box-shadow: inset 0px 0px 14px 16px rgba(0,0,0,0.62);
     box-shadow: inset 0px 0px 14px 16px rgba(0,0,0,0.62);;
@@ -54,7 +54,7 @@ section .estanteria .libro .caratula{
     transform-origin: left;
     z-index: 1;
     transition: 1s;
-    background-color: brown;
+    background-color: #9DD2FF ;
     background-size: cover;
     border: solid 2px;
 }
