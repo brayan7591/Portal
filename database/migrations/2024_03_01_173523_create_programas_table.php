@@ -20,6 +20,7 @@ class CreateProgramasTable extends Migration
             $table->integer('codigoPrograma')->unique();
             $table->string('imagen');
             $table->text('Descripcion');
+            $table->text('DescripcionCorta');
             $table->timestamps();
         });
     }

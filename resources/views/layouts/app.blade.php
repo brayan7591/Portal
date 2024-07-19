@@ -19,15 +19,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
     <!-- Styles -->
-    <link href="{{ asset('css/layout.css')}}" rel="stylesheet" >
+    <link href="{{ asset('css/principal/layout.css')}}" rel="stylesheet" >
     <link href="{{ asset('css/sena/estilos.css')}}" rel="stylesheet" >
     @yield('links')
 </head>
 <body class="{{ $menuAbierto == false ? '' : 'menuhidden'}}">
     <nav class="bg-sena-blue navbar navbar-expand-lg py-3" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand d-flex gap-2 align-items" href="{{route('principal')}}">
-                <img src="{{asset('logos/logo-verde.png')}}" alt="Logo del portal web" width="30" height="24" class="d-inline-block align-text-top">PortalWeb
+            <a class="navbar-brand d-flex gap-2 align-items-center" href="{{route('principal')}}">
+                <img src="{{asset('logos/logo-verde.png')}}" alt="Logo del portal web" width="100" height="100" class="d-inline-block align-text-top">PortalWeb
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -148,7 +148,7 @@
 
     <article id="background-image">
         <div class="fondo">
-            <img src="{{asset('imagenes/programas/ADSO.png')}}" alt="Imagen de {{$programa->NombrePrograma}}">
+            <img src="{{Storage::url($programa->imagen)}}" alt="Imagen de {{$programa->NombrePrograma}}">
             <ul class="menu">
                 <div class="toggle"><i class="fa-solid fa-plus"></i></div>
 

@@ -23,8 +23,6 @@ Auth::routes();
 
 Route::get('/actualizar-perfil', ActualizarUsuario::class)->middleware('auth')->name('perfil');
 
-Route::get('/Iniciojuego', [PrincipalController::class, 'Iniciojuego'])->name('Iniciojuego');
-
 Route::get('/{programa}', [PrincipalController::class, 'landingpage'])->middleware('GuardarUrl')->name('landingPage');
 
 Route::get('/{programa}/curriculum/{nivel}', [PrincipalController::class, 'curriculum'])->middleware('GuardarUrl')->name('curriculum');

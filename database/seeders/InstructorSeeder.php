@@ -29,7 +29,7 @@ class InstructorSeeder extends Seeder
             'Especialidad' => 'Desarrollo Backen de python, java y django',
             'Telefono' => 12345678,
             'Descripcion' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium sit unde libero asperiores exercitationem expedita earum. Eos totam mollitia laudantium dolor quisquam perspiciatis nostrum rerum laboriosam? Facilis, dicta doloribus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, distinctio quidem! Fuga voluptatum facere amet, sint magni, saepe aperiam obcaecati debitis laudantium ex temporibus minus distinctio quos possimus, vitae excepturi!',
-            'programa_id' => '2',
+            'programa_id' => '1',
             'jornada' => 'nocturna',
         ]);
 
@@ -39,7 +39,7 @@ class InstructorSeeder extends Seeder
             'Especialidad' => 'Desarrollo Fullstack de js',
             'Telefono' => 12345678,
             'Descripcion' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium sit unde libero asperiores exercitationem expedita earum. Eos totam mollitia laudantium dolor quisquam perspiciatis nostrum rerum laboriosam? Facilis, dicta doloribus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, distinctio quidem! Fuga voluptatum facere amet, sint magni, saepe aperiam obcaecati debitis laudantium ex temporibus minus distinctio quos possimus, vitae excepturi!',
-            'programa_id' => '2',
+            'programa_id' => '1',
             'jornada' => 'mañana',
         ]);
 

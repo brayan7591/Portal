@@ -86,13 +86,13 @@ return [
     */
 
     'auth_logo' => [
-        'enabled' => false,
+        'enabled' => true,
         'img' => [
-            'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+            'path' => 'logos/logo-negro.png',
             'alt' => 'Auth Logo',
             'class' => '',
-            'width' => 50,
-            'height' => 50,
+            'width' => 80,
+            'height' => 80,
         ],
     ],
 
@@ -111,11 +111,11 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'favicons/favicon.ico',
+            'path' => 'logos/logo-negro.png',
             'alt' => 'Logo imagen',
             'effect' => 'animation__shake',
-            'width' => 80,
-            'height' => 80,
+            'width' => 100,
+            'height' => 100,
         ],
     ],
 
