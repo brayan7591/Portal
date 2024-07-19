@@ -12,7 +12,7 @@
         <div class="contenedor-voceros">
             @foreach ($voceros as $vocero)
                 <div class="Voceros">
-                    <div class="informacion">
+                    <div class="informacion-principal">
                         @if ($vocero->imagen)
                             <img src="{{Storage::url($vocero->imagen->url)}}" alt="Imagen de {{$vocero->Nombre}}" onclick="this.parentElement.classList.toggle('active')">
                         @else

@@ -65,7 +65,7 @@
     align-items: center;
 }
 .instructores .tarjeta .descripcion{
-    background: rgb(90, 217, 122);
+    background: #39a900;
     color: black;
     overflow-y: auto;
 }
