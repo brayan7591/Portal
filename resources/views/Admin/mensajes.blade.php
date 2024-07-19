@@ -3,7 +3,7 @@
 @section('title', 'Mensajes entrantes')
 
 @section('content_header')
-    <h1 class="text-center">Mensajes del formulario del comienso</h1>
+    <h1 class="text-center">Mensajes del formulario principal</h1>
 @stop
 
 @section('content')

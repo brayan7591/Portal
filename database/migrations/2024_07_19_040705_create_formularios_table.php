@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('formularios', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->integer('telefono');
+            $table->biginteger('telefono');
             $table->string('correo');
             $table->text('mensaje');
             $table->timestamps();
