@@ -10,6 +10,9 @@
     
   @foreach ($programa->instructores as $instructor)
         <div class="container text-white blue p-4">
+        @if ($instructor->imagen)
+                <img src="{{Storage::url($instructor->imagen->url)}}" width="150px" height="150px" alt="Imagen de {{$instructor->nombre}}">
+            @endif
             <span class="p">Nombre:</span> {{$instructor->Nombre}}
             <hr>
             <span class="o">Correo:</span> {{$instructor->Email}}
