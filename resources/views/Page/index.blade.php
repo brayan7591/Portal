@@ -158,7 +158,7 @@
                <br>
                <div style="text-align: center">
                   <a href="">
-                    <button class="btn success" >MUCHO MÁS</button>
+                    <button class="btn success" >Agregar Programa</button>
                     </a>
                 </div> 
       <div id="contact" class="contact">
