@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PrincipalController::class, 'index'])->middleware('GuardarUrl')->name('principal');
+Route::post('/', [PrincipalController::class, 'formulario'])->name('guardarDatos');
 Route::post('/actualizar-menu', [PrincipalController::class, 'menu'])->name('actualizar-menu');
 
 Auth::routes();

@@ -388,6 +388,13 @@ return [
             'can' => 'Destacados.mirar',
         ],
 
+        [
+            'text' => 'Mensajes',
+            'icon_color' => 'yellow',
+            'route' => 'admin.mensajes',
+            'can' => 'Roles.mirar',
+        ],
+
     ],
 
     /*

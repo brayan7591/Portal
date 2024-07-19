@@ -143,24 +143,25 @@
                   </div>
                </div>
             </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     @foreach ($Programas as $programa)
-                        <div class="col-xl-4 col-lg-4 col-md-4 margin_bott">
+                        <div class="col-xl-4 col-lg-4 col-md-4 margin_bott" >
                             <div class="classified_box">
                                 <figure><img src="{{Storage::url($programa->imagen)}}" alt="#"/></figure>
-                                <a href="{{route('landingPage', $programa->slug)}}"><h3>{{$programa->NombrePrograma}}</h3></a>
+                                <h3>{{$programa->NombrePrograma}}</h3>
                                 <p>{{$programa->DescripcionCorta}} </p>
+                                <div style="text-align: center" class="pb-3">
+                                    <a href="{{route('landingPage', $programa->slug)}}">
+                                        <button class="btn success" >MUCHO MÁS</button>
+                                    </a>
+                                </div> 
                             </div>
                         </div>
                     @endforeach
                 </div>  
                <br>
                <br>
-               <div style="text-align: center">
-                  <a href="">
-                    <button class="btn success" >Agregar Programa</button>
-                    </a>
-                </div> 
+               
       <div id="contact" class="contact">
          <div class="container">
             <div class="row d_flex">
@@ -181,23 +182,24 @@
                   </div>
                </div>
                <div class="col-md-6">
-                  <form  class="main_form">
+                  <form  class="main_form" method="Post">
                      <div class="row">
-                        <div class="col-md-12 ">
-                           <input class="contactus" placeholder="Nombre" type="text" name="Name"> 
-                        </div>
                         <div class="col-md-12">
-                           <input class="contactus" placeholder="Número celular" type="tel" name="celular"> 
-                        </div>
-                        <div class="col-md-12">
-                           <input class="contactus" placeholder="Correo" type="email" name="email">                          
-                        </div>
-                        <div class="col-md-12">
-                           <textarea name="mensaje" id="mensaje" cols="10" rows="2" placeholder="Escriba su mensaje" class="textarea" ></textarea>
-                        </div>
-                        <div class="col-sm-12">
-                           <button class="send_btn">Enviar</button>
-                        </div>
+                            @csrf
+                               <input class="contactus" name="nombre" placeholder="Nombre" type="text" min="3" name="Name" required> 
+                            </div>
+                            <div class="col-md-12">
+                               <input class="contactus" name="telefono" placeholder="Número celular" type="tel" min="10" name="celular" required> 
+                            </div>
+                            <div class="col-md-12">
+                               <input class="contactus" name="correo" placeholder="Correo" type="email" name="email" min="8" required>                          
+                            </div>
+                            <div class="col-md-12">
+                            <textarea name="mensaje" name="mensaje" id="mensaje" cols="10" rows="2" placeholder="Escriba su mensaje" class="textarea" required></textarea>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="send_btn" type="submit">Enviar</button>
+                            </div>
                      </div>
                   </form>
                </div>
@@ -327,5 +329,17 @@
       <script src="{{asset('js/plantilla/bootstrap.bundle.min.js')}}"></script>
       <!-- sidebar -->
       <script src="{{asset('js/plantilla/custom.js')}}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if (session('success'))
+            <script>
+                setTimeout(function(){
+                    Swal.fire({
+                        title: "Bien hecho!",
+                        text: "{{session('success')}}",
+                        icon: "success"
+                    })
+                }, 1000)
+            </script>
+        @endif
 </body>
 </html>

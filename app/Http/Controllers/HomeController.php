@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\competencia;
+use App\Models\evento;
+use App\Models\formulario;
+use App\Models\instructore;
+use App\Models\personajes_destacado;
 use App\Models\programa;
+use App\Models\proyecto;
 use App\Models\User;
+use App\Models\vocero;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -17,7 +24,16 @@ class HomeController extends Controller
 
     public function index(){
         $programas = programa::count();
-        return view('Admin.Dashboard', compact('programas'));
+        $usuarios = User::count();
+        $competencias = competencia::count();
+        $instructores = instructore::count();
+        $egresados = personajes_destacado::where('rol', 'Egresado')->count();
+        $voceros = personajes_destacado::where('rol', 'Aprendiz')->count();
+        $Aprendices = vocero::count();
+        $proyectos = proyecto::count();
+        $eventos = evento::count();
+
+        return view('Admin.Dashboard', compact('programas', 'usuarios', 'competencias', 'instructores', 'egresados', 'voceros', 'Aprendices', 'proyectos', 'eventos'));
     }
 
     public function users(){
@@ -55,6 +71,11 @@ class HomeController extends Controller
 
     public function personajes_destacados(){
         return view('Admin.PersonajesDestacados');
+    }
+
+    public function formulario(){
+        $formularios = formulario::all();
+        return view('Admin.mensajes', compact('formularios'));
     }
 
     public function ActualizarUsuario(Request $request){

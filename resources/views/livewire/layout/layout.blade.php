@@ -51,6 +51,10 @@
         {{$slot}}
     </main>
 
+    <footer class="bg-sena-blue text-white p-4">
+        <p class="h1 m-0">Todos los derechos reservados Copyrigth &copy;</p>
+    </footer>
+    
     @livewireScripts
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
