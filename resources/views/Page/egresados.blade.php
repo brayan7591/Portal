@@ -35,4 +35,4 @@
 
 @section('Scripts')
 
-@endsection+
+@endsection
