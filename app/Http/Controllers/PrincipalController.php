@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\formulario;
 use App\Models\programa;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -13,6 +14,17 @@ class PrincipalController extends Controller
     public function index(){
         $Programas = programa::all();
         return view('Page.index', compact('Programas'));
+    }
+
+    public function formulario(Request $request){
+        formulario::create([
+            'nombre' => $request->nombre,
+            'telefono' => $request->telefono,
+            'correo' => $request->correo,
+            'mensaje' => $request->mensaje,
+        ]);
+
+        return redirect()->route('principal')->with('success', 'Se envio correctamente el mensaje :)');
     }
 
     public function Iniciojuego(){

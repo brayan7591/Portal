@@ -9,6 +9,8 @@ Route::get('/admin/usuarios', [HomeController::class, 'users'])->middleware('can
 
 Route::get('/admin/roles', [HomeController::class, 'roles'])->middleware('can:Roles.mirar')->name('roles');
 
+Route::get('/admin/mensajes', [HomeController::class, 'formulario'])->middleware('can:Roles.mirar')->name('admin.mensajes');
+
 Route::get('/admin/settings', [HomeController::class, 'settings'])->middleware('can:Dashboard')->name('settings');
 Route::post('/admin/settings', [HomeController::class, 'ActualizarUsuario'])->middleware('can:Dashboard')->name('settings.update');
 

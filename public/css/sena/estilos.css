@@ -34,3 +34,13 @@
 .bg-sena-blue .input-group .btn-sidebar{
     color: white;
 }
+.informacion{
+    border: solid black 5px;
+    padding: 10px;
+}
+.informacion:hover{
+    color: white;
+    background-color: #00304d;
+    border: solid black 5px;
+    padding: 10px;
+}
